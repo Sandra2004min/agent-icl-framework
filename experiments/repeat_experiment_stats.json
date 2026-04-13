@@ -1,0 +1,66 @@
+{
+  "E-Logic-Std": {
+    "Reflective": {
+      "initial_score": 0.7,
+      "best_scores": [0.9, 0.7, 1.0],
+      "best_mean": 0.8667,
+      "best_std": 0.1528,
+      "improvement_pcts": [28.57, 0.0, 42.86],
+      "improvement_mean": 23.81,
+      "improvement_std": 21.82,
+      "score_histories": [[0.7, 0.9, 0.9], [0.7, 0.7, 0.7], [0.7, 1.0]]
+    },
+    "FewShot-CoT": {
+      "initial_score": 0.7,
+      "best_scores": [0.9, 0.9, 0.9],
+      "best_mean": 0.9,
+      "best_std": 0.0,
+      "improvement_pcts": [28.57, 28.57, 28.57],
+      "improvement_mean": 28.57,
+      "improvement_std": 0.0,
+      "score_histories": [[0.7, 0.9, 0.8, 0.8], [0.7, 0.9, 0.8, 0.8], [0.7, 0.9, 0.8, 0.8]]
+    },
+    "Retrieval-v3": {
+      "initial_score": 0.7,
+      "best_scores": [0.9, 0.9, 0.8],
+      "best_mean": 0.8667,
+      "best_std": 0.0577,
+      "improvement_pcts": [28.57, 28.57, 14.29],
+      "improvement_mean": 23.81,
+      "improvement_std": 8.24,
+      "score_histories": [[0.7, 0.8, 0.9, 0.8], [0.7, 0.9, 0.9], [0.7, 0.8, 0.8]]
+    }
+  },
+  "H-Logic-Hard": {
+    "Reflective": {
+      "initial_score": 0.6,
+      "best_scores": [0.8, 0.8, 0.9],
+      "best_mean": 0.8333,
+      "best_std": 0.0577,
+      "improvement_pcts": [33.33, 33.33, 50.0],
+      "improvement_mean": 38.89,
+      "improvement_std": 9.62,
+      "score_histories": [[0.6, 0.8, 0.7, 0.8], [0.6, 0.8, 0.8], [0.6, 0.9, 0.9]]
+    },
+    "FewShot-CoT": {
+      "initial_score": 0.6,
+      "best_scores": [0.8, 0.8, 0.8],
+      "best_mean": 0.8,
+      "best_std": 0.0,
+      "improvement_pcts": [33.33, 33.33, 33.33],
+      "improvement_mean": 33.33,
+      "improvement_std": 0.0,
+      "score_histories": [[0.6, 0.8, 0.8], [0.6, 0.8, 0.8], [0.6, 0.8, 0.8]]
+    },
+    "Retrieval-v3": {
+      "initial_score": 0.6,
+      "best_scores": [0.6, 0.6, 0.6],
+      "best_mean": 0.6,
+      "best_std": 0.0,
+      "improvement_pcts": [0.0, 0.0, 0.0],
+      "improvement_mean": 0.0,
+      "improvement_std": 0.0,
+      "score_histories": [[0.6, 0.6, 0.6], [0.6, 0.6, 0.6], [0.6, 0.6, 0.6]]
+    }
+  }
+}

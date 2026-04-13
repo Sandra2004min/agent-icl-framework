@@ -1,0 +1,258 @@
+[
+  {
+    "experiment": "Run1/E-Logic-Std/Reflective",
+    "initial_score": 0.7,
+    "best_score": 0.9,
+    "final_score": 0.9,
+    "improvement_pct": 28.57,
+    "iterations": 2,
+    "elapsed_seconds": 134.6,
+    "score_history": [
+      0.7,
+      0.9,
+      0.9
+    ]
+  },
+  {
+    "experiment": "Run1/E-Logic-Std/FewShot-CoT",
+    "initial_score": 0.7,
+    "best_score": 0.9,
+    "final_score": 0.8,
+    "improvement_pct": 28.57,
+    "iterations": 3,
+    "elapsed_seconds": 151.2,
+    "score_history": [
+      0.7,
+      0.9,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run1/E-Logic-Std/Retrieval-v3",
+    "initial_score": 0.7,
+    "best_score": 0.9,
+    "final_score": 0.8,
+    "improvement_pct": 28.57,
+    "iterations": 3,
+    "elapsed_seconds": 166.7,
+    "score_history": [
+      0.7,
+      0.8,
+      0.9,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run1/H-Logic-Hard/Reflective",
+    "initial_score": 0.6,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 33.33,
+    "iterations": 3,
+    "elapsed_seconds": 416.3,
+    "score_history": [
+      0.6,
+      0.8,
+      0.7,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run1/H-Logic-Hard/FewShot-CoT",
+    "initial_score": 0.6,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 33.33,
+    "iterations": 2,
+    "elapsed_seconds": 304.9,
+    "score_history": [
+      0.6,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run1/H-Logic-Hard/Retrieval-v3",
+    "initial_score": 0.6,
+    "best_score": 0.6,
+    "final_score": 0.6,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 565.6,
+    "score_history": [
+      0.6,
+      0.6,
+      0.6
+    ]
+  },
+  {
+    "experiment": "Run2/E-Logic-Std/Reflective",
+    "initial_score": 0.7,
+    "best_score": 0.7,
+    "final_score": 0.7,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 140.1,
+    "score_history": [
+      0.7,
+      0.7,
+      0.7
+    ]
+  },
+  {
+    "experiment": "Run2/E-Logic-Std/FewShot-CoT",
+    "initial_score": 0.7,
+    "best_score": 0.9,
+    "final_score": 0.8,
+    "improvement_pct": 28.57,
+    "iterations": 3,
+    "elapsed_seconds": 146.3,
+    "score_history": [
+      0.7,
+      0.9,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run2/E-Logic-Std/Retrieval-v3",
+    "initial_score": 0.7,
+    "best_score": 0.9,
+    "final_score": 0.9,
+    "improvement_pct": 28.57,
+    "iterations": 2,
+    "elapsed_seconds": 116.3,
+    "score_history": [
+      0.7,
+      0.9,
+      0.9
+    ]
+  },
+  {
+    "experiment": "Run2/H-Logic-Hard/Reflective",
+    "initial_score": 0.6,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 33.33,
+    "iterations": 2,
+    "elapsed_seconds": 378.1,
+    "score_history": [
+      0.6,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run2/H-Logic-Hard/FewShot-CoT",
+    "initial_score": 0.6,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 33.33,
+    "iterations": 2,
+    "elapsed_seconds": 288.2,
+    "score_history": [
+      0.6,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run2/H-Logic-Hard/Retrieval-v3",
+    "initial_score": 0.6,
+    "best_score": 0.6,
+    "final_score": 0.6,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 544.4,
+    "score_history": [
+      0.6,
+      0.6,
+      0.6
+    ]
+  },
+  {
+    "experiment": "Run3/E-Logic-Std/Reflective",
+    "initial_score": 0.7,
+    "best_score": 1.0,
+    "final_score": 1.0,
+    "improvement_pct": 42.86,
+    "iterations": 1,
+    "elapsed_seconds": 76.5,
+    "score_history": [
+      0.7,
+      1.0
+    ]
+  },
+  {
+    "experiment": "Run3/E-Logic-Std/FewShot-CoT",
+    "initial_score": 0.7,
+    "best_score": 0.9,
+    "final_score": 0.8,
+    "improvement_pct": 28.57,
+    "iterations": 3,
+    "elapsed_seconds": 135.4,
+    "score_history": [
+      0.7,
+      0.9,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run3/E-Logic-Std/Retrieval-v3",
+    "initial_score": 0.7,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 14.29,
+    "iterations": 2,
+    "elapsed_seconds": 108.1,
+    "score_history": [
+      0.7,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run3/H-Logic-Hard/Reflective",
+    "initial_score": 0.6,
+    "best_score": 0.9,
+    "final_score": 0.9,
+    "improvement_pct": 50.0,
+    "iterations": 2,
+    "elapsed_seconds": 343.2,
+    "score_history": [
+      0.6,
+      0.9,
+      0.9
+    ]
+  },
+  {
+    "experiment": "Run3/H-Logic-Hard/FewShot-CoT",
+    "initial_score": 0.6,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 33.33,
+    "iterations": 2,
+    "elapsed_seconds": 291.7,
+    "score_history": [
+      0.6,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "Run3/H-Logic-Hard/Retrieval-v3",
+    "initial_score": 0.6,
+    "best_score": 0.6,
+    "final_score": 0.6,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 494.2,
+    "score_history": [
+      0.6,
+      0.6,
+      0.6
+    ]
+  }
+]

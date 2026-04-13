@@ -1,0 +1,66 @@
+[
+  {
+    "experiment": "A: Logic Puzzles (Reflective)",
+    "strategy": "ReflectiveLearningStrategy",
+    "initial_score": 0.6667,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 50.0,
+    "iterations": 1,
+    "elapsed_seconds": 37.9,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nFollow these guidelines:\n1. For questions involving day calculations, recognize that days follow a 7-day cycle\n2. Calculate using modular arithmetic: (current_day_offset + days_to_add) mod 7\n3. Double-check your calculation before providing the final answer\n4. When the question specifies a format (e.g., \"lowercase\"), ensure your output matches exactly\n5. For mathematical or logical problems, reason step-by-step internally before answering\n\nExample approach for day calculation:\n- Identify the starting day's position (Sunday=0, Monday=1, ..., Saturday=6)\n- Calculate: days_to_add mod 7 to find the net day shift\n- Apply the shift to find the resulting day\n- Verify by considering a smaller example if needed",
+    "score_history": [
+      0.6667,
+      1.0
+    ]
+  },
+  {
+    "experiment": "B: Code Debug (Reflective)",
+    "strategy": "ReflectiveLearningStrategy",
+    "initial_score": 0.4833,
+    "final_score": 0.3633,
+    "best_score": 0.4867,
+    "improvement_pct": 0.69,
+    "iterations": 3,
+    "elapsed_seconds": 115.4,
+    "best_instruction": "You are a helpful assistant. Answer the question precisely as requested.\n\nImportant guidelines:\n1. Read the full user input carefully, including any formatting or content restrictions.\n2. If the user asks for a specific format (e.g., \"ONLY the fix in one sentence\"), provide exactly that — no extra explanation, no introductory phrases, no analysis beyond what's requested.\n3. If the question is about a bug in code and asks for the fix, respond with the fix directly in the required format.\n4. Do not include phrases like \"The bug is that...\" or \"You should...\" unless explicitly part of the requested answer.\n5. Keep responses concise and strictly compliant with the user's instructions.",
+    "score_history": [
+      0.4833,
+      0.4867,
+      0.4533,
+      0.3633
+    ]
+  },
+  {
+    "experiment": "C1: Logic Puzzles (Few-Shot)",
+    "strategy": "FewShotLearningStrategy",
+    "initial_score": 0.6667,
+    "final_score": 0.6667,
+    "best_score": 0.6667,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 42.3,
+    "best_instruction": "You are a helpful assistant. Answer the question.",
+    "score_history": [
+      0.6667,
+      0.6667,
+      0.6667
+    ]
+  },
+  {
+    "experiment": "C2: Logic Puzzles (Retrieval)",
+    "strategy": "RetrievalLearningStrategy",
+    "initial_score": 0.6667,
+    "final_score": 0.6667,
+    "best_score": 0.6667,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 35.9,
+    "best_instruction": "You are a helpful assistant. Answer the question.",
+    "score_history": [
+      0.6667,
+      0.6667,
+      0.6667
+    ]
+  }
+]

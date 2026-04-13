@@ -1,0 +1,68 @@
+[
+  {
+    "experiment": "DeepSeek/E-Logic-Std/FewShot-CoT",
+    "initial_score": 0.7,
+    "best_score": 0.9,
+    "final_score": 0.9,
+    "improvement_pct": 28.57,
+    "iterations": 2,
+    "elapsed_seconds": 104.1,
+    "score_history": [0.7, 0.9, 0.9],
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 10\n\n--- Example 2 ---\nQuestion: A farmer has 17 sheep. All but 9 die. How many sheep are left? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\n"
+  },
+  {
+    "experiment": "DeepSeek/H-Logic-Hard/FewShot-CoT",
+    "initial_score": 0.6,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 33.33,
+    "iterations": 3,
+    "elapsed_seconds": 328.4,
+    "score_history": [0.6, 0.7, 0.8, 0.8],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: In the Monty Hall problem, you pick door 1. The host opens door 3 (which has a goat). Should you switch to door 2 or stay with door 1 to maximize your chance of winning the car? Answer with ONLY 'switch' or 'stay'.\nReasoning: No reasoning steps recorded\nAnswer: switch\n\n--"
+  },
+  {
+    "experiment": "Qwen/E-Logic-Std/FewShot-CoT",
+    "initial_score": 0.7,
+    "best_score": 0.8,
+    "final_score": 0.3,
+    "improvement_pct": 14.29,
+    "iterations": 3,
+    "elapsed_seconds": 52.2,
+    "score_history": [0.7, 0.8, 0.1, 0.3],
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 10\n\n--- Example 2 ---\nQuestion: If today is Wednesday, what day will it be 100 days from now? Answer with ONLY the day name in lowercase.\nReasoning: No reasoning s"
+  },
+  {
+    "experiment": "Qwen/H-Logic-Hard/FewShot-CoT",
+    "initial_score": 0.5,
+    "best_score": 0.5,
+    "final_score": 0.0,
+    "improvement_pct": 0.0,
+    "iterations": 3,
+    "elapsed_seconds": 398.2,
+    "score_history": [0.5, 0.0, 0.0, 0.0],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Kimi/E-Logic-Std/FewShot-CoT",
+    "initial_score": 0.5,
+    "best_score": 0.5,
+    "final_score": 0.0,
+    "improvement_pct": 0.0,
+    "iterations": 3,
+    "elapsed_seconds": 123.4,
+    "score_history": [0.5, 0.4, 0.0, 0.0],
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "Kimi/H-Logic-Hard/FewShot-CoT",
+    "initial_score": 0.0,
+    "best_score": 0.0,
+    "final_score": 0.0,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 158.7,
+    "score_history": [0.0, 0.0, 0.0],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  }
+]

@@ -1,0 +1,154 @@
+[
+  {
+    "experiment": "D1: GSM8K (Reflective)",
+    "strategy": "ReflectiveLearningStrategy",
+    "adapter": "MathAdapter",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 1.0,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "iterations": 1,
+    "elapsed_seconds": 230.2,
+    "best_instruction": "You are a math problem solver. Solve the problem step by step. At the end, write your final numerical answer after '#### '. For example: #### 42",
+    "score_history": [
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "experiment": "D2: GSM8K (FewShot-CoT)",
+    "strategy": "FewShotLearningStrategy",
+    "adapter": "MathAdapter",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 1.0,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "iterations": 1,
+    "elapsed_seconds": 192.6,
+    "best_instruction": "You are a math problem solver. Solve the problem step by step. At the end, write your final numerical answer after '#### '. For example: #### 42",
+    "score_history": [
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "experiment": "D3: GSM8K (Retrieval-Active)",
+    "strategy": "RetrievalLearningStrategy",
+    "adapter": "MathAdapter",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 1.0,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "iterations": 1,
+    "elapsed_seconds": 195.8,
+    "best_instruction": "You are a math problem solver. Solve the problem step by step. At the end, write your final numerical answer after '#### '. For example: #### 42",
+    "score_history": [
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "experiment": "E1: Logic-Extended (Reflective)",
+    "strategy": "ReflectiveLearningStrategy",
+    "adapter": "QAAdapter",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 0.7,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 42.86,
+    "iterations": 2,
+    "elapsed_seconds": 117.7,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nFollow these rules strictly:\n1. Read the question carefully and determine exactly what is being asked.\n2. Perform any necessary reasoning internally (do not show calculations or explanations in the final answer).\n3. Your final output must contain ONLY the answer in the exact format requested in the question (e.g., if asked for a day name in lowercase, output only that word in lowercase; if asked for a time like 12:00 PM, output only that; if ask",
+    "score_history": [
+      0.7,
+      0.6,
+      1.0
+    ]
+  },
+  {
+    "experiment": "E2: Logic-Extended (FewShot-CoT)",
+    "strategy": "FewShotLearningStrategy",
+    "adapter": "QAAdapter",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 0.7,
+    "final_score": 0.8,
+    "best_score": 0.8,
+    "improvement_pct": 14.29,
+    "iterations": 3,
+    "elapsed_seconds": 148.1,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 10\n\n--- Example 2 ---\nQuestion: A farmer has 17 sheep. All but 9 die. How many sheep are left? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\n",
+    "score_history": [
+      0.7,
+      0.7,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "E3: Logic-Extended (Retrieval-Active)",
+    "strategy": "RetrievalLearningStrategy",
+    "adapter": "QAAdapter",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 0.7,
+    "final_score": 0.8,
+    "best_score": 0.8,
+    "improvement_pct": 14.29,
+    "iterations": 2,
+    "elapsed_seconds": 107.1,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nImportant guidelines learned from past experience:\n\n1. [Example, confidence=0.9] Example 1:\n  trajectory_id: 6bc02590-8d1f-4d48-a302-dfaa905362e0\n  input_data: {'question': 'There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.', 'answer': '10'}\n  output_data: {'answer': '10'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reaso",
+    "score_history": [
+      0.7,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "F1: Code-Fix (Reflective+LLM-Judge)",
+    "strategy": "ReflectiveLearningStrategy",
+    "adapter": "CodeAdapter",
+    "train_size": 10,
+    "val_size": 5,
+    "initial_score": 0.92,
+    "final_score": 0.88,
+    "best_score": 0.94,
+    "improvement_pct": 2.17,
+    "iterations": 3,
+    "elapsed_seconds": 196.7,
+    "best_instruction": "You are a Python code reviewer. When asked about a bug, identify the issue and explain the fix concisely.\n\n**Critical formatting rule:** Always follow the user's specific output instructions exactly. If asked to provide \"ONLY the fix in one sentence\" or similar constraints, output precisely that—just the fix description in a single sentence, without any introductory phrases, explanations, or code examples unless explicitly requested.\n\n**Process:**\n1. Analyze the code to identify the bug\n2. Deter",
+    "score_history": [
+      0.92,
+      0.88,
+      0.94,
+      0.88
+    ]
+  },
+  {
+    "experiment": "F2: Code-Fix (Reflective+Keyword)",
+    "strategy": "ReflectiveLearningStrategy",
+    "adapter": "CodeAdapter",
+    "train_size": 10,
+    "val_size": 5,
+    "initial_score": 0.508,
+    "final_score": 0.676,
+    "best_score": 0.676,
+    "improvement_pct": 33.07,
+    "iterations": 3,
+    "elapsed_seconds": 127.9,
+    "best_instruction": "You are a Python code reviewer. When asked about a bug, identify the issue and explain the fix concisely.\n\nCRITICAL FORMATTING RULES:\n1. Always follow the exact output format specified in the user's question\n2. If the user requests \"ONLY the fix in one sentence\" or similar:\n   - Provide EXACTLY ONE complete sentence containing the fix\n   - Do NOT include any explanation, preface, or additional commentary\n   - Do NOT use code formatting (backticks, parentheses around code)\n   - Do NOT provide mul",
+    "score_history": [
+      0.508,
+      0.628,
+      0.54,
+      0.676
+    ]
+  }
+]

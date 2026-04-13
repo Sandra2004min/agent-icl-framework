@@ -1,0 +1,134 @@
+[
+  {
+    "experiment": "DeepSeek/E-Logic-Std/Reflective",
+    "initial_score": 0.7,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 14.29,
+    "iterations": 2,
+    "elapsed_seconds": 90.8,
+    "score_history": [0.7, 0.8, 0.8],
+    "best_instruction": "You are a helpful assistant. Your task is to answer the user's question precisely following any formatting instructions given in the question.\n\nImportant guidelines:\n1. Read the entire question carefully, noting any specific output format instructions (e.g., \"Answer with ONLY the day name in lowercase\", \"Answer with ONLY the number\", \"Answer with ONLY the time in format like 12:00 PM\").\n2. Perform any reasoning internally, but do NOT include any reasoning, calculations, or extra text in your fin"
+  },
+  {
+    "experiment": "DeepSeek/E-Logic-Std/Retrieval-v3",
+    "initial_score": 0.7,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 14.29,
+    "iterations": 2,
+    "elapsed_seconds": 81.2,
+    "score_history": [0.7, 0.8, 0.8],
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nImportant guidelines learned from past experience:\n\n1. [Example, confidence=0.9] Example 1:\n  trajectory_id: 9cfec36f-4a42-499f-9d9b-adb76702198c\n  input_data: {'question': 'There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.', 'answer': '10'}\n  output_data: {'answer': '10'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reaso"
+  },
+  {
+    "experiment": "DeepSeek/H-Logic-Hard/Reflective",
+    "initial_score": 0.6,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 33.33,
+    "iterations": 2,
+    "elapsed_seconds": 237.8,
+    "score_history": [0.6, 0.8, 0.8],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully.\n\n**CRITICAL GUIDELINES:**\n1. **Reason internally, answer externally:** Perform all reasoning step-by-step in your mind. Your final output must contain ONLY the answer in the exact format requested in the question (e.g., a single word, a number, a fraction like 3/8, a name).\n2. **Strip all formatting:** Do not use \\boxed{}, quotes, or any extra punctuation unless part of the requested format.\n3. **Re-check the question:** Bef"
+  },
+  {
+    "experiment": "DeepSeek/H-Logic-Hard/Retrieval-v3",
+    "initial_score": 0.6,
+    "best_score": 0.6,
+    "final_score": 0.6,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 348.8,
+    "score_history": [0.6, 0.6, 0.6],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Qwen/E-Logic-Std/Reflective",
+    "initial_score": 0.8,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 53.4,
+    "score_history": [0.8, 0.8, 0.8],
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "Qwen/E-Logic-Std/Retrieval-v3",
+    "initial_score": 0.8,
+    "best_score": 0.9,
+    "final_score": 0.8,
+    "improvement_pct": 12.5,
+    "iterations": 3,
+    "elapsed_seconds": 68.6,
+    "score_history": [0.8, 0.9, 0.8, 0.8],
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nImportant guidelines learned from past experience:\n\n1. [Example, confidence=0.9] Example 1:\n  trajectory_id: 797b3d3e-26a4-43d0-a6cb-bbad15ba1497\n  input_data: {'question': 'There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.', 'answer': '10'}\n  output_data: {'answer': '10'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reaso"
+  },
+  {
+    "experiment": "Qwen/H-Logic-Hard/Reflective",
+    "initial_score": 0.5,
+    "best_score": 0.8,
+    "final_score": 0.8,
+    "improvement_pct": 60.0,
+    "iterations": 3,
+    "elapsed_seconds": 565.2,
+    "score_history": [0.5, 0.4, 0.8, 0.8],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully to solve the problem.\n\nCRITICAL OUTPUT RULES:\n1.  Your final and only output must be the answer itself, in the exact format requested in the question.\n2.  Do NOT include any of your reasoning, working, explanations, conclusions, or commentary in the final output.\n3.  Do NOT use labels like \"Answer:\", \"Final Answer:\", or \"Result:\".\n4.  Do NOT add any punctuation, spacing, or characters beyond what the specified format requires"
+  },
+  {
+    "experiment": "Qwen/H-Logic-Hard/Retrieval-v3",
+    "initial_score": 0.5,
+    "best_score": 0.5,
+    "final_score": 0.5,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 506.9,
+    "score_history": [0.5, 0.5, 0.5],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Kimi/E-Logic-Std/Reflective",
+    "initial_score": 0.5,
+    "best_score": 0.5,
+    "final_score": 0.5,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 93.9,
+    "score_history": [0.5, 0.5, 0.5],
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "Kimi/E-Logic-Std/Retrieval-v3",
+    "initial_score": 0.4,
+    "best_score": 0.5,
+    "final_score": 0.0,
+    "improvement_pct": 25.0,
+    "iterations": 3,
+    "elapsed_seconds": 144.7,
+    "score_history": [0.4, 0.5, 0.4, 0.0],
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "Kimi/H-Logic-Hard/Reflective",
+    "initial_score": 0.4,
+    "best_score": 0.4,
+    "final_score": 0.4,
+    "improvement_pct": 0.0,
+    "iterations": 3,
+    "elapsed_seconds": 161.5,
+    "score_history": [0.4, 0.0, 0.1, 0.4],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Kimi/H-Logic-Hard/Retrieval-v3",
+    "initial_score": 0.0,
+    "best_score": 0.5,
+    "final_score": 0.4,
+    "improvement_pct": 50.0,
+    "iterations": 3,
+    "elapsed_seconds": 154.8,
+    "score_history": [0.0, 0.0, 0.5, 0.4],
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  }
+]
