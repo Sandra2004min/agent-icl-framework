@@ -177,6 +177,17 @@ LOGIC_VALSET_EXTENDED = [
     {"question": "Some months have 30 days, some have 31. How many months have 29 days? Answer with ONLY the number.", "answer": "12"},
     {"question": "If you have only one match and you enter a dark room with an oil lamp, a newspaper, and kindling wood, what do you light first? Answer with ONLY the item in lowercase.", "answer": "match"},
     {"question": "A truck driver is going down a one-way street the wrong way. A police officer sees him but doesn't stop him. Why? Answer: because the truck driver was ___. Fill in ONE word in lowercase.", "answer": "walking"},
+    # 新增验证题 (扩充至20题)
+    {"question": "If you overtake the person in second place in a race, what position are you now in? Answer with ONLY the number.", "answer": "2"},
+    {"question": "A drawer has 10 black socks and 10 white socks, all mixed up. Without looking, what is the minimum number of socks you must pull out to guarantee a matching pair? Answer with ONLY the number.", "answer": "3"},
+    {"question": "I am an odd number. Remove one letter from my English name and I become even. What number am I? Answer with ONLY the number.", "answer": "7"},
+    {"question": "If you divide 30 by half and add 10, what do you get? Answer with ONLY the number.", "answer": "70"},
+    {"question": "Forward I am heavy, backward I am not. What am I? Answer with ONLY the word in lowercase.", "answer": "ton"},
+    {"question": "What is the angle in degrees between the hour hand and the minute hand of a clock at exactly 3:30? Answer with ONLY the number.", "answer": "75"},
+    {"question": "If 5 cats catch 5 mice in 5 minutes, how many cats are needed to catch 100 mice in 100 minutes? Answer with ONLY the number.", "answer": "5"},
+    {"question": "A brick weighs 1 kilogram plus half a brick. How much does the brick weigh in kilograms? Answer with ONLY the number.", "answer": "2"},
+    {"question": "Two mothers and two daughters go shopping. They each buy one hat, yet only 3 hats are bought. How many people are there? Answer with ONLY the number.", "answer": "3"},
+    {"question": "If you write all integers from 1 to 20, how many times do you write the digit 1? Answer with ONLY the number.", "answer": "12"},
 ]
 
 

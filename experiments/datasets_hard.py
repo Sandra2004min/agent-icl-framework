@@ -282,6 +282,47 @@ LOGIC_HARD_VALSET = [
         "question": "There are 10 bags, each containing 10 coins. In 9 bags, each coin weighs 10g. In 1 bag, each coin weighs 9g. Using a digital scale, what is the minimum number of weighings needed to find the lighter bag? Answer with ONLY the number.",
         "answer": "1"
     },
+    # 新增验证题 (扩充至20题)
+    {
+        "question": "Five pirates split 100 gold coins. The most senior proposes a split and everyone votes. The proposal passes if at least half agree. If rejected, the proposer is thrown overboard and the next pirate proposes. Pirates are perfectly rational: they prioritize survival first, then maximizing gold. How many coins does the most senior pirate keep? Answer with ONLY the number.",
+        "answer": "98"
+    },
+    {
+        "question": "You have 25 horses and can race 5 at a time with no stopwatch. What is the minimum number of races needed to determine the 3 fastest horses? Answer with ONLY the number.",
+        "answer": "7"
+    },
+    {
+        "question": "In a room with 50 people, at least how many people must share the same birth month? Assume exactly 12 months. Answer with ONLY the number.",
+        "answer": "5"
+    },
+    {
+        "question": "In a 3x3 magic square using numbers 1 through 9 where every row, column, and diagonal sums to 15, what number must be in the center cell? Answer with ONLY the number.",
+        "answer": "5"
+    },
+    {
+        "question": "Three perfectly logical people walk into a bar. The bartender asks: 'Does everyone here want a beer?' The first person says 'I don't know.' The second says 'I don't know.' The third says 'Yes.' How many of the three want a beer? Answer with ONLY the number.",
+        "answer": "3"
+    },
+    {
+        "question": "A game show has 100 doors. One hides a car, the rest hide goats. You pick door 1. The host, who knows what's behind each door, opens 98 other doors, all revealing goats. You may switch to the one remaining closed door. What is the probability of winning if you switch? Express as a fraction in lowest terms.",
+        "answer": "99/100"
+    },
+    {
+        "question": "A clock loses exactly 10 minutes every hour. If it is set correctly at 12:00 noon, what is the actual time when the clock first shows 10:00 PM? Answer with ONLY the time in format like 12:00 AM.",
+        "answer": "12:00 AM"
+    },
+    {
+        "question": "How many squares of any size can be found on a standard 8x8 chessboard? Answer with ONLY the number.",
+        "answer": "204"
+    },
+    {
+        "question": "A prisoner is told: 'If your statement is true, you will be hanged. If false, you will be drowned.' The prisoner makes a statement and goes free because neither punishment can be applied. He said: 'I will be ___.' Fill in the ONE missing word in lowercase.",
+        "answer": "drowned"
+    },
+    {
+        "question": "Two trains start 200 km apart heading toward each other, each traveling at 50 km/h. A bee starts at one train and flies back and forth between them at 75 km/h until the trains meet. How many km does the bee travel in total? Answer with ONLY the number.",
+        "answer": "150"
+    },
 ]
 
 
