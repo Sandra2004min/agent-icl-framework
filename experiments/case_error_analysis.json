@@ -1,0 +1,816 @@
+[
+  {
+    "experiment": "DeepSeek/Logic-Hard/Reflective",
+    "initial_accuracy": 0.5,
+    "best_accuracy": 0.9,
+    "counts": {
+      "persistent_success": 10,
+      "persistent_failure": 2,
+      "fixed": 8
+    },
+    "cases": [
+      {
+        "case_id": 1,
+        "question": "Two players alternate placing non-overlapping coins of the same size on a round table. The last player who can place a coin wins. Does the first or second player have the winning strategy? Answer with ONLY 'first' or 'second'.",
+        "expected": "first",
+        "before_answer": "first",
+        "before_score": 1.0,
+        "after_answer": "first",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 2,
+        "question": "A census taker asks a woman: 'How old are your three children?' She says: 'The product of their ages is 36, and the sum is the house number next door.' The census taker looks at the house number and says: 'I need more info.' She says: 'The oldest plays piano.' What are the ages? Answer as three numbers separated by commas from smallest to largest.",
+        "expected": "1, 6, 6",
+        "before_answer": "Let’s go step by step.\n\nFirst, list all possible sets of three positive integers (ages) whose product is 36:\n\n1 × 1 × 36 → sum = 38  \n1 × 2 × 18 → sum = 21  \n1 × 3 × 12 → sum = 16  \n1 × 4 × 9 → sum = 14  \n1 × 6 × 6 → sum = 13  \n2 × 2 × 9 → sum = 13  \n2 × 3 × 6 → sum = 11  \n3 × 3 × 4 → sum = 10  \n\nThe census taker knows the sum (the house number next door) but still needs more info. That means the sum must be ambiguous — there must be two different sets with the same sum.  \n\nThe only sum that appears more than once is **13**, from:  \n- 1, 6, 6  \n- 2, 2, 9  \n\nThe mother then says “the oldest plays piano.” This implies there is a unique oldest child. In the set (1, 6, 6), the oldest are twins, so there is no single “oldest.” In (2, 2, 9), there is a clear oldest age 9.  \n\nThus the ages are **2, 2, 9**.\n\n**Answer:** 2,2,9",
+        "before_score": 0.0,
+        "after_answer": "2,2,9",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 3,
+        "question": "Four people need to cross a bridge at night with one flashlight. They must cross in pairs or alone, always with the flashlight. Crossing times: A=1min, B=2min, C=5min, D=10min. A pair crosses at the slower person's speed. What is the minimum total time? Answer with ONLY the number of minutes.",
+        "expected": "17",
+        "before_answer": "17",
+        "before_score": 1.0,
+        "after_answer": "17",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 4,
+        "question": "There are 1000 lockers, all closed. Person 1 opens every locker. Person 2 toggles every 2nd locker. Person 3 toggles every 3rd, and so on up to person 1000. How many lockers are open at the end? Answer with ONLY the number.",
+        "expected": "31",
+        "before_answer": "256",
+        "before_score": 0.0,
+        "after_answer": "31",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 5,
+        "question": "A farmer needs to cross a river with a wolf, a goat, and a cabbage. The boat fits only the farmer and one item. The wolf will eat the goat, and the goat will eat the cabbage if left alone. What is the minimum number of boat trips (one direction = one trip) needed? Answer with ONLY the number.",
+        "expected": "7",
+        "before_answer": "5",
+        "before_score": 0.0,
+        "after_answer": "7",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 6,
+        "question": "You roll two fair six-sided dice. What is the probability that the product of the two numbers is even? Express as a fraction in lowest terms.",
+        "expected": "3/4",
+        "before_answer": "We want the probability that the product of two dice is even.\n\n**Step 1: Determine when the product is even.**  \nThe product of two numbers is even if at least one of the numbers is even.\n\n**Step 2: Count total possible outcomes.**  \nEach die has 6 faces, so total outcomes = \\(6 \\times 6 = 36\\).\n\n**Step 3: Count outcomes where the product is odd.**  \nThe product is odd only when both numbers are odd.  \nOdd numbers on a die: 1, 3, 5 → 3 odd numbers.  \nNumber of ways both dice are odd = \\(3 \\times 3 = 9\\).\n\n**Step 4: Count outcomes where product is even.**  \nEven outcomes = total outcomes − odd outcomes = \\(36 - 9 = 27\\).\n\n**Step 5: Probability.**  \nProbability = \\(\\frac{27}{36}\\).  \nSimplify: divide numerator and denominator by 9 → \\(\\frac{3}{4}\\).\n\n\\[\n\\boxed{\\frac{3}{4}}\n\\]",
+        "before_score": 0.0,
+        "after_answer": "27/36",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败主要来自概率/组合推理错误，单纯提示词难以补足底层推理能力。"
+      },
+      {
+        "case_id": 7,
+        "question": "In a knockout tournament with 64 players, how many total matches are played to determine the winner? Answer with ONLY the number.",
+        "expected": "63",
+        "before_answer": "64",
+        "before_score": 0.0,
+        "after_answer": "63",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 8,
+        "question": "What is the sum 1 + 2 + 3 + ... + 100? Answer with ONLY the number.",
+        "expected": "5050",
+        "before_answer": "5050",
+        "before_score": 1.0,
+        "after_answer": "5050",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 9,
+        "question": "You have a 100-story building and 2 identical eggs. You need to find the highest floor from which an egg can be dropped without breaking. What is the minimum number of drops needed in the worst case? Answer with ONLY the number.",
+        "expected": "14",
+        "before_answer": "14",
+        "before_score": 1.0,
+        "after_answer": "14",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 10,
+        "question": "There are 10 bags, each containing 10 coins. In 9 bags, each coin weighs 10g. In 1 bag, each coin weighs 9g. Using a digital scale, what is the minimum number of weighings needed to find the lighter bag? Answer with ONLY the number.",
+        "expected": "1",
+        "before_answer": "1",
+        "before_score": 1.0,
+        "after_answer": "1",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 11,
+        "question": "Five pirates split 100 gold coins. The most senior proposes a split and everyone votes. The proposal passes if at least half agree. If rejected, the proposer is thrown overboard and the next pirate proposes. Pirates are perfectly rational: they prioritize survival first, then maximizing gold. How many coins does the most senior pirate keep? Answer with ONLY the number.",
+        "expected": "98",
+        "before_answer": "9",
+        "before_score": 0.0,
+        "after_answer": "98",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 12,
+        "question": "You have 25 horses and can race 5 at a time with no stopwatch. What is the minimum number of races needed to determine the 3 fastest horses? Answer with ONLY the number.",
+        "expected": "7",
+        "before_answer": "7",
+        "before_score": 1.0,
+        "after_answer": "7",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 13,
+        "question": "In a room with 50 people, at least how many people must share the same birth month? Assume exactly 12 months. Answer with ONLY the number.",
+        "expected": "5",
+        "before_answer": "5",
+        "before_score": 1.0,
+        "after_answer": "5",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 14,
+        "question": "In a 3x3 magic square using numbers 1 through 9 where every row, column, and diagonal sums to 15, what number must be in the center cell? Answer with ONLY the number.",
+        "expected": "5",
+        "before_answer": "5",
+        "before_score": 1.0,
+        "after_answer": "5",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 15,
+        "question": "Three perfectly logical people walk into a bar. The bartender asks: 'Does everyone here want a beer?' The first person says 'I don't know.' The second says 'I don't know.' The third says 'Yes.' How many of the three want a beer? Answer with ONLY the number.",
+        "expected": "3",
+        "before_answer": "3",
+        "before_score": 1.0,
+        "after_answer": "3",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 16,
+        "question": "A game show has 100 doors. One hides a car, the rest hide goats. You pick door 1. The host, who knows what's behind each door, opens 98 other doors, all revealing goats. You may switch to the one remaining closed door. What is the probability of winning if you switch? Express as a fraction in lowest terms.",
+        "expected": "99/100",
+        "before_answer": "We start with 100 doors.  \nYou pick door 1. The car is equally likely behind any door, so the probability it is behind door 1 is \\( \\frac{1}{100} \\).  \n\nIf the car is behind door 1, the host can open any 98 of the other 99 doors (all goats), leaving one random other door closed. Switching would lose.  \n\nIf the car is behind any other specific door (say door X), the host must avoid opening that door and also avoid opening your chosen door. Since there are 98 goats to reveal among the other 99 doors, the host will leave exactly that one door with the car closed. Switching would win.  \n\nThe probability the car is behind your initial pick is \\( \\frac{1}{100} \\).  \nThe probability it is behind any other specific door is also \\( \\frac{1}{100} \\), and there are 99 such doors.  \n\nThus, the probability of winning by switching is the probability the car is not behind door 1, which is:  \n\n\\[\n1 - \\frac{1}{100} = \\frac{99}{100}\n\\]\n\n\\[\n\\boxed{\\frac{99}{100}}\n\\]",
+        "before_score": 0.0,
+        "after_answer": "99/100",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词提升了对题目约束的识别或最终答案抽取能力。"
+      },
+      {
+        "case_id": 17,
+        "question": "A clock loses exactly 10 minutes every hour. If it is set correctly at 12:00 noon, what is the actual time when the clock first shows 10:00 PM? Answer with ONLY the time in format like 12:00 AM.",
+        "expected": "12:00 AM",
+        "before_answer": "Let’s reason it through.\n\n- The clock loses 10 minutes every **actual hour**, meaning for every 60 real minutes, it only advances 50 minutes.\n- So the clock runs at a rate of 50/60 = 5/6 of real time.\n- From 12:00 noon to 10:00 PM on the clock is 10 hours of clock time.\n- Let \\( t \\) be the actual time elapsed in hours.  \n  Clock time elapsed = \\( \\frac{5}{6}t \\).  \n  We want \\( \\frac{5}{6}t = 10 \\) hours.  \n  So \\( t = 10 \\times \\frac{6}{5} = 12 \\) actual hours.\n- 12 actual hours after 12:00 noon is 12:00 midnight.\n\nThus, the actual time is **12:00 AM**.\n\n12:00 AM",
+        "before_score": 0.0,
+        "after_answer": "12:00 AM",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 18,
+        "question": "How many squares of any size can be found on a standard 8x8 chessboard? Answer with ONLY the number.",
+        "expected": "204",
+        "before_answer": "648",
+        "before_score": 0.0,
+        "after_answer": "204",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 19,
+        "question": "A prisoner is told: 'If your statement is true, you will be hanged. If false, you will be drowned.' The prisoner makes a statement and goes free because neither punishment can be applied. He said: 'I will be ___.' Fill in the ONE missing word in lowercase.",
+        "expected": "drowned",
+        "before_answer": "drowned",
+        "before_score": 1.0,
+        "after_answer": "drowned",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 20,
+        "question": "Two trains start 200 km apart heading toward each other, each traveling at 50 km/h. A bee starts at one train and flies back and forth between them at 75 km/h until the trains meet. How many km does the bee travel in total? Answer with ONLY the number.",
+        "expected": "150",
+        "before_answer": "The trains approach each other at a combined speed of 50 + 50 = 100 km/h. They start 200 km apart, so they meet in 200 / 100 = 2 hours. The bee flies at 75 km/h for the entire 2 hours, so it travels 75 * 2 = 150 km.\n\n150",
+        "before_score": 0.0,
+        "after_answer": "150",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      }
+    ],
+    "examples": [
+      {
+        "case_id": 4,
+        "question": "There are 1000 lockers, all closed. Person 1 opens every locker. Person 2 toggles every 2nd locker. Person 3 toggles every 3rd, and so on up to person 1000. How many lockers are open at the end? Answer with ONLY the number.",
+        "expected": "31",
+        "before_answer": "256",
+        "before_score": 0.0,
+        "after_answer": "31",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 5,
+        "question": "A farmer needs to cross a river with a wolf, a goat, and a cabbage. The boat fits only the farmer and one item. The wolf will eat the goat, and the goat will eat the cabbage if left alone. What is the minimum number of boat trips (one direction = one trip) needed? Answer with ONLY the number.",
+        "expected": "7",
+        "before_answer": "5",
+        "before_score": 0.0,
+        "after_answer": "7",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 2,
+        "question": "A census taker asks a woman: 'How old are your three children?' She says: 'The product of their ages is 36, and the sum is the house number next door.' The census taker looks at the house number and says: 'I need more info.' She says: 'The oldest plays piano.' What are the ages? Answer as three numbers separated by commas from smallest to largest.",
+        "expected": "1, 6, 6",
+        "before_answer": "Let’s go step by step.\n\nFirst, list all possible sets of three positive integers (ages) whose product is 36:\n\n1 × 1 × 36 → sum = 38  \n1 × 2 × 18 → sum = 21  \n1 × 3 × 12 → sum = 16  \n1 × 4 × 9 → sum = 14  \n1 × 6 × 6 → sum = 13  \n2 × 2 × 9 → sum = 13  \n2 × 3 × 6 → sum = 11  \n3 × 3 × 4 → sum = 10  \n\nThe census taker knows the sum (the house number next door) but still needs more info. That means the sum must be ambiguous — there must be two different sets with the same sum.  \n\nThe only sum that appears more than once is **13**, from:  \n- 1, 6, 6  \n- 2, 2, 9  \n\nThe mother then says “the oldest plays piano.” This implies there is a unique oldest child. In the set (1, 6, 6), the oldest are twins, so there is no single “oldest.” In (2, 2, 9), there is a clear oldest age 9.  \n\nThus the ages are **2, 2, 9**.\n\n**Answer:** 2,2,9",
+        "before_score": 0.0,
+        "after_answer": "2,2,9",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 6,
+        "question": "You roll two fair six-sided dice. What is the probability that the product of the two numbers is even? Express as a fraction in lowest terms.",
+        "expected": "3/4",
+        "before_answer": "We want the probability that the product of two dice is even.\n\n**Step 1: Determine when the product is even.**  \nThe product of two numbers is even if at least one of the numbers is even.\n\n**Step 2: Count total possible outcomes.**  \nEach die has 6 faces, so total outcomes = \\(6 \\times 6 = 36\\).\n\n**Step 3: Count outcomes where the product is odd.**  \nThe product is odd only when both numbers are odd.  \nOdd numbers on a die: 1, 3, 5 → 3 odd numbers.  \nNumber of ways both dice are odd = \\(3 \\times 3 = 9\\).\n\n**Step 4: Count outcomes where product is even.**  \nEven outcomes = total outcomes − odd outcomes = \\(36 - 9 = 27\\).\n\n**Step 5: Probability.**  \nProbability = \\(\\frac{27}{36}\\).  \nSimplify: divide numerator and denominator by 9 → \\(\\frac{3}{4}\\).\n\n\\[\n\\boxed{\\frac{3}{4}}\n\\]",
+        "before_score": 0.0,
+        "after_answer": "27/36",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败主要来自概率/组合推理错误，单纯提示词难以补足底层推理能力。"
+      }
+    ],
+    "summary": "DeepSeek 的 Reflective 最佳提示词能修复部分高难度逻辑题，主要收益来自更强的格式约束和对最终答案抽取的强调；但仍存在概率、博弈和组合题的持续失败。"
+  },
+  {
+    "experiment": "Qwen/Logic-Hard/Retrieval-v3",
+    "initial_accuracy": 0.25,
+    "best_accuracy": 0.6,
+    "counts": {
+      "persistent_success": 5,
+      "persistent_failure": 8,
+      "fixed": 7
+    },
+    "cases": [
+      {
+        "case_id": 1,
+        "question": "Two players alternate placing non-overlapping coins of the same size on a round table. The last player who can place a coin wins. Does the first or second player have the winning strategy? Answer with ONLY 'first' or 'second'.",
+        "expected": "first",
+        "before_answer": "first",
+        "before_score": 1.0,
+        "after_answer": "first",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 2,
+        "question": "A census taker asks a woman: 'How old are your three children?' She says: 'The product of their ages is 36, and the sum is the house number next door.' The census taker looks at the house number and says: 'I need more info.' She says: 'The oldest plays piano.' What are the ages? Answer as three numbers separated by commas from smallest to largest.",
+        "expected": "1, 6, 6",
+        "before_answer": "We are given a classic logic puzzle. Let's solve it step by step.\n\n### Given:\n- Three children’s ages are **positive integers**.\n- The **product** of their ages is **36**.\n- The **sum** equals the house number next door.\n- The census taker knows the house number, but still says: *“I need more info.”*  \n  → This implies that the sum corresponds to **more than one** triple of positive integers whose product is 36.\n- Then the woman says: *“The oldest plays piano.”*  \n  → This tells us there is a **unique oldest child**, i.e., **no tie for oldest** (so not two children both oldest — i.e., no duplicate maximum age). So the ages must have a **strictly largest** age (i.e., not like 6,6,1 where two are oldest — unless “oldest” allows ties? But the clue is used to disambiguate, so likely “oldest” implies a unique oldest → so no two children share the maximum age).\n\n---\n\n### Step 1: List all unordered triples of positive integers (a ≤ b ≤ c) such that a × b × c = 36.\n\nWe’ll list all factorizations of 36 into 3 positive integers, sorted increasingly.\n\nStart with a = 1:\n\n- 1 × 1 × 36 = 36 → sum = 38  \n- 1 × 2 × 18 = 36 → sum = 21  \n- 1 × 3 × 12 = 36 → sum = 16  \n- 1 × 4 × 9 = 36 → sum = 14  \n- 1 × 6 × 6 = 36 → sum = 13  \n\na = 2:\n\n- 2 × 2 × 9 = 36 → sum = 13  \n- 2 × 3 × 6 = 36 → sum = 11  \n- 2 × 4 × ? → 2×4=8, 36/8 = 4.5 → not integer  \n- 2 × 5 × ? → 36/10 = 3.6 → no  \n- 2 × 6 × 3 → already have (2,3,6)  \nSo continue systematically.\n\na = 3",
+        "before_score": 0.0,
+        "after_answer": "We are told:\n\n- The **product** of the three children's ages is **36**.\n- The **sum** equals the house number next door — but the census taker, after seeing that number, says *“I need more info”*, implying that the sum is **not unique** among all possible age triples with product 36.\n- Then she says: *“The oldest plays piano.”* → This implies there is a **unique oldest child**, i.e., **no tie for oldest** (so not e.g., 6,6,1 where two are oldest).\n\nWe need to find all **triples of positive integers (a, b, c)**, with $ a \\le b \\le c $, such that $ a \\cdot b \\cdot c = 36 $, compute their sums, and find which sum appears **more than once**, because only then would the census taker be unable to determine the ages from the sum alone.\n\n---\n\n### Step 1: List all unordered triples (a, b, c) with $ a \\le b \\le c $, product = 36\n\nFactor 36 = $ 2^2 \\cdot 3^2 $. List all combinations:\n\n1. $1 \\times 1 \\times 36$ → sum = 38  \n2. $1 \\times 2 \\times 18$ → sum = 21  \n3. $1 \\times 3 \\times 12$ → sum = 16  \n4. $1 \\times 4 \\times 9$ → sum = 14  \n5. $1 \\times 6 \\times 6$ → sum = 13  \n6. $2 \\times 2 \\times 9$ → sum = 13  \n7. $2 \\times 3 \\times 6$ → sum = 11  \n8. $3 \\times 3 \\times 4$ → sum = 10  \n\n(That’s all — check: $3 \\times 4 \\times 3$ same as #8; $2 \\times 2 \\times 9$, etc.)\n\nNow list sums:\n\n| Ages (a≤b≤c) | Sum |\n|--------------|-----|\n| 1,1,36       | 38  |\n| 1,2,18       | 21  |\n| 1,3",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 3,
+        "question": "Four people need to cross a bridge at night with one flashlight. They must cross in pairs or alone, always with the flashlight. Crossing times: A=1min, B=2min, C=5min, D=10min. A pair crosses at the slower person's speed. What is the minimum total time? Answer with ONLY the number of minutes.",
+        "expected": "17",
+        "before_answer": "We are given a classic bridge-crossing puzzle:\n\n- Four people: A (1 min), B (2 min), C (5 min), D (10 min)\n- One flashlight; must be carried on every crossing.\n- At most two people can cross at once (together or alone).\n- When two cross together, they go at the **slower person's pace**.\n- Goal: get all four across in **minimum total time**.\n\nLet’s denote crossings as either **forward** (from start → finish) or **return** (finish → start). The flashlight must always be carried back if more people need to cross.\n\nWe want to minimize total time.\n\n---\n\n### Strategy Insight:\n\nThe key is to avoid having the two slowest people (C and D) both crossing separately — that would cost 5 + 10 = 15 minutes just for them, plus return trips. Better to have them cross together (costs 10 min), but then we need to get the flashlight back *before* that, and after.\n\nAlso, the fastest person(s) should do the returning to minimize return time.\n\nStandard optimal strategy for times like this (1,2,5,10) is:\n\n1. Send two fastest across → A and B go: time = 2  \n2. A returns with flashlight: time = 1 → total so far = 3  \n3. Two slowest cross → C and D go: time = 10 → total = 13  \n4. B returns with flashlight: time = 2 → total = 15  \n5. A and B cross again: time = 2 → total = **17**\n\nLet’s verify:\n\n- Start: A,B,C,D on left; flashlight on left  \n- Step 1: A+B cross → right: A,B; left: C,D; flashlight right → time = 2  \n- Step 2: A returns → right: B; left: A,C,D; flashlight left → time = 2+1 = 3  \n- Step 3: C+D cross → right: B,C,D; left: A; flashlight right → time = 3+10 = 13  \n- Step 4: B returns → right: C,D; left: A,B; flashlight left → time = 13+2 = 15  \n- Step 5: A+B cross → right: A,B,C,D; flashlight right → time",
+        "before_score": 0.0,
+        "after_answer": "We are given a classic bridge-crossing puzzle:\n\n- Four people: A (1 min), B (2 min), C (5 min), D (10 min)\n- One flashlight; must be carried on every crossing.\n- At most two people can cross at once (together or alone).\n- When two cross, they go at the **slower person’s pace**.\n- Goal: get all four across in **minimum total time**.\n\n---\n\n### Strategy Insight:\nThe key is to minimize the time spent on return trips (bringing flashlight back). Since the two slowest (C and D) take 5 and 10 minutes, we want to avoid making them cross separately or make them both cross together *once*, and avoid having either come back.\n\nStandard optimal strategy for times like 1,2,5,10 is:\n\n1. **A and B cross** → 2 min  \n   (A=1, B=2 → takes 2)  \n   Now: A,B on far side; C,D on near side  \n   Flashlight is on far side.\n\n2. **A returns** → 1 min  \n   Now: B on far side; A,C,D on near side  \n   Flashlight back on near side.  \n   Total so far: 3 min\n\n3. **C and D cross** → 10 min  \n   Now: B, C, D on far side; A on near side  \n   Flashlight on far side.  \n   Total: 13 min\n\n4. **B returns** → 2 min  \n   Now: C,D on far side; A,B on near side  \n   Flashlight back on near side.  \n   Total: 15 min\n\n5. **A and B cross again** → 2 min  \n   All on far side.  \n   Total: **17 min**\n\n✅ That’s the well-known optimal solution: **17 minutes**\n\nAlternative idea: send fastest with each slow person? Let's test:\n\n- A+D → 10, A back → 1 (11)  \n- A+C → 5, A back → 1 (17)  \n- A+B → 2 → total = 10+1+5+1+2 = **19** → worse.\n\nOr:\n\n- A+B → 2  \n- A back → 1  \n- A+C → 5  \n- A back → 1  \n- A+",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 4,
+        "question": "There are 1000 lockers, all closed. Person 1 opens every locker. Person 2 toggles every 2nd locker. Person 3 toggles every 3rd, and so on up to person 1000. How many lockers are open at the end? Answer with ONLY the number.",
+        "expected": "31",
+        "before_answer": "We are given a classic \"locker problem\":\n\n- There are **1000 lockers**, all initially **closed**.\n- Person 1 toggles (i.e., opens) **every** locker → lockers 1,2,3,...,1000.\n- Person 2 toggles every **2nd** locker → 2,4,6,...,1000.\n- Person 3 toggles every **3rd** → 3,6,9,...,999.\n- ...\n- Person *k* toggles every *k*-th locker.\n- This continues up to Person 1000, who toggles only locker 1000.\n\nA locker ends up **open** if it is toggled an **odd number of times**, since it starts closed.\n\nSo the question reduces to:\n\n> For how many integers $ n $ from 1 to 1000 does $ n $ have an **odd number of positive divisors**?\n\nBecause locker $ n $ is toggled once by each person $ k $ such that $ k $ divides $ n $ — i.e., number of toggles = number of positive divisors of $ n $.\n\nNow, a well-known fact:\n\n- A positive integer has an **odd number of positive divisors** **iff it is a perfect square**.\n\nWhy? Divisors usually come in pairs: if $ d $ divides $ n $, then so does $ n/d $. The only time a divisor is unpaired is when $ d = n/d $, i.e., $ d^2 = n $ → $ n $ is a perfect square.\n\nSo the number of lockers left open = number of **perfect squares ≤ 1000**.\n\nWhat’s the largest integer $ m $ such that $ m^2 \\leq 1000 $?\n\n- $ 31^2 = 961 $\n- $ 32^2 = 1024 > 1000 $\n\nSo $ m = 1 $ to $ 31 $ → **31 perfect squares**.\n\n✅ Answer:  \n31",
+        "before_score": 0.0,
+        "after_answer": "31",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 5,
+        "question": "A farmer needs to cross a river with a wolf, a goat, and a cabbage. The boat fits only the farmer and one item. The wolf will eat the goat, and the goat will eat the cabbage if left alone. What is the minimum number of boat trips (one direction = one trip) needed? Answer with ONLY the number.",
+        "expected": "7",
+        "before_answer": "Let's solve the classic \"Wolf, Goat, and Cabbage\" river crossing puzzle.\n\nConstraints:\n- Boat holds farmer + **one** item (wolf, goat, or cabbage).\n- If left alone together without the farmer:\n  - Wolf + goat → wolf eats goat ❌\n  - Goat + cabbage → goat eats cabbage ❌\n  - Wolf + cabbage → fine ✅\n\nGoal: Get all safely across in **minimum number of one-way trips**.\n\nLet’s denote:\n- Left bank = starting side\n- Right bank = destination\n\nInitial state: All (F, W, G, C) on left.\n\nWe need to avoid leaving (W,G) or (G,C) unattended on either side.\n\nStandard optimal solution:\n\n1. **Trip 1**: Farmer takes **goat** to right.  \n   → Left: W, C | Right: F, G  \n   (Safe: W & C alone OK)\n\n2. **Trip 2**: Farmer returns **alone** to left.  \n   → Left: F, W, C | Right: G  \n   (Safe: G alone is fine)\n\n3. **Trip 3**: Farmer takes **wolf** to right.  \n   → Left: C | Right: F, W, G  \n   But now W and G are together on right → ❌ not allowed.\n\nSo instead, after step 1, better to take **wolf or cabbage**, but bring back **goat** if needed.\n\nCorrect sequence:\n\n1. **F + G → right**  \n   Left: W, C | Right: F, G  \n   ✔️ Safe\n\n2. **F → left alone**  \n   Left: F, W, C | Right: G  \n   ✔️ Safe\n\n3. **F + W → right**  \n   Left: C | Right: F, W, G  \n   ❌ W and G together — danger.\n\nSo instead, step 3 should be **F + W → right**, then **bring G back**, to avoid leaving G with W.\n\nLet’s try:\n\n1. F + G → right  \n   Left: W, C | Right: F, G  \n\n2. F → left  \n   Left: F, W, C | Right: G  \n\n3. F + W → right  \n   Left: C | Right: F, W, G  \n   → Now W and G together → ❌\n\nSo instead, step 3: **F + C →",
+        "before_score": 0.0,
+        "after_answer": "7",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 6,
+        "question": "You roll two fair six-sided dice. What is the probability that the product of the two numbers is even? Express as a fraction in lowest terms.",
+        "expected": "3/4",
+        "before_answer": "We are rolling two fair six-sided dice, and we want the probability that the **product** of the two numbers is **even**.\n\n---\n\n### Step 1: Total possible outcomes\n\nEach die has 6 faces → total outcomes = $6 \\times 6 = 36$\n\nAll outcomes are equally likely.\n\n---\n\n### Step 2: When is the product even?\n\nThe product of two integers is **even** if **at least one** of the numbers is even.\n\nSo the product is **odd** only when **both numbers are odd**.\n\nIt's often easier to compute the complement:\n\n$$\nP(\\text{product is even}) = 1 - P(\\text{product is odd})\n$$\n\n---\n\n### Step 3: Count outcomes where product is odd\n\nProduct is odd ⇔ both dice show odd numbers.\n\nOdd numbers on a die: {1, 3, 5} → 3 choices per die.\n\nSo number of outcomes where both are odd = $3 \\times 3 = 9$\n\nThus,\n\n$$\nP(\\text{product is odd}) = \\frac{9}{36} = \\frac{1}{4}\n$$\n\nSo,\n\n$$\nP(\\text{product is even}) = 1 - \\frac{1}{4} = \\frac{3}{4}\n$$\n\n---\n\n### ✅ Final Answer:\n\n$\\boxed{\\frac{3}{4}}$",
+        "before_score": 0.0,
+        "after_answer": "We are rolling **two fair six-sided dice**, and we want the probability that the **product of the two numbers is even**.\n\n---\n\n### Step 1: Total number of outcomes\n\nEach die has 6 faces → total outcomes = $6 \\times 6 = 36$\n\n---\n\n### Step 2: When is the product **even**?\n\nA product is **even** if **at least one factor is even**.  \nSo the product is **odd** only when **both numbers are odd**.\n\nSo it's easier to compute:\n\n$$\nP(\\text{product is even}) = 1 - P(\\text{product is odd})\n$$\n\nOdd numbers on a die: {1, 3, 5} → 3 outcomes  \nSo both dice odd: $3 \\times 3 = 9$ outcomes\n\nThus:\n- $P(\\text{product is odd}) = \\frac{9}{36} = \\frac{1}{4}$\n- $P(\\text{product is even}) = 1 - \\frac{1}{4} = \\frac{3}{4}$\n\n---\n\n### Final Answer:\n3/4",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败主要来自概率/组合推理错误，单纯提示词难以补足底层推理能力。"
+      },
+      {
+        "case_id": 7,
+        "question": "In a knockout tournament with 64 players, how many total matches are played to determine the winner? Answer with ONLY the number.",
+        "expected": "63",
+        "before_answer": "In a knockout tournament, each match eliminates exactly one player. To determine a winner from 64 players, we must eliminate 63 players (since only one player remains as the winner).\n\nEach match eliminates one player ⇒ number of matches = number of players eliminated = 63.\n\n63",
+        "before_score": 0.0,
+        "after_answer": "63",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 8,
+        "question": "What is the sum 1 + 2 + 3 + ... + 100? Answer with ONLY the number.",
+        "expected": "5050",
+        "before_answer": "5050",
+        "before_score": 1.0,
+        "after_answer": "5050",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 9,
+        "question": "You have a 100-story building and 2 identical eggs. You need to find the highest floor from which an egg can be dropped without breaking. What is the minimum number of drops needed in the worst case? Answer with ONLY the number.",
+        "expected": "14",
+        "before_answer": "We are given:\n\n- A 100-story building.\n- 2 identical eggs.\n- Goal: Find the **highest floor** from which an egg can be dropped **without breaking**, i.e., the **critical floor** F, such that:\n  - Dropping from floor ≤ F → egg doesn’t break.\n  - Dropping from floor > F → egg breaks.\n\nWe want the **minimum number of drops needed in the worst case**, using an optimal strategy.\n\n---\n\n### Key idea:\n\nWith 2 eggs, we can’t do pure binary search (because if the first egg breaks early, we may be left with only 1 egg and many floors to check linearly).\n\nSo the optimal strategy balances the worst-case number of drops:\n\n- Suppose we drop the first egg from floor *x*.\n  - If it breaks → we must linearly test floors 1 to x−1 with the second egg → up to x−1 more drops → total drops = 1 + (x−1) = x.\n  - If it doesn’t break → go up some number of floors, say x−1, then x−2, etc., so that the number of remaining drops decreases by 1 each time (to keep worst case constant).\n\nThis leads to the classic “triangular number” solution.\n\nLet *k* be the minimum worst-case number of drops.\n\nWe want the maximum number of floors we can cover with *k* drops and 2 eggs.\n\nWith 2 eggs and *k* drops, the maximum number of floors we can handle is:\n\n$$\n\\text{max floors} = k + (k-1) + (k-2) + \\dots + 1 = \\frac{k(k+1)}{2}\n$$\n\nWhy? Because:\n- First drop at floor *k*. If breaks, test 1 to k−1 linearly → at most k−1 more drops → total ≤ k.\n- If not, go up *k−1* floors → now at floor k + (k−1). If breaks, test next k−2 floors linearly → at most k−2 more drops → total still ≤ k.\n- Continue until sum reaches ≥ 100.\n\nSo solve:\n\n$$\n\\frac{k(k+1)}{2} \\geq 100\n$$\n\nTry k = 13:  \n13×14/2 = 91 < 100\n\nk = ",
+        "before_score": 0.0,
+        "after_answer": "14",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 10,
+        "question": "There are 10 bags, each containing 10 coins. In 9 bags, each coin weighs 10g. In 1 bag, each coin weighs 9g. Using a digital scale, what is the minimum number of weighings needed to find the lighter bag? Answer with ONLY the number.",
+        "expected": "1",
+        "before_answer": "1",
+        "before_score": 1.0,
+        "after_answer": "1",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 11,
+        "question": "Five pirates split 100 gold coins. The most senior proposes a split and everyone votes. The proposal passes if at least half agree. If rejected, the proposer is thrown overboard and the next pirate proposes. Pirates are perfectly rational: they prioritize survival first, then maximizing gold. How many coins does the most senior pirate keep? Answer with ONLY the number.",
+        "expected": "98",
+        "before_answer": "We are given a classic logic puzzle involving **five pirates** dividing **100 gold coins**, with the following rules:\n\n- Pirates are ranked by seniority: P1 (most senior), P2, P3, P4, P5 (least senior).\n- P1 proposes a distribution; all 5 vote (including proposer).\n- Proposal passes if **at least half agree**, i.e., **≥ 3 out of 5** votes.\n- If rejected, P1 is thrown overboard, and P2 proposes to remaining 4 pirates.\n- Pirates are **perfectly rational**, with priorities:\n  1. **Survival first**\n  2. **Maximize gold**, *given survival*\n- All pirates know this, and reason perfectly.\n\nWe need to find how many coins **P1 (most senior)** keeps in the optimal proposal.\n\n---\n\n### Strategy: Work backwards (backward induction)\n\nLet’s denote pirates as P1 > P2 > P3 > P4 > P5 in seniority.\n\nWe’ll analyze smaller numbers of pirates first.\n\n---\n\n### Case 1: Only 1 pirate (P5)\n\n- P5 proposes → only needs ≥ 1 vote → passes automatically.\n- P5 takes all 100.\n\n→ Distribution: [100]\n\n---\n\n### Case 2: 2 pirates (P4, P5)\n\n- P4 proposes; needs ≥1 vote? Wait: “at least half agree” among 2 → need ≥1? No: half of 2 is 1, so “at least half” = ≥1 → but usually in these puzzles it's *strict majority* or *majority including tie-break?* Let's double-check.\n\nThe problem says: *\"passes if at least half agree.\"*\n\n- For n pirates voting, need ⌈n/2⌉ votes? Or floor(n/2)+1? Let's compute:\n\n- n = 1 → need ≥ 0.5 → 1 vote → yes.\n- n = 2 → half = 1 → \"at least half\" = ≥1 → so 1 vote suffices.\n- n = 3 → half = 1.5 → at least half = ≥2\n- n = 4 → half = 2 → ≥2\n- n = 5 → half = 2.5 → ≥3\n\nYes — standard interpretation: need **at least ⌈n/2⌉** votes, i.e",
+        "before_score": 0.0,
+        "after_answer": "50",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 12,
+        "question": "You have 25 horses and can race 5 at a time with no stopwatch. What is the minimum number of races needed to determine the 3 fastest horses? Answer with ONLY the number.",
+        "expected": "7",
+        "before_answer": "7",
+        "before_score": 1.0,
+        "after_answer": "7",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 13,
+        "question": "In a room with 50 people, at least how many people must share the same birth month? Assume exactly 12 months. Answer with ONLY the number.",
+        "expected": "5",
+        "before_answer": "We are given:\n\n- 50 people  \n- 12 months in a year  \n- We want the **minimum number of people who must share the same birth month**, i.e., the **smallest guaranteed maximum** — this is a classic **pigeonhole principle** problem.\n\n### Pigeonhole Principle:\nIf you distribute $ n $ items into $ k $ boxes, then at least one box must contain at least  \n$$\n\\left\\lceil \\frac{n}{k} \\right\\rceil\n$$  \nitems.\n\nHere:  \n- $ n = 50 $ people  \n- $ k = 12 $ months  \n\nSo:\n\n$$\n\\left\\lceil \\frac{50}{12} \\right\\rceil = \\left\\lceil 4.166\\ldots \\right\\rceil = 5\n$$\n\n### Interpretation:\nEven if we try to spread people as evenly as possible across months, 12 × 4 = 48 people can be placed with 4 per month. That leaves 2 more people. Adding them to any months means at least two months will have 5 people — but more importantly, **at least one month must have at least 5**.\n\nSo the **minimum number that must share the same birth month** (i.e., the smallest number that is *guaranteed*) is:\n\n5\n\nAnswer:  \n5",
+        "before_score": 0.0,
+        "after_answer": "5",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 14,
+        "question": "In a 3x3 magic square using numbers 1 through 9 where every row, column, and diagonal sums to 15, what number must be in the center cell? Answer with ONLY the number.",
+        "expected": "5",
+        "before_answer": "In a 3×3 magic square using the numbers 1 through 9, the magic sum is 15 (since total sum = 1+2+...+9 = 45, and 45 ÷ 3 rows = 15 per row).\n\nLet the square be:\n\n```\na b c\nd e f\ng h i\n```\n\nWe want to find **e**, the center cell.\n\nKey fact: In any 3×3 magic square, the center must be the **median** of the numbers used — because the numbers are symmetrically distributed around the center in such a square.\n\nNumbers 1 through 9 have median = 5.\n\nAlso, we can prove it algebraically:\n\n- Sum of all rows:  \n  (a+b+c) + (d+e+f) + (g+h+i) = 45\n\n- Sum of all columns: same.\n\n- Consider the four lines that pass through the center:  \n  - Middle row: d + e + f = 15  \n  - Middle column: b + e + h = 15  \n  - Main diagonal: a + e + i = 15  \n  - Anti-diagonal: c + e + g = 15  \n\nAdd these four equations:\n\n(d + e + f) + (b + e + h) + (a + e + i) + (c + e + g) = 4 × 15 = 60\n\nLeft side = (a + b + c + d + e + f + g + h + i) + 3e = 45 + 3e\n\nSo:  \n45 + 3e = 60 → 3e = 15 → e = 5\n\n✅ Confirmed.\n\n5",
+        "before_score": 0.0,
+        "after_answer": "5",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 15,
+        "question": "Three perfectly logical people walk into a bar. The bartender asks: 'Does everyone here want a beer?' The first person says 'I don't know.' The second says 'I don't know.' The third says 'Yes.' How many of the three want a beer? Answer with ONLY the number.",
+        "expected": "3",
+        "before_answer": "Let’s analyze step by step.\n\nWe have three perfectly logical people: Person 1, Person 2, Person 3.  \nBartender asks: **\"Does everyone here want a beer?\"**  \nThat is, is it true that **all three want a beer?**\n\nEach person can only answer based on their own preference and what they can deduce from others’ answers — but crucially, they **don’t know the others’ preferences**, unless logically deducible.\n\nLet’s denote:\n- Want beer = Y  \n- Don’t want beer = N  \n\nEach person knows their *own* preference, but not others’. They are perfectly logical and know the others are too.\n\n---\n\n**Person 1 says: “I don’t know.”**  \nWhat does that imply?\n\nIf Person 1 **did not want a beer**, then they would know that *not everyone* wants a beer → answer would be **“No”**.  \nBut they say “I don’t know”, so they **must want a beer**. Because only then is it *possible* that everyone wants one (depending on others), so they can’t be sure yet.\n\n✅ So Person 1 wants a beer.\n\n---\n\n**Person 2 says: “I don’t know.”**  \nNow Person 2 hears Person 1 say “I don’t know”. From that, Person 2 deduces that Person 1 wants a beer (as above — because if Person 1 didn’t want one, they’d have said “No”). So Person 2 now knows: Person 1 = Y.\n\nPerson 2 knows their own preference.\n\n- If Person 2 did **not** want a beer (i.e., Person 2 = N), then they would know that *not everyone* wants a beer → answer would be **“No”**.  \n- But they say “I don’t know”, so they must want a beer (Y). Only then is it still possible that all three want beer (pending Person 3).\n\n✅ So Person 2 wants a beer.\n\n---\n\n**Person 3 says: “Yes.”**  \nPerson 3 hears:\n- Person 1: “I don’t know” → implies Person 1 = Y  \n- Person 2: “I don’t know” → implies Person 2 = Y (since Person 3 knows Person 2 heard Person 1’s answer and is logical)\n\nSo Person 3 now knows: Person 1 = Y, Person ",
+        "before_score": 0.0,
+        "after_answer": "3",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 16,
+        "question": "A game show has 100 doors. One hides a car, the rest hide goats. You pick door 1. The host, who knows what's behind each door, opens 98 other doors, all revealing goats. You may switch to the one remaining closed door. What is the probability of winning if you switch? Express as a fraction in lowest terms.",
+        "expected": "99/100",
+        "before_answer": "We are given a variation of the **Monty Hall problem**, but with **100 doors** instead of 3.\n\n### Setup:\n- There are **100 doors**, one hides a **car**, the rest (99) hide **goats**.\n- You pick **door 1** initially.\n- The host, who **knows what's behind all doors**, opens **98 other doors**, all revealing **goats**, leaving **one other door unopened** (besides your original choice).\n- So after the host's action:\n  - Your original choice (door 1) is still closed.\n  - One other door (say, door X) remains closed.\n  - The other 98 doors are opened and shown to have goats.\n\nYou are offered the chance to **switch** to that one remaining unopened door.\n\nWe are to find the **probability of winning the car if you switch**, expressed as a reduced fraction.\n\n---\n\n### Step-by-step reasoning:\n\n#### Initial probability:\n- Probability the car is behind your initial choice (door 1):  \n  $$\n  \\frac{1}{100}\n  $$\n\n- Therefore, probability the car is **not** behind door 1 (i.e., it's behind one of the other 99 doors):  \n  $$\n  \\frac{99}{100}\n  $$\n\n#### Host's action:\n- Host opens **98 doors**, all with goats, **never opening the door with the car**, and never opening your chosen door.\n\nSo, among the 99 doors you *didn’t* pick:\n- One of them has the car (with probability 99/100).\n- The host must leave **that car door closed**, if it's among those 99.\n- He opens 98 goat doors, so he must leave **exactly one door closed** among the 99 — and that door **must be the car door**, *if the car is among those 99*.\n\nSo:\n- If the car is behind your initial door (prob 1/100), then the host can open any 98 of the other 99 goat doors — all are goats — and the one remaining unopened door (among the 99) will be a goat.\n\n- If the car is *not* behind your initial door (prob 99/100), then among the other 99",
+        "before_score": 0.0,
+        "after_answer": "We are given a variant of the **Monty Hall problem**, generalized to **100 doors**:\n\n- 100 doors: 1 car, 99 goats.  \n- You pick **door 1**.  \n- Host (who knows what’s behind all doors) opens **98 other doors**, all revealing goats.  \n- So now:  \n  - Your original choice (door 1) is still closed.  \n  - One other door remains closed (not your pick, not among the 98 opened).  \n  - All 98 opened doors have goats.\n\nYou may **switch to that one remaining closed door**.\n\nWe want:  \n**Probability of winning the car if you switch**, expressed as a reduced fraction.\n\n---\n\n### Step-by-step reasoning:\n\n- Initially, probability your first choice (door 1) has the car = $ \\frac{1}{100} $.  \n- So probability the car is **behind one of the other 99 doors** = $ \\frac{99}{100} $.\n\n- The host then opens **98 doors**, all with goats, **from the other 99 doors**, leaving **one unopened door** among those 99.\n\n- Crucially, the host **never reveals the car**, and always opens only goat doors. So if the car was among those 99 doors (which happens with probability $ \\frac{99}{100} $), the host is forced to leave the car’s door closed — i.e., the one remaining unopened door among the 99 **must be the car**, in that case.\n\n- Therefore:\n  - If you initially picked the car (prob $ \\frac{1}{100} $), switching loses.\n  - If you initially picked a goat (prob $ \\frac{99}{100} $), the car is among the other 99, and the host’s action of opening 98 goat doors leaves **only the car door unopened**, so switching wins.\n\nSo probability of winning by switching = $ \\frac{99}{100} $.\n\nThis fraction is already in lowest terms (99 and 100 are coprime).\n\n---\n\nAnswer:  \n99/100",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败主要来自概率/组合推理错误，单纯提示词难以补足底层推理能力。"
+      },
+      {
+        "case_id": 17,
+        "question": "A clock loses exactly 10 minutes every hour. If it is set correctly at 12:00 noon, what is the actual time when the clock first shows 10:00 PM? Answer with ONLY the time in format like 12:00 AM.",
+        "expected": "12:00 AM",
+        "before_answer": "We are told:\n\n- A clock **loses exactly 10 minutes every hour** (i.e., for every real hour, the clock only advances 50 minutes).\n- It is set correctly at **12:00 noon**.\n- We need to find the **actual time** when the clock **first shows 10:00 PM**.\n\n---\n\n### Step 1: Understand the clock’s behavior\n\nThe clock runs **slow**:  \n- In **60 real minutes**, it only advances **50 minutes**.  \nSo its speed is $ \\frac{50}{60} = \\frac{5}{6} $ of real time.\n\nThat means:  \n- When the clock shows that $ t $ minutes have passed, the **actual time elapsed** is more than $ t $.\n\nLet’s define:\n\n- Let $ C $ = time shown on the clock (in minutes since 12:00 noon)  \n- Let $ R $ = actual real time elapsed (in minutes since 12:00 noon)\n\nSince the clock loses 10 min per real hour → for each real hour (60 min), clock advances 50 min ⇒  \nSo:  \n$$\nC = \\frac{5}{6} R \\quad \\text{or} \\quad R = \\frac{6}{5} C\n$$\n\nYes — because clock runs slower, so real time is *more* than clock time.\n\n---\n\n### Step 2: Find how many minutes the clock shows from 12:00 noon to 10:00 PM\n\nFrom 12:00 noon to 10:00 PM is **10 hours** = $ 10 \\times 60 = 600 $ minutes.\n\nSo $ C = 600 $ minutes.\n\nThen actual time elapsed is:\n\n$$\nR = \\frac{6}{5} \\times 600 = 720 \\text{ minutes} = 12 \\text{ hours}\n$$\n\nSo **12 real hours** have passed since 12:00 noon → actual time is **12:00 midnight**.\n\nWait — let’s double-check.\n\n- Clock loses 10 min per real hour → in 1 real hour → clock shows 50 min passed.  \nSo to get clock to advance 600 min, how many real hours needed?\n\nLet $ R",
+        "before_score": 0.0,
+        "after_answer": "We are told:\n\n- A clock **loses 10 minutes every hour** — meaning, for every **real (actual) hour**, the clock only advances **50 minutes**.\n- It is set correctly at **12:00 noon**.\n- We need to find the **actual time** when the clock **first shows 10:00 PM**.\n\n---\n\n### Step 1: How much time does the clock show has passed?\n\nFrom **12:00 noon to 10:00 PM** is **10 hours** on the clock.\n\nSo the clock displays **10 hours = 600 minutes** have passed.\n\nBut since the clock runs slow, those **600 minutes shown** correspond to **more than 600 actual minutes**.\n\n---\n\n### Step 2: Relate clock time to real time\n\nThe clock loses 10 min per real hour → in **60 real minutes**, clock advances only **50 minutes**.\n\nSo:\n\n$$\n\\text{clock time} = \\frac{50}{60} \\times \\text{real time} = \\frac{5}{6} \\times \\text{real time}\n$$\n\nLet $ R $ = real time elapsed (in minutes).  \nThen clock time elapsed = $ \\frac{5}{6}R $\n\nWe know clock time elapsed = 600 minutes (from 12:00 to 10:00).\n\nSo:\n\n$$\n\\frac{5}{6}R = 600 \\\\\nR = 600 \\times \\frac{6}{5} = 720 \\text{ minutes}\n$$\n\n720 minutes = **12 hours**\n\nSo **12 real hours** have passed since 12:00 noon → actual time is **12:00 midnight**.\n\n✅ Check: In 12 real hours, clock loses 10 min/hour → total loss = 12 × 10 = 120 minutes = 2 hours. So clock shows 12:00 − 2:00 = 10:00 PM. Correct.\n\n---\n\nAnswer: 12:00 AM",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 18,
+        "question": "How many squares of any size can be found on a standard 8x8 chessboard? Answer with ONLY the number.",
+        "expected": "204",
+        "before_answer": "204",
+        "before_score": 1.0,
+        "after_answer": "204",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 19,
+        "question": "A prisoner is told: 'If your statement is true, you will be hanged. If false, you will be drowned.' The prisoner makes a statement and goes free because neither punishment can be applied. He said: 'I will be ___.' Fill in the ONE missing word in lowercase.",
+        "expected": "drowned",
+        "before_answer": "We are told:\n\n- If the prisoner's statement is **true**, he will be **hanged**.  \n- If the prisoner's statement is **false**, he will be **drowned**.  \n- He makes a statement: “I will be ___.”  \n- As a result, **neither punishment can be applied**, so he goes free.  \n- We must find the **one missing word**, in **lowercase**, that makes this a paradox — i.e., a statement that **cannot be consistently classified as true or false**, thus making both punishments logically impossible.\n\nThis is a classic **liar-type paradox**, similar to the \"unexpected hanging\" or \"self-referential truth-teller/liar\" puzzles.\n\nLet’s denote the statement:  \n**\"I will be [X].\"**\n\nWe need to choose X such that assuming the statement is **true** leads to contradiction, and assuming it's **false** also leads to contradiction.\n\nLet’s test possibilities.\n\n---\n\n### Try: \"I will be hanged.\"\n\n- If **true**, then per rule: he will be hanged → consistent. So punishment applies → he doesn’t go free. ❌ Not acceptable.\n\n- If **false**, then he will **not** be hanged → so he must be drowned (since only two options). But then the statement “I will be hanged” is false, and he is drowned → consistent with rule. So punishment applies. ❌\n\nSo “hanged” doesn’t work.\n\n---\n\n### Try: \"I will be drowned.\"\n\n- If **true**, then he will be drowned → but rule says if true → hanged. Contradiction. So cannot be true.\n\n- If **false**, then he will **not** be drowned → so must be hanged. But rule says if false → drowned. Contradiction again.\n\nWait — let's check carefully:\n\nRule:\n- If statement is **true** → hanged  \n- If statement is **false** → drowned  \n\nStatement: “I will be drowned.”\n\nCase 1: Statement is **true** ⇒ he will be drowned.  \nBut rule says if true ⇒ he will be **hanged**. So he must be hanged. Contradiction (he can’t be both hanged and drowned). So truth leads to inconsistency.\n\nCase 2: Statement is **false** ⇒ he will **not** be drowned ⇒ so he must be hanged (only two options).  \nBut rule says if false ⇒ he",
+        "before_score": 0.0,
+        "after_answer": "Let’s analyze the logic puzzle.\n\nThe prisoner is told:\n\n- If his statement is **true**, he will be **hanged**.  \n- If his statement is **false**, he will be **drowned**.\n\nHe makes a statement:  \n**\"I will be ___.\"**\n\nAnd as a result, **neither punishment can be applied**, so he goes free.\n\nWe need to find the single word that, when filled in, creates a **paradox**: a statement that **cannot be consistently classified as true or false**, given the rules — thus making both punishments logically impossible.\n\nLet’s test candidates.\n\nSuppose he says:  \n**\"I will be drowned.\"**\n\n- If the statement is **true**, then he *will* be drowned — but the rule says if it's true, he must be **hanged** → contradiction.  \n- If the statement is **false**, then he will **not** be drowned → so he must be hanged (only other option). But the rule says if false, he must be **drowned** → contradiction again.\n\nSo “drowned” leads to inconsistency in both cases — i.e., no consistent assignment of truth value and punishment. So neither punishment can be carried out → he goes free.\n\nThat fits.\n\nCheck the other possibility:  \n**\"I will be hanged.\"**\n\n- If true → he must be hanged → OK, consistent. So they *can* hang him.  \n- If false → he will not be hanged → so must be drowned → also consistent with the rule (false → drowned). So either way, a punishment applies — no paradox.\n\nSo “hanged” does **not** force freedom.\n\nOnly **\"drowned\"** creates the paradox.\n\n✅ Confirmed.\n\nAnswer is: **drowned**\n\nOutput format: ONE word, lowercase.\n\ndrowned",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 20,
+        "question": "Two trains start 200 km apart heading toward each other, each traveling at 50 km/h. A bee starts at one train and flies back and forth between them at 75 km/h until the trains meet. How many km does the bee travel in total? Answer with ONLY the number.",
+        "expected": "150",
+        "before_answer": "We are given:\n\n- Two trains start **200 km apart**, moving **toward each other**, each at **50 km/h**.\n- So their **relative speed** is $50 + 50 = 100$ km/h.\n- Time until they meet:  \n  $$\n  t = \\frac{\\text{distance}}{\\text{relative speed}} = \\frac{200}{100} = 2 \\text{ hours}\n  $$\n\n- A bee starts at one train and flies **back and forth** between them at **75 km/h**, until the trains meet.\n\nSo the bee is flying continuously for the **entire 2 hours**, at **75 km/h**, regardless of direction changes.\n\nTherefore, total distance the bee travels is:\n\n$$\n\\text{distance} = \\text{speed} \\times \\text{time} = 75 \\times 2 = 150 \\text{ km}\n$$\n\nAnswer:  \n150",
+        "before_score": 0.0,
+        "after_answer": "The two trains are 200 km apart and each moves toward the other at 50 km/h.\n\nSo their **relative speed** is:\n\n$$\n50 + 50 = 100 \\text{ km/h}\n$$\n\nTime until they meet:\n\n$$\n\\frac{200 \\text{ km}}{100 \\text{ km/h}} = 2 \\text{ hours}\n$$\n\nThe bee flies continuously at 75 km/h for those 2 hours:\n\n$$\n75 \\times 2 = 150 \\text{ km}\n$$\n\n150",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      }
+    ],
+    "examples": [
+      {
+        "case_id": 4,
+        "question": "There are 1000 lockers, all closed. Person 1 opens every locker. Person 2 toggles every 2nd locker. Person 3 toggles every 3rd, and so on up to person 1000. How many lockers are open at the end? Answer with ONLY the number.",
+        "expected": "31",
+        "before_answer": "We are given a classic \"locker problem\":\n\n- There are **1000 lockers**, all initially **closed**.\n- Person 1 toggles (i.e., opens) **every** locker → lockers 1,2,3,...,1000.\n- Person 2 toggles every **2nd** locker → 2,4,6,...,1000.\n- Person 3 toggles every **3rd** → 3,6,9,...,999.\n- ...\n- Person *k* toggles every *k*-th locker.\n- This continues up to Person 1000, who toggles only locker 1000.\n\nA locker ends up **open** if it is toggled an **odd number of times**, since it starts closed.\n\nSo the question reduces to:\n\n> For how many integers $ n $ from 1 to 1000 does $ n $ have an **odd number of positive divisors**?\n\nBecause locker $ n $ is toggled once by each person $ k $ such that $ k $ divides $ n $ — i.e., number of toggles = number of positive divisors of $ n $.\n\nNow, a well-known fact:\n\n- A positive integer has an **odd number of positive divisors** **iff it is a perfect square**.\n\nWhy? Divisors usually come in pairs: if $ d $ divides $ n $, then so does $ n/d $. The only time a divisor is unpaired is when $ d = n/d $, i.e., $ d^2 = n $ → $ n $ is a perfect square.\n\nSo the number of lockers left open = number of **perfect squares ≤ 1000**.\n\nWhat’s the largest integer $ m $ such that $ m^2 \\leq 1000 $?\n\n- $ 31^2 = 961 $\n- $ 32^2 = 1024 > 1000 $\n\nSo $ m = 1 $ to $ 31 $ → **31 perfect squares**.\n\n✅ Answer:  \n31",
+        "before_score": 0.0,
+        "after_answer": "31",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 5,
+        "question": "A farmer needs to cross a river with a wolf, a goat, and a cabbage. The boat fits only the farmer and one item. The wolf will eat the goat, and the goat will eat the cabbage if left alone. What is the minimum number of boat trips (one direction = one trip) needed? Answer with ONLY the number.",
+        "expected": "7",
+        "before_answer": "Let's solve the classic \"Wolf, Goat, and Cabbage\" river crossing puzzle.\n\nConstraints:\n- Boat holds farmer + **one** item (wolf, goat, or cabbage).\n- If left alone together without the farmer:\n  - Wolf + goat → wolf eats goat ❌\n  - Goat + cabbage → goat eats cabbage ❌\n  - Wolf + cabbage → fine ✅\n\nGoal: Get all safely across in **minimum number of one-way trips**.\n\nLet’s denote:\n- Left bank = starting side\n- Right bank = destination\n\nInitial state: All (F, W, G, C) on left.\n\nWe need to avoid leaving (W,G) or (G,C) unattended on either side.\n\nStandard optimal solution:\n\n1. **Trip 1**: Farmer takes **goat** to right.  \n   → Left: W, C | Right: F, G  \n   (Safe: W & C alone OK)\n\n2. **Trip 2**: Farmer returns **alone** to left.  \n   → Left: F, W, C | Right: G  \n   (Safe: G alone is fine)\n\n3. **Trip 3**: Farmer takes **wolf** to right.  \n   → Left: C | Right: F, W, G  \n   But now W and G are together on right → ❌ not allowed.\n\nSo instead, after step 1, better to take **wolf or cabbage**, but bring back **goat** if needed.\n\nCorrect sequence:\n\n1. **F + G → right**  \n   Left: W, C | Right: F, G  \n   ✔️ Safe\n\n2. **F → left alone**  \n   Left: F, W, C | Right: G  \n   ✔️ Safe\n\n3. **F + W → right**  \n   Left: C | Right: F, W, G  \n   ❌ W and G together — danger.\n\nSo instead, step 3 should be **F + W → right**, then **bring G back**, to avoid leaving G with W.\n\nLet’s try:\n\n1. F + G → right  \n   Left: W, C | Right: F, G  \n\n2. F → left  \n   Left: F, W, C | Right: G  \n\n3. F + W → right  \n   Left: C | Right: F, W, G  \n   → Now W and G together → ❌\n\nSo instead, step 3: **F + C →",
+        "before_score": 0.0,
+        "after_answer": "7",
+        "after_score": 1.0,
+        "category": "fixed",
+        "reason": "改进提示词更严格地约束了输出格式，模型从解释性回答转为只输出目标答案。"
+      },
+      {
+        "case_id": 2,
+        "question": "A census taker asks a woman: 'How old are your three children?' She says: 'The product of their ages is 36, and the sum is the house number next door.' The census taker looks at the house number and says: 'I need more info.' She says: 'The oldest plays piano.' What are the ages? Answer as three numbers separated by commas from smallest to largest.",
+        "expected": "1, 6, 6",
+        "before_answer": "We are given a classic logic puzzle. Let's solve it step by step.\n\n### Given:\n- Three children’s ages are **positive integers**.\n- The **product** of their ages is **36**.\n- The **sum** equals the house number next door.\n- The census taker knows the house number, but still says: *“I need more info.”*  \n  → This implies that the sum corresponds to **more than one** triple of positive integers whose product is 36.\n- Then the woman says: *“The oldest plays piano.”*  \n  → This tells us there is a **unique oldest child**, i.e., **no tie for oldest** (so not two children both oldest — i.e., no duplicate maximum age). So the ages must have a **strictly largest** age (i.e., not like 6,6,1 where two are oldest — unless “oldest” allows ties? But the clue is used to disambiguate, so likely “oldest” implies a unique oldest → so no two children share the maximum age).\n\n---\n\n### Step 1: List all unordered triples of positive integers (a ≤ b ≤ c) such that a × b × c = 36.\n\nWe’ll list all factorizations of 36 into 3 positive integers, sorted increasingly.\n\nStart with a = 1:\n\n- 1 × 1 × 36 = 36 → sum = 38  \n- 1 × 2 × 18 = 36 → sum = 21  \n- 1 × 3 × 12 = 36 → sum = 16  \n- 1 × 4 × 9 = 36 → sum = 14  \n- 1 × 6 × 6 = 36 → sum = 13  \n\na = 2:\n\n- 2 × 2 × 9 = 36 → sum = 13  \n- 2 × 3 × 6 = 36 → sum = 11  \n- 2 × 4 × ? → 2×4=8, 36/8 = 4.5 → not integer  \n- 2 × 5 × ? → 36/10 = 3.6 → no  \n- 2 × 6 × 3 → already have (2,3,6)  \nSo continue systematically.\n\na = 3",
+        "before_score": 0.0,
+        "after_answer": "We are told:\n\n- The **product** of the three children's ages is **36**.\n- The **sum** equals the house number next door — but the census taker, after seeing that number, says *“I need more info”*, implying that the sum is **not unique** among all possible age triples with product 36.\n- Then she says: *“The oldest plays piano.”* → This implies there is a **unique oldest child**, i.e., **no tie for oldest** (so not e.g., 6,6,1 where two are oldest).\n\nWe need to find all **triples of positive integers (a, b, c)**, with $ a \\le b \\le c $, such that $ a \\cdot b \\cdot c = 36 $, compute their sums, and find which sum appears **more than once**, because only then would the census taker be unable to determine the ages from the sum alone.\n\n---\n\n### Step 1: List all unordered triples (a, b, c) with $ a \\le b \\le c $, product = 36\n\nFactor 36 = $ 2^2 \\cdot 3^2 $. List all combinations:\n\n1. $1 \\times 1 \\times 36$ → sum = 38  \n2. $1 \\times 2 \\times 18$ → sum = 21  \n3. $1 \\times 3 \\times 12$ → sum = 16  \n4. $1 \\times 4 \\times 9$ → sum = 14  \n5. $1 \\times 6 \\times 6$ → sum = 13  \n6. $2 \\times 2 \\times 9$ → sum = 13  \n7. $2 \\times 3 \\times 6$ → sum = 11  \n8. $3 \\times 3 \\times 4$ → sum = 10  \n\n(That’s all — check: $3 \\times 4 \\times 3$ same as #8; $2 \\times 2 \\times 9$, etc.)\n\nNow list sums:\n\n| Ages (a≤b≤c) | Sum |\n|--------------|-----|\n| 1,1,36       | 38  |\n| 1,2,18       | 21  |\n| 1,3",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 3,
+        "question": "Four people need to cross a bridge at night with one flashlight. They must cross in pairs or alone, always with the flashlight. Crossing times: A=1min, B=2min, C=5min, D=10min. A pair crosses at the slower person's speed. What is the minimum total time? Answer with ONLY the number of minutes.",
+        "expected": "17",
+        "before_answer": "We are given a classic bridge-crossing puzzle:\n\n- Four people: A (1 min), B (2 min), C (5 min), D (10 min)\n- One flashlight; must be carried on every crossing.\n- At most two people can cross at once (together or alone).\n- When two cross together, they go at the **slower person's pace**.\n- Goal: get all four across in **minimum total time**.\n\nLet’s denote crossings as either **forward** (from start → finish) or **return** (finish → start). The flashlight must always be carried back if more people need to cross.\n\nWe want to minimize total time.\n\n---\n\n### Strategy Insight:\n\nThe key is to avoid having the two slowest people (C and D) both crossing separately — that would cost 5 + 10 = 15 minutes just for them, plus return trips. Better to have them cross together (costs 10 min), but then we need to get the flashlight back *before* that, and after.\n\nAlso, the fastest person(s) should do the returning to minimize return time.\n\nStandard optimal strategy for times like this (1,2,5,10) is:\n\n1. Send two fastest across → A and B go: time = 2  \n2. A returns with flashlight: time = 1 → total so far = 3  \n3. Two slowest cross → C and D go: time = 10 → total = 13  \n4. B returns with flashlight: time = 2 → total = 15  \n5. A and B cross again: time = 2 → total = **17**\n\nLet’s verify:\n\n- Start: A,B,C,D on left; flashlight on left  \n- Step 1: A+B cross → right: A,B; left: C,D; flashlight right → time = 2  \n- Step 2: A returns → right: B; left: A,C,D; flashlight left → time = 2+1 = 3  \n- Step 3: C+D cross → right: B,C,D; left: A; flashlight right → time = 3+10 = 13  \n- Step 4: B returns → right: C,D; left: A,B; flashlight left → time = 13+2 = 15  \n- Step 5: A+B cross → right: A,B,C,D; flashlight right → time",
+        "before_score": 0.0,
+        "after_answer": "We are given a classic bridge-crossing puzzle:\n\n- Four people: A (1 min), B (2 min), C (5 min), D (10 min)\n- One flashlight; must be carried on every crossing.\n- At most two people can cross at once (together or alone).\n- When two cross, they go at the **slower person’s pace**.\n- Goal: get all four across in **minimum total time**.\n\n---\n\n### Strategy Insight:\nThe key is to minimize the time spent on return trips (bringing flashlight back). Since the two slowest (C and D) take 5 and 10 minutes, we want to avoid making them cross separately or make them both cross together *once*, and avoid having either come back.\n\nStandard optimal strategy for times like 1,2,5,10 is:\n\n1. **A and B cross** → 2 min  \n   (A=1, B=2 → takes 2)  \n   Now: A,B on far side; C,D on near side  \n   Flashlight is on far side.\n\n2. **A returns** → 1 min  \n   Now: B on far side; A,C,D on near side  \n   Flashlight back on near side.  \n   Total so far: 3 min\n\n3. **C and D cross** → 10 min  \n   Now: B, C, D on far side; A on near side  \n   Flashlight on far side.  \n   Total: 13 min\n\n4. **B returns** → 2 min  \n   Now: C,D on far side; A,B on near side  \n   Flashlight back on near side.  \n   Total: 15 min\n\n5. **A and B cross again** → 2 min  \n   All on far side.  \n   Total: **17 min**\n\n✅ That’s the well-known optimal solution: **17 minutes**\n\nAlternative idea: send fastest with each slow person? Let's test:\n\n- A+D → 10, A back → 1 (11)  \n- A+C → 5, A back → 1 (17)  \n- A+B → 2 → total = 10+1+5+1+2 = **19** → worse.\n\nOr:\n\n- A+B → 2  \n- A back → 1  \n- A+C → 5  \n- A back → 1  \n- A+",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      }
+    ],
+    "summary": "Qwen 的 Retrieval-v3 能在部分题目上受益于历史经验，但修正并不稳定；检索知识对题型结构相似的问题更有效，对需要全新推理结构的题目帮助有限。"
+  },
+  {
+    "experiment": "Kimi/Logic-Hard/Reflective",
+    "initial_accuracy": 0.35,
+    "best_accuracy": 0.35,
+    "counts": {
+      "persistent_failure": 13,
+      "persistent_success": 7
+    },
+    "cases": [
+      {
+        "case_id": 1,
+        "question": "Two players alternate placing non-overlapping coins of the same size on a round table. The last player who can place a coin wins. Does the first or second player have the winning strategy? Answer with ONLY 'first' or 'second'.",
+        "expected": "first",
+        "before_answer": "second",
+        "before_score": 0.0,
+        "after_answer": "second",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败说明该题需要更强的结构化推理或任务特化知识，当前经验注入不足。"
+      },
+      {
+        "case_id": 2,
+        "question": "A census taker asks a woman: 'How old are your three children?' She says: 'The product of their ages is 36, and the sum is the house number next door.' The census taker looks at the house number and says: 'I need more info.' She says: 'The oldest plays piano.' What are the ages? Answer as three numbers separated by commas from smallest to largest.",
+        "expected": "1, 6, 6",
+        "before_answer": "1,2,3",
+        "before_score": 0.0,
+        "after_answer": "1,2,3",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败说明该题需要更强的结构化推理或任务特化知识，当前经验注入不足。"
+      },
+      {
+        "case_id": 3,
+        "question": "Four people need to cross a bridge at night with one flashlight. They must cross in pairs or alone, always with the flashlight. Crossing times: A=1min, B=2min, C=5min, D=10min. A pair crosses at the slower person's speed. What is the minimum total time? Answer with ONLY the number of minutes.",
+        "expected": "17",
+        "before_answer": "21",
+        "before_score": 0.0,
+        "after_answer": "31",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败说明该题需要更强的结构化推理或任务特化知识，当前经验注入不足。"
+      },
+      {
+        "case_id": 4,
+        "question": "There are 1000 lockers, all closed. Person 1 opens every locker. Person 2 toggles every 2nd locker. Person 3 toggles every 3rd, and so on up to person 1000. How many lockers are open at the end? Answer with ONLY the number.",
+        "expected": "31",
+        "before_answer": "295",
+        "before_score": 0.0,
+        "after_answer": "501",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败说明该题需要更强的结构化推理或任务特化知识，当前经验注入不足。"
+      },
+      {
+        "case_id": 5,
+        "question": "A farmer needs to cross a river with a wolf, a goat, and a cabbage. The boat fits only the farmer and one item. The wolf will eat the goat, and the goat will eat the cabbage if left alone. What is the minimum number of boat trips (one direction = one trip) needed? Answer with ONLY the number.",
+        "expected": "7",
+        "before_answer": "7",
+        "before_score": 1.0,
+        "after_answer": "7",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 6,
+        "question": "You roll two fair six-sided dice. What is the probability that the product of the two numbers is even? Express as a fraction in lowest terms.",
+        "expected": "3/4",
+        "before_answer": "To find the probability that the product of the two numbers is even, we first find the probability that the product is odd.  There is only one way to get an odd product: both dice must be odd.  The probability that one die is odd is 1/2, so the probability that both dice are odd is $1/2 \\times 1/2 = 1/4$.  Therefore, the probability that the product is even is $1 - 1/4 = \\boxed{\\frac{3}{4}}$. The answer is \\frac{3}{4}",
+        "before_score": 0.0,
+        "after_answer": "To find the probability that the product of the two numbers is even, we first find the probability that the product is odd.  There is only one way to get an odd product: both dice must be odd.  The probability that one die is odd is $\\frac{1}{2}$, so the probability that both dice are odd is $\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}$.  Therefore, the probability that the product is even is $1 - \\frac{1}{4} = \\boxed{\\frac{3}{4}}$. The answer is \\frac{3}{4}",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败主要来自概率/组合推理错误，单纯提示词难以补足底层推理能力。"
+      },
+      {
+        "case_id": 7,
+        "question": "In a knockout tournament with 64 players, how many total matches are played to determine the winner? Answer with ONLY the number.",
+        "expected": "63",
+        "before_answer": "63",
+        "before_score": 1.0,
+        "after_answer": "63",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 8,
+        "question": "What is the sum 1 + 2 + 3 + ... + 100? Answer with ONLY the number.",
+        "expected": "5050",
+        "before_answer": "5050",
+        "before_score": 1.0,
+        "after_answer": "5050",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 9,
+        "question": "You have a 100-story building and 2 identical eggs. You need to find the highest floor from which an egg can be dropped without breaking. What is the minimum number of drops needed in the worst case? Answer with ONLY the number.",
+        "expected": "14",
+        "before_answer": "14",
+        "before_score": 1.0,
+        "after_answer": "14",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 10,
+        "question": "There are 10 bags, each containing 10 coins. In 9 bags, each coin weighs 10g. In 1 bag, each coin weighs 9g. Using a digital scale, what is the minimum number of weighings needed to find the lighter bag? Answer with ONLY the number.",
+        "expected": "1",
+        "before_answer": "1",
+        "before_score": 1.0,
+        "after_answer": "1",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 11,
+        "question": "Five pirates split 100 gold coins. The most senior proposes a split and everyone votes. The proposal passes if at least half agree. If rejected, the proposer is thrown overboard and the next pirate proposes. Pirates are perfectly rational: they prioritize survival first, then maximizing gold. How many coins does the most senior pirate keep? Answer with ONLY the number.",
+        "expected": "98",
+        "before_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "before_score": 0.0,
+        "after_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 12,
+        "question": "You have 25 horses and can race 5 at a time with no stopwatch. What is the minimum number of races needed to determine the 3 fastest horses? Answer with ONLY the number.",
+        "expected": "7",
+        "before_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "before_score": 0.0,
+        "after_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 13,
+        "question": "In a room with 50 people, at least how many people must share the same birth month? Assume exactly 12 months. Answer with ONLY the number.",
+        "expected": "5",
+        "before_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "before_score": 0.0,
+        "after_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 14,
+        "question": "In a 3x3 magic square using numbers 1 through 9 where every row, column, and diagonal sums to 15, what number must be in the center cell? Answer with ONLY the number.",
+        "expected": "5",
+        "before_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "before_score": 0.0,
+        "after_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 15,
+        "question": "Three perfectly logical people walk into a bar. The bartender asks: 'Does everyone here want a beer?' The first person says 'I don't know.' The second says 'I don't know.' The third says 'Yes.' How many of the three want a beer? Answer with ONLY the number.",
+        "expected": "3",
+        "before_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "before_score": 0.0,
+        "after_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 16,
+        "question": "A game show has 100 doors. One hides a car, the rest hide goats. You pick door 1. The host, who knows what's behind each door, opens 98 other doors, all revealing goats. You may switch to the one remaining closed door. What is the probability of winning if you switch? Express as a fraction in lowest terms.",
+        "expected": "99/100",
+        "before_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "before_score": 0.0,
+        "after_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败主要来自概率/组合推理错误，单纯提示词难以补足底层推理能力。"
+      },
+      {
+        "case_id": 17,
+        "question": "A clock loses exactly 10 minutes every hour. If it is set correctly at 12:00 noon, what is the actual time when the clock first shows 10:00 PM? Answer with ONLY the time in format like 12:00 AM.",
+        "expected": "12:00 AM",
+        "before_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "before_score": 0.0,
+        "after_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 18,
+        "question": "How many squares of any size can be found on a standard 8x8 chessboard? Answer with ONLY the number.",
+        "expected": "204",
+        "before_answer": "[Error: Error code: 429 - {'error': {'message': 'Your account org-60d552e1fa6b4700b07595bb6d52541b<ak-f9azafpf3um111are551> request reached organization max RPM: 20, please try again after 1 seconds', 'type': 'rate_limit_reached_error'}}]",
+        "before_score": 0.0,
+        "after_answer": "64",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败包含格式遵循问题，模型倾向输出解释或额外文本。"
+      },
+      {
+        "case_id": 19,
+        "question": "A prisoner is told: 'If your statement is true, you will be hanged. If false, you will be drowned.' The prisoner makes a statement and goes free because neither punishment can be applied. He said: 'I will be ___.' Fill in the ONE missing word in lowercase.",
+        "expected": "drowned",
+        "before_answer": "drowned",
+        "before_score": 1.0,
+        "after_answer": "drowned",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      },
+      {
+        "case_id": 20,
+        "question": "Two trains start 200 km apart heading toward each other, each traveling at 50 km/h. A bee starts at one train and flies back and forth between them at 75 km/h until the trains meet. How many km does the bee travel in total? Answer with ONLY the number.",
+        "expected": "150",
+        "before_answer": "150",
+        "before_score": 1.0,
+        "after_answer": "150",
+        "after_score": 1.0,
+        "category": "persistent_success",
+        "reason": "两种提示词均能正确处理该案例。"
+      }
+    ],
+    "examples": [
+      {
+        "case_id": 1,
+        "question": "Two players alternate placing non-overlapping coins of the same size on a round table. The last player who can place a coin wins. Does the first or second player have the winning strategy? Answer with ONLY 'first' or 'second'.",
+        "expected": "first",
+        "before_answer": "second",
+        "before_score": 0.0,
+        "after_answer": "second",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败说明该题需要更强的结构化推理或任务特化知识，当前经验注入不足。"
+      },
+      {
+        "case_id": 2,
+        "question": "A census taker asks a woman: 'How old are your three children?' She says: 'The product of their ages is 36, and the sum is the house number next door.' The census taker looks at the house number and says: 'I need more info.' She says: 'The oldest plays piano.' What are the ages? Answer as three numbers separated by commas from smallest to largest.",
+        "expected": "1, 6, 6",
+        "before_answer": "1,2,3",
+        "before_score": 0.0,
+        "after_answer": "1,2,3",
+        "after_score": 0.0,
+        "category": "persistent_failure",
+        "reason": "持续失败说明该题需要更强的结构化推理或任务特化知识，当前经验注入不足。"
+      }
+    ],
+    "summary": "Kimi 在本组案例中表现出明显的模型能力门槛：即使提供优化后的提示词，也难以稳定遵循格式或完成复杂推理，说明负结果不能简单归因于优化算法。"
+  }
+]

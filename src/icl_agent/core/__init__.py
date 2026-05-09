@@ -6,6 +6,9 @@ Core module for ICL-Agent
 from .trajectory import Trajectory, TrajectoryCapture
 from .context import ContextAnalyzer, ContextData
 from .knowledge import KnowledgeExtractor, Knowledge
+from .candidate import PromptCandidate, PromptCandidatePool
+from .hypothesis import ReflectionHypothesis
+from .context_builder import ContextBudget, ContextBuilder, ContextPackage
 from .optimizer import AgentOptimizer, OptimizationResult
 
 __all__ = [
@@ -15,6 +18,12 @@ __all__ = [
     "ContextData",
     "KnowledgeExtractor",
     "Knowledge",
+    "PromptCandidate",
+    "PromptCandidatePool",
+    "ReflectionHypothesis",
+    "ContextBudget",
+    "ContextBuilder",
+    "ContextPackage",
     "AgentOptimizer",
     "OptimizationResult",
 ]

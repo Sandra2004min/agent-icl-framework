@@ -1,0 +1,379 @@
+[
+  {
+    "experiment": "DeepSeek/Logic-Std/Reflective",
+    "model": "DeepSeek",
+    "dataset": "Logic-Std",
+    "strategy": "Reflective",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.95,
+    "final_score": 0.95,
+    "best_score": 0.95,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 70.9,
+    "score_history": [
+      0.95,
+      0.85,
+      0.95
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "DeepSeek/Logic-Std/FewShot-CoT",
+    "model": "DeepSeek",
+    "dataset": "Logic-Std",
+    "strategy": "FewShot-CoT",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.95,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 5.26,
+    "iterations": 1,
+    "elapsed_seconds": 35.5,
+    "score_history": [
+      0.95,
+      1.0
+    ],
+    "candidate_pool_size": 2,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 10\n\n--- Example 2 ---\nQuestion: If today is Wednesday, what day will it be 100 days from now? Answer with ONLY the day name in lowercase.\nReasoning: No reasoning steps recorded\nAnswer: friday\n\n--- Example 3 ---\nQuestion: A farmer has 17 sheep. All but 9 die. How many sheep are left? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 9\n\n--- Example 4 ---\nQuestion: How many months have 28 days? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 12\n\n--- Example 5 ---\nQuestion: If you have a bowl with six apples and you take away four, how many do you have? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 4\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost in cents? Answer with ONLY the number.\nWrong Answer: 10\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: How many times can you subtract 5 from 25? Answer with ONLY the number.\nWrong Answer: 5\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "DeepSeek/Logic-Std/Retrieval-v3",
+    "model": "DeepSeek",
+    "dataset": "Logic-Std",
+    "strategy": "Retrieval-v3",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.95,
+    "final_score": 0.85,
+    "best_score": 0.95,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 63.6,
+    "score_history": [
+      0.95,
+      0.9,
+      0.85
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "DeepSeek/Logic-Hard/Reflective",
+    "model": "DeepSeek",
+    "dataset": "Logic-Hard",
+    "strategy": "Reflective",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.5,
+    "final_score": 0.9,
+    "best_score": 0.9,
+    "improvement_pct": 80.0,
+    "iterations": 2,
+    "elapsed_seconds": 119.0,
+    "score_history": [
+      0.5,
+      0.7,
+      0.9
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully, but output ONLY the required answer in the exact specified format—no extra text, no boxes, no explanation unless the format explicitly allows it.\n\nGuidelines:\n- For puzzles with a single liar or truth-teller: test each person as the liar systematically. Only one scenario will be consistent with all statements.\n- For mislabeled boxes: all labels are wrong. Therefore, the box labeled 'Mixed' cannot contain mixed fruit; the box labeled 'Apples' cannot contain apples; etc. Use this to deduce actual contents.\n- For probability or counting: compute numerator and denominator separately, double-check your calculation (e.g., use complementary counting or small-case verification). Simplify fractions to lowest terms.\n- For game theory (take-away games): identify losing positions (where the player to move will lose if opponent plays optimally). If the starting number of stones is a losing position for the opponent, you can force a win; choose the move that leaves a losing position.\n- For puzzles with insufficient clues (like Einstein's riddle variants): do not add extra assumptions. Use only the given clues; if they are insufficient, state that the answer cannot be determined (but if the format requires an answer, output the answer that fits the standard puzzle with implicit assumptions).\n- Output format: if the instruction says 'Answer with ONLY the number', output just the number (e.g., 99). If 'Answer with ONLY the name', output just the name (e.g., Carol). If 'Answer with ONLY the letter', output just the letter (e.g., B). Do not include any reasoning, punctuation, or formatting."
+  },
+  {
+    "experiment": "DeepSeek/Logic-Hard/FewShot-CoT",
+    "model": "DeepSeek",
+    "dataset": "Logic-Hard",
+    "strategy": "FewShot-CoT",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.5,
+    "final_score": 0.45,
+    "best_score": 0.6,
+    "improvement_pct": 20.0,
+    "iterations": 2,
+    "elapsed_seconds": 135.5,
+    "score_history": [
+      0.5,
+      0.6,
+      0.45
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: In the Monty Hall problem, you pick door 1. The host opens door 3 (which has a goat). Should you switch to door 2 or stay with door 1 to maximize your chance of winning the car? Answer with ONLY 'switch' or 'stay'.\nReasoning: No reasoning steps recorded\nAnswer: switch\n\n--- Example 2 ---\nQuestion: You have 12 identical-looking coins, one of which is either heavier or lighter than the rest. Using a balance scale, what is the minimum number of weighings needed to identify the odd coin AND determine if it's heavier or lighter? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 3\n\n--- Example 3 ---\nQuestion: What is the next number: 1, 11, 21, 1211, 111221, ...? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 312211\n\n--- Example 4 ---\nQuestion: On an island, blue-eyed people must leave on the night they discover they have blue eyes. Everyone can see others' eyes but not their own. If there are 3 blue-eyed people and a visitor says 'I see someone with blue eyes', on which night do they leave? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 3\n\n--- Example 5 ---\nQuestion: You have 8 identical-looking balls. One is slightly heavier. Using a balance scale, what is the minimum number of weighings needed to find the heavy ball? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 2\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: You flip a fair coin 4 times. What is the probability of getting exactly 2 heads? Express as a fraction in lowest terms (e.g. 3/8).\nWrong Answer: We flip a fair coin 4 times.  \nThe total number of possible outcomes is \\(2^4 = 16\\).  \n\nThe number of ways to get exactly 2 heads in 4 flips is given by the binomial coefficient:  \n\\[\n\\binom{4}{2} = \\frac{4!}{2!2!} = 6\n\\]  \n\nSo the probability is:  \n\\[\n\\frac{6}{16} = \\frac{3}{8}\n\\]  \n\n\\boxed{3/8}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: Alice, Bob, and Carol each wear a different color hat: red, blue, green. Alice says: 'I'm not wearing red.' Bob says: 'I'm not wearing blue.' Carol says: 'I'm not wearing red.' If exactly one person is lying, who is wearing the red hat? Answer with ONLY the name.\nWrong Answer: Bob\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "DeepSeek/Logic-Hard/Retrieval-v3",
+    "model": "DeepSeek",
+    "dataset": "Logic-Hard",
+    "strategy": "Retrieval-v3",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.5,
+    "final_score": 0.45,
+    "best_score": 0.5,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 147.8,
+    "score_history": [
+      0.5,
+      0.3,
+      0.45
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Qwen/Logic-Std/Reflective",
+    "model": "Qwen",
+    "dataset": "Logic-Std",
+    "strategy": "Reflective",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.85,
+    "final_score": 0.9,
+    "best_score": 0.9,
+    "improvement_pct": 5.88,
+    "iterations": 2,
+    "elapsed_seconds": 80.3,
+    "score_history": [
+      0.85,
+      0.9,
+      0.9
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question. If the question specifies an exact output format (e.g., 'Answer with ONLY the number'), comply strictly: output *only* the required content — no explanations, no reasoning, no code blocks, no LaTeX, no extra spaces or punctuation, and no newlines before or after."
+  },
+  {
+    "experiment": "Qwen/Logic-Std/FewShot-CoT",
+    "model": "Qwen",
+    "dataset": "Logic-Std",
+    "strategy": "FewShot-CoT",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.85,
+    "final_score": 0.1,
+    "best_score": 0.9,
+    "improvement_pct": 5.88,
+    "iterations": 2,
+    "elapsed_seconds": 62.3,
+    "score_history": [
+      0.85,
+      0.9,
+      0.1
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 10\n\n--- Example 2 ---\nQuestion: If today is Wednesday, what day will it be 100 days from now? Answer with ONLY the day name in lowercase.\nReasoning: No reasoning steps recorded\nAnswer: friday\n\n--- Example 3 ---\nQuestion: A farmer has 17 sheep. All but 9 die. How many sheep are left? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 9\n\n--- Example 4 ---\nQuestion: How many months have 28 days? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 12\n\n--- Example 5 ---\nQuestion: If you have a bowl with six apples and you take away four, how many do you have? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 4\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: Three consecutive even numbers add up to 48. What is the smallest number? Answer with ONLY the number.\nWrong Answer: Let the three consecutive even numbers be:\n\n- $ x $ (smallest)  \n- $ x + 2 $  \n- $ x + 4 $\n\nTheir sum is:\n\n$$\nx + (x + 2) + (x + 4) = 3x + 6\n$$\n\nSet equal to 48:\n\n$$\n3x + 6 = 48\n$$\n\n$$\n3x = 42\n$$\n\n$$\nx = 14\n$$\n\nSo the smallest number is:\n\n14\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "Qwen/Logic-Std/Retrieval-v3",
+    "model": "Qwen",
+    "dataset": "Logic-Std",
+    "strategy": "Retrieval-v3",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.8,
+    "final_score": 0.8,
+    "best_score": 0.85,
+    "improvement_pct": 6.25,
+    "iterations": 2,
+    "elapsed_seconds": 75.2,
+    "score_history": [
+      0.8,
+      0.85,
+      0.8
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "## Task\nInput: If today is Wednesday, what day will it be 100 days from now? Answer with ONLY the day name in lowercase.\nOutput: monday\nFeedback: Score: 0.00 (threshold: 1.0)\nReasoning: No reasoning steps recorded\nInput: Three consecutive even numbers add up to 48. What is the smallest number? Answer with ONLY the number.\nOutput: Let the three consecutive even numbers be:\n\n- $ x $ (smallest)  \n- $ x + 2 $  \n- $ x + 4 $\n\nTheir sum is:\n\n$$\nx + (x + 2) + (x + 4) = 3x + 6\n$$\n\nSet equal to 48:\n\n$$\n3x + 6 = 48\n$$\n\n$$\n3x = 42\n$$\n\n$$\nx = 14\n$$\n\nSo...\n\n## System\nYou are a helpful assistant. Answer the question.\n\n## Plan\n- 1. Use only relevant retrieved knowledge.\n* 2. Apply learned rules silently.\n- 3. Return the final answer in the requested format.\n\n## Relevant Knowledge\n- [rule, confidence=0.85] For consecutive even integers, represent them as x, x+2, x+4; solve x + (x+2) + (x+4) = sum to find x, ensuring x is even and the smallest term.\n- [example, confidence=0.90] Example 1:\n  trajectory_id: 194b8dfd-4c3a-4e08-a553-12161e05da91\n  input_data: {'question': 'There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.', 'answer': '10'}\n  output_data: {'answer': '10'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reasoning steps recorded\n  feedback: Execution successful\n  metadata: {}\n\nExample 2:\n  trajectory_id: 4ede503e-b3b8-472f-ae14-05a2cfd57c49\n  input_data: {'question': 'A farmer has 17 sheep. All but 9 die. How many sheep are left? Answer with ONLY the number.', 'answer': '9'}\n  output_data: {'answer': '9'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reasoning steps recorded\n  feedback: Execution successful\n  metadata: {}\n\nExample 3:\n  trajectory_id: 2621d6ba-17b5-4c9b-9693-522aca74a5bd\n  input_data: {'question': 'How many months have 28 days? Answer with ONLY the number.', 'answer': '12'}\n  output_data: {'answer': '12'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reasoning steps recorded\n  feedback: Execution successful\n  metadata: {}\n\n\n## Examples\n- [success, score=1.00] Input: {'question': 'There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.', 'answer': '10'} Output: {'answer': '10'} Feedback: Execution successful\n- [success, score=1.00] Input: {'question': 'A farmer has 17 sheep. All but 9 die. How many sheep are left? Answer with ONLY the number.', 'answer': '9'} Output: {'answer': '9'} Feedback: Execution successful\n\nApply the relevant knowledge above only when it matches the current question. Do not copy examples or explanations into the final answer."
+  },
+  {
+    "experiment": "Qwen/Logic-Hard/Reflective",
+    "model": "Qwen",
+    "dataset": "Logic-Hard",
+    "strategy": "Reflective",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.35,
+    "final_score": 0.8,
+    "best_score": 0.8,
+    "improvement_pct": 128.57,
+    "iterations": 2,
+    "elapsed_seconds": 362.0,
+    "score_history": [
+      0.35,
+      0.75,
+      0.8
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully *internally*. But in your final output, provide **ONLY** the answer — and *nothing else*: no explanations, no reasoning traces, no prefixes (e.g., 'Answer:', 'So:', 'Therefore:'), no suffixes (e.g., '.', '?', '—'), no intermediate forms (e.g., '6/16 = 3/8'), no alternate representations, no extra spaces, no capitalization unless explicitly required (e.g., proper names), and no punctuation beyond what the requested format strictly demands (e.g., exactly one '/' in fractions, lowercase letters only if specified). If the question says 'Answer with ONLY...', your entire response must be a single, self-contained token matching that specification *exactly* — validated against the ground truth format before output. When multiple solutions seem possible, resolve all ambiguity internally; never output disjunctions, lists, or 'or' statements."
+  },
+  {
+    "experiment": "Qwen/Logic-Hard/FewShot-CoT",
+    "model": "Qwen",
+    "dataset": "Logic-Hard",
+    "strategy": "FewShot-CoT",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.3,
+    "final_score": 0.05,
+    "best_score": 0.3,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 364.3,
+    "score_history": [
+      0.3,
+      0.05,
+      0.05
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Qwen/Logic-Hard/Retrieval-v3",
+    "model": "Qwen",
+    "dataset": "Logic-Hard",
+    "strategy": "Retrieval-v3",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.35,
+    "final_score": 0.5,
+    "best_score": 0.65,
+    "improvement_pct": 85.71,
+    "iterations": 2,
+    "elapsed_seconds": 456.6,
+    "score_history": [
+      0.35,
+      0.65,
+      0.5
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "## Task\nInput: You flip a fair coin 4 times. What is the probability of getting exactly 2 heads? Express as a fraction in lowest terms (e.g. 3/8).\nOutput: We are flipping a **fair coin 4 times**, and we want the probability of getting **exactly 2 heads**.\n\n---\n\n### Step 1: Total number of possible outcomes\n\nEach flip has 2 outcomes (H or T), and flips are independent:\n\n$$\n\\text{Total outcomes} = 2^4 = 16\n$$\n\n---\n\n### Step 2: Number of favorable outcomes (exactly 2 heads)\n\nThis is the number of ways to choose **2 positions out of 4** for he...\n\n## System\nYou are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested.\n\n## Plan\n- 1. Use only relevant retrieved knowledge.\n* 2. Apply learned rules silently.\n- 3. Return the final answer in the requested format.\n\n## Relevant Knowledge\n- [rule, confidence=0.70] For self-referential or paradox-based reasoning problems (e.g., the king’s execution dilemma), construct a statement that creates a logical inconsistency in both truth values—e.g., a biconditional or liar-like assertion that makes both outcomes impossible.\n- [rule, confidence=0.70] In logic puzzles with constrained statements (e.g., “exactly one person tells the truth” or “all labels are wrong”), first apply the given global constraint to eliminate impossible assignments before evaluating individual claims.\n- [rule, confidence=0.70] For probability questions involving independent trials (e.g., coin flips), explicitly compute using the binomial formula: C(n,k) × pᵏ × (1−p)ⁿ⁻ᵏ, and reduce the resulting fraction to lowest terms.\n\n## Examples\n- [success, score=1.00] Input: {'question': \"In the Monty Hall problem, you pick door 1. The host opens door 3 (which has a goat). Should you switch to door 2 or stay with door 1 to maximize your chance of winning the car? Answer with ONLY 'switch' or 'stay'.\", 'answer': 'switch'} Output: {'answer': 'switch'} Feedback: Execution successful\n\nApply the relevant knowledge above only when it matches the current question. Do not copy examples or explanations into the final answer."
+  },
+  {
+    "experiment": "Kimi/Logic-Std/Reflective",
+    "model": "Kimi",
+    "dataset": "Logic-Std",
+    "strategy": "Reflective",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.55,
+    "final_score": 0.2,
+    "best_score": 0.55,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 140.9,
+    "score_history": [
+      0.55,
+      0.35,
+      0.2
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "Kimi/Logic-Std/FewShot-CoT",
+    "model": "Kimi",
+    "dataset": "Logic-Std",
+    "strategy": "FewShot-CoT",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.2,
+    "final_score": 0.05,
+    "best_score": 0.2,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 161.7,
+    "score_history": [
+      0.2,
+      0.15,
+      0.05
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "Kimi/Logic-Std/Retrieval-v3",
+    "model": "Kimi",
+    "dataset": "Logic-Std",
+    "strategy": "Retrieval-v3",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.3,
+    "final_score": 0.15,
+    "best_score": 0.3,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 144.1,
+    "score_history": [
+      0.3,
+      0.15,
+      0.15
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "Kimi/Logic-Hard/Reflective",
+    "model": "Kimi",
+    "dataset": "Logic-Hard",
+    "strategy": "Reflective",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.35,
+    "final_score": 0.0,
+    "best_score": 0.35,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 202.2,
+    "score_history": [
+      0.35,
+      0.0,
+      0.0
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Kimi/Logic-Hard/FewShot-CoT",
+    "model": "Kimi",
+    "dataset": "Logic-Hard",
+    "strategy": "FewShot-CoT",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.45,
+    "final_score": 0.0,
+    "best_score": 0.45,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 196.2,
+    "score_history": [
+      0.45,
+      0.05,
+      0.0
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Kimi/Logic-Hard/Retrieval-v3",
+    "model": "Kimi",
+    "dataset": "Logic-Hard",
+    "strategy": "Retrieval-v3",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.3,
+    "final_score": 0.05,
+    "best_score": 0.3,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 145.5,
+    "score_history": [
+      0.3,
+      0.05,
+      0.05
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  }
+]

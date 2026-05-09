@@ -1,0 +1,113 @@
+[
+  {
+    "experiment": "MMLU (Reflective)",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.88,
+    "final_score": 0.88,
+    "best_score": 0.88,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 272.3,
+    "best_instruction": "You are a knowledgeable expert. Read the question and the four options carefully. Answer with ONLY the letter of the correct option (A, B, C, or D). Do not include any explanation.",
+    "score_history": [
+      0.88,
+      0.88,
+      0.88
+    ]
+  },
+  {
+    "experiment": "MMLU (FewShot-CoT)",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.88,
+    "final_score": 0.88,
+    "best_score": 0.88,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 219.8,
+    "best_instruction": "You are a knowledgeable expert. Read the question and the four options carefully. Answer with ONLY the letter of the correct option (A, B, C, or D). Do not include any explanation.",
+    "score_history": [
+      0.88,
+      0.88,
+      0.88
+    ]
+  },
+  {
+    "experiment": "MMLU (Retrieval-v3)",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.88,
+    "final_score": 0.88,
+    "best_score": 0.88,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 229.4,
+    "best_instruction": "You are a knowledgeable expert. Read the question and the four options carefully. Answer with ONLY the letter of the correct option (A, B, C, or D). Do not include any explanation.",
+    "score_history": [
+      0.88,
+      0.88,
+      0.88
+    ]
+  },
+  {
+    "experiment": "BBH (Reflective)",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.68,
+    "final_score": 0.64,
+    "best_score": 0.68,
+    "improvement_pct": 0.0,
+    "iterations": 3,
+    "elapsed_seconds": 641.2,
+    "best_instruction": "You are a careful reasoner. Read the question and options, then provide your final answer. If the question has options like (A), (B), (C)..., you MUST answer with ONLY the option label in parentheses, e.g. (A) or (B). If the question asks for True/False or Yes/No, answer with ONLY that word. Do NOT include any explanation or reasoning in your output.",
+    "score_history": [
+      0.68,
+      0.64,
+      0.64,
+      0.64
+    ]
+  },
+  {
+    "experiment": "BBH (FewShot-CoT)",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.68,
+    "final_score": 0.68,
+    "best_score": 0.76,
+    "improvement_pct": 11.76,
+    "iterations": 3,
+    "elapsed_seconds": 467.0,
+    "best_instruction": "You are a careful reasoner. Read the question and options, then provide your final answer. If the question has options like (A), (B), (C)..., you MUST answer with ONLY the option label in parentheses, e.g. (A) or (B). If the question asks for True/False or Yes/No, answer with ONLY that word. Do NOT include any explanation or reasoning in your output.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. In a golf tournament, there were five golfers: Amy, Mel, Rob, Joe, and Ada. Joe finished second. Joe finished below Amy. Mel finished second-to-last. Ada finished last.\nOptions:\n(A) Amy finished first\n(B) Mel finished first\n(C) Rob finished first\n(D) Joe finished first\n(E) Ada finished first\nReasoning: No reasoning steps recorded\nAnswer: (A)\n\n--- Example 2 ---\nQuestion: If you follow these instructions, do you return to the starting point? Take 8 steps. Turn left. Take 9 steps. Take 7 steps. Turn around.\nOptions:\n- Yes\n- No\nReasoning: No reasoning steps recorded\nAnswer: No\n\n--- Example 3 ---\nQuestion: How would a typical person answer each of the following questions about causation?\nTom works for a demolition company, and today he is demolishing a building by implosion. The building will implode automatically at 5:00 PM if either the safety switch is off or knob A is switched on. At 4:00 PM, the safety switch is off, and knob A is off. At that time, Tom checks to see if knob A is on, and he sees that it's off. So, he changes the position of knob A to the on position. Because the building will implode if either the safety switch is off or knob A is switched on, the building implodes at 5:00 PM. Did the building implode because Tom changed the position of knob A?\nOptions:\n- Yes\n- No\nReasoning: No reasoning steps recorded\nAnswer: No\n\n--- Example 4 ---\nQuestion: not ( True ) and ( False ) is\nReasoning: No reasoning steps recorded\nAnswer: False\n\n--- Example 5 ---\nQuestion: not not False or not False or True is\nReasoning: No reasoning steps recorded\nAnswer: True\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: The deadline is Jun 1, 2021, which is 2 days away from now. What is the date 10 days ago in MM/DD/YYYY?\nOptions:\n(A) 04/29/2021\n(B) 05/21/2021\n(C) 04/06/2021\n(D) 06/24/2021\n(E) 05/20/2021\nWrong Answer: (B)\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: How would a typical person answer each of the following questions about causation?\nA machine is set up in such a way that it will short circuit if both the black wire and the red wire touch the battery at the same time. The machine will not short circuit if just one of these wires touches the battery. The black wire is designated as the one that is supposed to touch the battery, while the red wire is supposed to remain in some other part of the machine. One day, the black wire and the red wire both end up touching the battery at the same time. There is a short circuit. Did the fact that the black wire touched the battery cause the machine to short circuit?\nOptions:\n- Yes\n- No\nWrong Answer: Yes\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples.",
+    "score_history": [
+      0.68,
+      0.76,
+      0.68,
+      0.68
+    ]
+  },
+  {
+    "experiment": "BBH (Retrieval-v3)",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.68,
+    "final_score": 0.68,
+    "best_score": 0.68,
+    "improvement_pct": 0.0,
+    "iterations": 3,
+    "elapsed_seconds": 369.9,
+    "best_instruction": "You are a careful reasoner. Read the question and options, then provide your final answer. If the question has options like (A), (B), (C)..., you MUST answer with ONLY the option label in parentheses, e.g. (A) or (B). If the question asks for True/False or Yes/No, answer with ONLY that word. Do NOT include any explanation or reasoning in your output.",
+    "score_history": [
+      0.68,
+      0.68,
+      0.64,
+      0.68
+    ]
+  }
+]

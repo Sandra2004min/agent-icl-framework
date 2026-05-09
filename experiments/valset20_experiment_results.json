@@ -1,0 +1,111 @@
+[
+  {
+    "experiment": "E1: Logic-Std (Reflective) [val=20]",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.7,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 42.86,
+    "iterations": 1,
+    "elapsed_seconds": 116.7,
+    "best_instruction": "You are a precise answer-extraction assistant. Your task is to:\n\n1. **Read Carefully:** Pay close attention to the question's specific instruction on how to format the final answer (e.g., \"Answer with ONLY the day name in lowercase\", \"Answer with ONLY the number\").\n\n2. **Reason Internally:** Perform all necessary reasoning, calculations, and logic in your mind or in hidden scratchpad. Do not include any of this process in your final output.\n\n3. **Output Strictly:** Provide ONLY the final answer, exactly as requested by the question's format instruction. Do not include any extra text, explanations, punctuation (unless required by the format, like \"PM\" in time), or markdown formatting.\n\n4. **Verify Format:** Before responding, double-check that your output contains nothing but the requested answer.",
+    "score_history": [
+      0.7,
+      1.0
+    ]
+  },
+  {
+    "experiment": "E2: Logic-Std (FewShot-CoT) [val=20]",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.7,
+    "final_score": 0.85,
+    "best_score": 0.85,
+    "improvement_pct": 21.43,
+    "iterations": 2,
+    "elapsed_seconds": 153.5,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 10\n\n--- Example 2 ---\nQuestion: A farmer has 17 sheep. All but 9 die. How many sheep are left? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 9\n\n--- Example 3 ---\nQuestion: How many months have 28 days? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 12\n\n--- Example 4 ---\nQuestion: If you have a bowl with six apples and you take away four, how many do you have? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 4\n\n--- Example 5 ---\nQuestion: A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost in cents? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 5\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: If today is Wednesday, what day will it be 100 days from now? Answer with ONLY the day name in lowercase.\nWrong Answer: saturday\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: If today is Monday, what day was it 50 days ago? Answer with ONLY the day name in lowercase.\nWrong Answer: sunday\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples.",
+    "score_history": [
+      0.7,
+      0.85,
+      0.85
+    ]
+  },
+  {
+    "experiment": "E3: Logic-Std (Retrieval-v3) [val=20]",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.7,
+    "final_score": 0.85,
+    "best_score": 0.85,
+    "improvement_pct": 21.43,
+    "iterations": 3,
+    "elapsed_seconds": 219.6,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nImportant guidelines learned from past experience:\n\n1. [Example, confidence=0.9] Example 1:\n  trajectory_id: 80e93dc5-92bd-4dbb-af89-985734625a8f\n  input_data: {'question': 'There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.', 'answer': '10'}\n  output_data: {'answer': '10'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reasoning steps recorded\n  feedback: Execution successful\n  metadata: {}\n\nExample 2:\n  trajectory_id: 07d2b4e0-39ee-4afb-950d-613da5cfffc\n2. [Rule, confidence=0.8] For day-of-week problems, compute the offset modulo 7 and apply it to the given starting day.\n3. [Rule, confidence=0.8] For relative motion problems, sum the speeds to find the closing rate and divide total distance by that rate to get meeting time.\n\nApply these guidelines when answering.",
+    "score_history": [
+      0.7,
+      0.85,
+      0.8,
+      0.85
+    ]
+  },
+  {
+    "experiment": "H1: Logic-Hard (Reflective) [val=20]",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.45,
+    "final_score": 0.7,
+    "best_score": 0.8,
+    "improvement_pct": 77.78,
+    "iterations": 3,
+    "elapsed_seconds": 495.9,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully.\n\nCRITICAL FORMATTING RULES:\n1. Your final answer must contain ONLY what the question asks for, with no additional text, reasoning, punctuation, or formatting.\n2. If the question specifies a format (e.g., \"fraction in lowest terms\", \"ONLY the name\", \"ONE word in lowercase\"), follow it exactly.\n3. After reasoning, extract the precise answer and output it alone.\n\nLOGIC PUZZLE GUIDELINES:\n- For \"all labels are wrong\" puzzles: Remember each label is incorrect. Use elimination systematically.\n- For probability puzzles with revealed information: Carefully apply conditional probability. Consider all possible initial states and how the revelation affects probabilities.\n- For truth-teller/liar puzzles: Test each possibility systematically. Check consistency with \"exactly one truth-teller\" or similar constraints.\n- For optimization puzzles (like water jug): Find the minimal solution. Consider all possible sequences of operations.\n- For puzzles with random selection: Consider the sample space before and after any information is revealed.\n\nReasoning process:\n1. Identify the puzzle type and relevant constraints.\n2. Work through systematically, considering all cases/possibilities.\n3. Verify your solution satisfies ALL given conditions.\n4. For probability questions, double-check conditional probability calculations.\n5. For \"minimum\" questions, verify no shorter solution exists.\n\nBefore outputting:\n- Review the question's format requirement.\n- Ensure your answer is in the exact requested form (e.g., \"3/8\", \"Carol\", \"mixed\", \"Norwegian\", \"shoot\", \"99\", \"10\", \"1/3\").\n- Remove all step-by-step explanations, markdown, and intermediate thoughts from the final answer.\n\nYour output should be the answer only.",
+    "score_history": [
+      0.45,
+      0.7,
+      0.8,
+      0.7
+    ]
+  },
+  {
+    "experiment": "H2: Logic-Hard (FewShot-CoT) [val=20]",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.45,
+    "final_score": 0.8,
+    "best_score": 0.8,
+    "improvement_pct": 77.78,
+    "iterations": 2,
+    "elapsed_seconds": 327.7,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: In the Monty Hall problem, you pick door 1. The host opens door 3 (which has a goat). Should you switch to door 2 or stay with door 1 to maximize your chance of winning the car? Answer with ONLY 'switch' or 'stay'.\nReasoning: No reasoning steps recorded\nAnswer: switch\n\n--- Example 2 ---\nQuestion: You have 12 identical-looking coins, one of which is either heavier or lighter than the rest. Using a balance scale, what is the minimum number of weighings needed to identify the odd coin AND determine if it's heavier or lighter? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 3\n\n--- Example 3 ---\nQuestion: What is the next number: 1, 11, 21, 1211, 111221, ...? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 312211\n\n--- Example 4 ---\nQuestion: There are 21 stones. Two players take turns removing 1, 2, or 3 stones. The player who takes the last stone wins. If you go first, how many stones should you take to guarantee a win? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 1\n\n--- Example 5 ---\nQuestion: On an island, blue-eyed people must leave on the night they discover they have blue eyes. Everyone can see others' eyes but not their own. If there are 3 blue-eyed people and a visitor says 'I see someone with blue eyes', on which night do they leave? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 3\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: You flip a fair coin 4 times. What is the probability of getting exactly 2 heads? Express as a fraction in lowest terms (e.g. 3/8).\nWrong Answer: Let’s go step-by-step.\n\n---\n\n**Step 1: Total possible outcomes**  \nA fair coin flipped 4 times has \\( 2^4 = 16 \\) equally likely outcomes.\n\n---\n\n**Step 2: Number of favorable outcomes**  \nWe want exactly 2 heads in 4 flips.  \nThis is a binomial coefficient:  \n\\[\n\\binom{4}{2} = \\frac{4!}{2! \\cdot 2!} = 6\n\\]\n\n---\n\n**Step 3: Probability**  \n\\[\nP(\\text{exactly 2 heads}) = \\frac{\\binom{4}{2}}{2^4} = \\frac{6}{16}\n\\]\n\n---\n\n**Step 4: Simplify fraction**  \n\\[\n\\frac{6}{16} = \\frac{3}{8}\n\\]\n\n---\n\n\\[\n\\boxed{3/8}\n\\]\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: Alice, Bob, and Carol each wear a different color hat: red, blue, green. Alice says: 'I'm not wearing red.' Bob says: 'I'm not wearing blue.' Carol says: 'I'm not wearing red.' If exactly one person is lying, who is wearing the red hat? Answer with ONLY the name.\nWrong Answer: Let’s go step by step.\n\n---\n\n**Step 1: List the statements**\n\n- Alice: \"I'm not wearing red.\"\n- Bob: \"I'm not wearing blue.\"\n- Carol: \"I'm not wearing red.\"\n\nExactly one person is lying.\n\n---\n\n**Step 2: Consider possible cases for who is lying**\n\n**Case 1: Alice is lying.**  \nIf Alice is lying, then Alice *is* wearing red.  \nBob and Carol are telling the truth.  \nBob tells truth → Bob is not wearing blue → Bob wears green (since red is taken by Alice).  \nCarol tells truth → Carol is not wearing red → Carol wears blue (since green taken by Bob).  \nHats: Alice = red, Bob = green, Carol = blue.  \nAll hats different colors — works fine.  \nCheck: Exactly one liar (Alice) — yes.  \nSo this is possible.\n\n---\n\n**Case 2: Bob is lying.**  \nIf Bob is lying, then Bob *is* wearing blue.  \nAlice and Carol tell truth.  \nAlice tells truth → Alice not wearing red → Alice wears green or blue, but blue is taken by Bob → Alice wears green.  \nCarol tells truth → Carol not wearing red → Carol wears red? Wait, red is still available (Alice not red, Bob blue) → Carol could wear red.  \nBut if Carol not wearing red, and red is available, she could wear red? No, she says she’s not wearing red, so she must wear blue or green. But blue is taken by Bob, so Carol wears green? But green is taken by Alice in this assignment.  \nLet’s assign systematically:  \nBob = blue (liar).  \nAlice truth → Alice not red → Alice = green or blue (blue taken) → Alice = green.  \nCarol truth → Carol not red → Carol = green or blue (green taken by Alice, blue taken by Bob) → no color left for Carol.  \nImpossible.  \nSo Bob lying fails.\n\n---\n\n**Case 3: Carol is lying.**  \nIf Carol is lying, then Carol *is* wearing red.  \nAlice and Bob tell truth.  \nAlice truth → Alice not red → Alice = blue or green.  \nBob truth → Bob not blue → Bob = red or green, but red taken by Carol → Bob = green.  \nThen Alice = blue (only color left).  \nHats: Alice = blue, Bob = green, Carol = red.  \nCheck\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples.",
+    "score_history": [
+      0.45,
+      0.8,
+      0.8
+    ]
+  },
+  {
+    "experiment": "H3: Logic-Hard (Retrieval-v3) [val=20]",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.45,
+    "final_score": 0.45,
+    "best_score": 0.45,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 638.5,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested.",
+    "score_history": [
+      0.45,
+      0.45,
+      0.45
+    ]
+  }
+]

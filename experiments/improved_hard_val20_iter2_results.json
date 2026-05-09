@@ -1,0 +1,70 @@
+[
+  {
+    "experiment": "Logic-Hard-val20 Reflective",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "max_iterations": 2,
+    "initial_score": 0.5,
+    "final_score": 0.95,
+    "best_score": 0.95,
+    "improvement_pct": 90.0,
+    "score_history": [
+      0.5,
+      0.65,
+      0.95
+    ],
+    "iterations": 2,
+    "elapsed_seconds": 124.2,
+    "candidate_pool_size": 3,
+    "pareto_front_size": 3,
+    "knowledge_items": 2,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully in your internal scratchpad — do NOT include any reasoning, explanation, or intermediate steps in your final output. First, identify the exact output format required (e.g., 'Answer with ONLY the name/number/word') and ensure your final answer matches it exactly: no extra words, no LaTeX (\\boxed{}, \\frac{}, etc.), no punctuation unless explicitly part of the answer. For puzzles with explicit constraints (e.g., 'exactly one person is lying', 'all labels are wrong'), systematically test all possibilities against each constraint before concluding. For combinatorial problems (e.g., handshakes, stone removal, birthday paradox), verify your formula and arithmetic against the given numbers and perform a quick sanity check (e.g., known result for 23 people is ~50%). Output ONLY the requested answer in the specified format — nothing else.",
+    "last_hypothesis_accepted": true,
+    "last_hypothesis_reason": "heuristic_accept"
+  },
+  {
+    "experiment": "Logic-Hard-val20 FewShot-CoT",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "max_iterations": 2,
+    "initial_score": 0.5,
+    "final_score": 0.5,
+    "best_score": 0.55,
+    "improvement_pct": 10.0,
+    "score_history": [
+      0.5,
+      0.55,
+      0.5
+    ],
+    "iterations": 2,
+    "elapsed_seconds": 118.0,
+    "candidate_pool_size": 3,
+    "pareto_front_size": 2,
+    "knowledge_items": 2,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: In the Monty Hall problem, you pick door 1. The host opens door 3 (which has a goat). Should you switch to door 2 or stay with door 1 to maximize your chance of winning the car? Answer with ONLY 'switch' or 'stay'.\nReasoning: No reasoning steps recorded\nAnswer: switch\n\n--- Example 2 ---\nQuestion: You have 12 identical-looking coins, one of which is either heavier or lighter than the rest. Using a balance scale, what is the minimum number of weighings needed to identify the odd coin AND determine if it's heavier or lighter? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 3\n\n--- Example 3 ---\nQuestion: What is the next number: 1, 11, 21, 1211, 111221, ...? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 312211\n\n--- Example 4 ---\nQuestion: On an island, blue-eyed people must leave on the night they discover they have blue eyes. Everyone can see others' eyes but not their own. If there are 3 blue-eyed people and a visitor says 'I see someone with blue eyes', on which night do they leave? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 3\n\n--- Example 5 ---\nQuestion: You have 8 identical-looking balls. One is slightly heavier. Using a balance scale, what is the minimum number of weighings needed to find the heavy ball? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 2\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: You flip a fair coin 4 times. What is the probability of getting exactly 2 heads? Express as a fraction in lowest terms (e.g. 3/8).\nWrong Answer: We flip a fair coin 4 times.  \nThe total number of possible outcomes is \\(2^4 = 16\\).  \n\nThe number of ways to get exactly 2 heads in 4 flips is given by the binomial coefficient:  \n\\[\n\\binom{4}{2} = \\frac{4!}{2!2!} = 6\n\\]  \n\nSo the probability is:  \n\\[\n\\frac{6}{16} = \\frac{3}{8}\n\\]  \n\n\\boxed{\\frac{3}{8}}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: Alice, Bob, and Carol each wear a different color hat: red, blue, green. Alice says: 'I'm not wearing red.' Bob says: 'I'm not wearing blue.' Carol says: 'I'm not wearing red.' If exactly one person is lying, who is wearing the red hat? Answer with ONLY the name.\nWrong Answer: Bob\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "Logic-Hard-val20 Retrieval-v3",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "max_iterations": 2,
+    "initial_score": 0.5,
+    "final_score": 0.5,
+    "best_score": 0.5,
+    "improvement_pct": 0.0,
+    "score_history": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "iterations": 2,
+    "elapsed_seconds": 136.6,
+    "candidate_pool_size": 2,
+    "pareto_front_size": 2,
+    "knowledge_items": 6,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  }
+]

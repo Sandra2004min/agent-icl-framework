@@ -1,0 +1,381 @@
+{
+  "train": [
+    {
+      "question": "_Ad populum_. is another name for which fallacy?\nA. poisoning the well\nB. suppressed evidence\nC. appeal to pride\nD. appeal to the people\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "Find the maximum possible order for an element of S_n for n = 10.\nA. 6\nB. 12\nC. 30\nD. 105\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "The state of Georgia has 159 counties and covers 58056 square miles. What is the average number of square miles per county? Round your answer to the nearest whole number.\nA. 274 square miles per county\nB. 159 square miles per county\nC. 318 square miles per county\nD. 365 square miles per county\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Which of the following changes to a circuit will always bring about an increase in the current?\nA. Increased voltage and increased resistance\nB. Decreased voltage and decreased resistance\nC. Increased voltage and decreased resistance\nD. Decreased voltage and increased resistance\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "Which expression is equivalent to 5(6x + 3y)?\nA. 11x + 3y\nB. 11x + 8y\nC. 30x + 3y\nD. 30x + 15y\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "There are 2,817 homes in the town of West Valley. Each home uses an average of 380 gallons of water each day. Use the expression below to find the total number of gallons of water the homes in West Valley use on average each day. 2,817 × 380 What is the total number of gallons of water the homes in West Valley use on average each day?\nA. 860,460 gallons\nB. 870,460 gallons\nC. 1,060,460 gallons\nD. 1,070,460 gallons\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Which of the following types of electromagnetic radiation has the longest wavelength?\nA. Gamma rays\nB. Ultraviolet\nC. Blue light\nD. Orange light\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "The surface area, S, of a right rectangular prism with length l, width w, and height h can be found using the formula S = 2(lw+ wh + hl). What is the surface area, in square inches, of a prism with a length of 12 inches, a width of 9 inches, and a height of 2 inches?\nA. 300\nB. 258\nC. 150\nD. 92\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Stephanie flew 2,448 miles from Los Angeles to New York City. What is the number of miles Stephanie flew rounded to the nearest thousand?\nA. 2,000\nB. 2,400\nC. 2,500\nD. 3,000\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Use rounding to estimate the sum of 27.94 + 15.35 to the nearest tenth.\nA. 43.2\nB. 43.3\nC. 43.4\nD. 43.29\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "It takes a machine 12 minutes to fill 200 bottles of soda. At this rate, how many minutes will it take the machine to fill 500 bottles of soda?\nA. 25 minutes\nB. 28 minutes\nC. 30 minutes\nD. 40 minutes\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": " The Tibetan Book of the Dead is also known as which of the following?\nA. Bardo Thodol\nB. Bardo Ngawang\nC. Bardo Gyaltsen\nD. Bardo Chogye\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "world_religions"
+    },
+    {
+      "question": " In Buddhism, what are ordained women known as?\nA. Bhikshus\nB. Bhikshunis\nC. The Sangha\nD. Arhats\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "world_religions"
+    },
+    {
+      "question": " According to the Korean foundation myth, who transformed into a human in order to father Dangun?\nA. Hwanin\nB. Hwanung\nC. Joseon\nD. Yi\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "world_religions"
+    },
+    {
+      "question": "Find 4 over 7 + 2 over 7.\nA. 6 over 14\nB. 8 over 49\nC. 14 over 28\nD. 6 over 7\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": " Which is the main form of Buddhism in Sri Lanka?\nA. Theravada\nB. Mahayana\nC. Pure Land\nD. Zen\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "world_religions"
+    },
+    {
+      "question": "Solve the equation −47 = g + 24.\nA. −71\nB. −23\nC. 23\nD. 71\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Evaluate (c^2 − b^2)^2 + a^2 for a = 5, b = 3, and c = 2.\nA. 194\nB. 18\nC. 50\nD. 0\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "There are 72 students on the dance team, and 4 over 9 take tap lessons. How many students take tap lessons?\nA. 32\nB. 49\nC. 63\nD. 68\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "A hasty generalization is a fallacy of...\nA. Acceptable premises\nB. Unacceptable premises\nC. Deduction\nD. Acceptable but untrue premises\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "Including more than one claim in a proposition may lead to which of the following fallacies?\nA. Complex question\nB. Appeal to ignorance\nC. Compound proposition\nD. Extension\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "The circumference of a helium-filled balloon is measured for three different conditions: at room temperature, after being in a warm oven for 30 minutes, and after being in a freezer for 30 minutes. A student plotting the circumference cubed C^3 as a function of temperature T, should expect to find which of the following?\nA. a cubic relationship between C^3 and T\nB. an indirect relationship between C^3 and T\nC. an extrapolated temperature T where C^3 reaches zero\nD. a maximum C^3 as the temperature T increases\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "Of the cans of soup in Rolando’s cupboard, 1/2 are tomato and 2/5 are chicken noodle. What fraction of the cans of soup in Rolando’s cupboard are either tomato or chicken noodle?\nA. 7-Mar\nB. 5-Mar\nC. 10-Jul\nD. 10-Sep\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Which pair of expressions is equivalent for any variable value greater than zero?\nA. 3(x+2) and 3x+2\nB. 4d+ 2e and 8d+e\nC. f+f+f+g and 3fg\nD. b+b+3c and 2b+ 3c\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "The number pattern follows a skip-counting rule. 5, 20, 35, 50, 65... Which number pattern follows the same rule?\nA. 5, 20, 25, 30, 35...\nB. 13, 18, 23, 28, 33...\nC. 12, 27, 42, 57, 72...\nD. 15, 30, 40, 55, 65...\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Determine whether the polynomial in Z[x] satisfies an Eisenstein criterion for irreducibility over Q. x^2 - 12\nA. Yes, with p=2.\nB. Yes, with p=3.\nC. Yes, with p=5.\nD. No.\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "The black-or-white fallacy is another name for\nA. The fallacy of accident\nB. False dilemma\nC. Begging the question\nD. Circular reasoning\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "Which of the following describes the fallacy of appeal to tradition?\nA. reasoning that a claim must be true because it's been made so often\nB. reasoning that a claim must be true because a regular person believes it\nC. reasoning that a claim must be true because it's been believed in the past\nD. reasoning that a claim must be true because a lot of people believe it\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "Find the generator for the finite field Z_7.\nA. 1\nB. 2\nC. 3\nD. 4\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "Find the quotient of 5.04/0.7\nA. 0.72\nB. 0.702\nC. 10.0571\nD. 7.2\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Mr. Fuller wants to put fencing around his rectangular-shaped yard. The width of the yard is 55 feet and the lengthis 75 feet. How manyfeet of fencing does Mr. Fuller need?\nA. 130\nB. 260\nC. 3,905\nD. 4,125\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Which expression is another way to show 8 x 6?\nA. (24+4)+6\nB. (2+4)x6\nC. (2x4) + 6\nD. (2x4)x6\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Find the degree for the given field extension Q(sqrt(2), sqrt(3)) over Q.\nA. 0\nB. 4\nC. 2\nD. 6\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "Statement 1 | Every ideal in a ring is a subring of the ring. Statement 2 | Every subring of every ring is an ideal of the ring.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": " Which bodhisattva is known for conducting the souls of dead children to salvation?\nA. Guan-yin\nB. Kannon\nC. Ojizo-sama\nD. Amitabha\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "world_religions"
+    },
+    {
+      "question": "In a conditional syllogism, when the minor premise denies the antecedent\nA. no valid conclusion can be drawn\nB. the conclusion must affirm the consequent\nC. the conclusion must deny the consequent\nD. the conclusion must affirm the antecedent\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "Statement 1 | Any set of two vectors in R^2 is linearly independent. Statement 2 | If V = span(v1, ... , vk) and {v1, ... , vk} are linearly independent, then dim(V) = k.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "Marcus spent $3.25 to wash his car. If one quarter operates the car wash for 60 seconds, how long did it take him to wash his car?\nA. 10 minutes\nB. 13 minutes\nC. 16 minutes\nD. 32.5 minutes\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "A teacher has three packages of stickers. One package contains 56 stickers, another package contains 48 stickers, and the third package contains 58 stickers. If the teacher divides all the stickers equally among 27 students, how many stickers will each student receive?\nA. 6 stickers\nB. 9 stickers\nC. 54 stickers\nD. 81 stickers\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": " Who is the author of Admonitions for Women?\nA. Ban Zhao\nB. Laozi\nC. Menicus\nD. Liu Xiang\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "world_religions"
+    },
+    {
+      "question": "A man stands in an elevator as it begins to ascend. Does the normal force from the floor do work on the man?\nA. Yes, and the work done will be positive.\nB. Yes, and the work done will be negative.\nC. Yes, but the sign can’t be determined.\nD. No.\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "Some bakers make apple pies. They have 15 boxes of apples. Each box has 18 apples. They use 7 apples for each pie. What is the total number of apple pies that the bakers can make?\nA. 33\nB. 38\nC. 39\nD. 40\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Sheila has been given 5 minutes to solve 20 arithmetic problems. What is the minimum rate Sheila can work in order to finish in time?\nA. 1 problem per minute\nB. 2 problems per minute\nC. 4 problems per minute\nD. 5 problems per minute\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Which are the synoptic Gospels?\nA. Peter, John, Mark\nB. Matthew, Mark, John\nC. Matthew, Mark, Luke\nD. John, Luke, Mark\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "world_religions"
+    },
+    {
+      "question": "Lucy is counting by 2s. She starts with the number 2 and stops at the number 50. Which number would Lucy not count?\nA. 11\nB. 22\nC. 34\nD. 48\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "A sphere starts from rest atop a hill with a constant angle of inclination and is allowed to roll without slipping down the hill. What force provides the torque that causes the sphere to rotate?\nA. Static friction\nB. Kinetic friction\nC. The normal force of the hill on the sphere\nD. Gravity\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "Gary has 72 cows on his farm. He has 6 times as many cows as he has horses. The number sentence below can be used to find the number of horses, h, he has. 72 ÷ h = 6 How many horses, h, does Gary have?\nA. 12 horses\nB. 66 horses\nC. 78 horses\nD. 432 horses\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Which form of Buddhism focuses on social engagement that attracts lay participation?\nA. Zen Buddhism\nB. Chan Buddhism\nC. Humanistic Buddhism\nD. Pure Land Buddhism\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "world_religions"
+    },
+    {
+      "question": "Kate has a coin collection. She keeps 7 of the coins in a box, which is only 5% of her entire collection. What is the total number of coins in Kate’s coin collection?\nA. 12\nB. 14\nC. 120\nD. 140\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Statement 1 | Every group of order 42 has a normal subgroup of order 7. Statement 2 | Every group of order 42 has a normal subgroup of order 8.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "abstract_algebra"
+    }
+  ],
+  "val": [
+    {
+      "question": " Rome claimed that their bishop (pope) was the director successor of which leader?\nA. Peter\nB. Paul\nC. Jesus\nD. Matthew\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "world_religions"
+    },
+    {
+      "question": "An electric dipole consists of a pair of equal but opposite point charges of magnitude 4.0 nC separated by a distance of 2.0 cm. What is the electric field strength at the point midway between the charges?\nA. 0\nB. 9.0 × 10^4 N/C\nC. 1.8 × 10^5 N/C\nD. 7.2 × 10^5 N/C\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "Which two numbers both round to 1,500 when rounded to the nearest hundred?\nA. 1,399 and 1,599\nB. 1,449 and 1,549\nC. 1,457 and 1,547\nD. 1,489 and 1,589\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Statement 1 | R is a splitting field of some polynomial over Q. Statement 2 | There is a field with 60 elements.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "Which of the following describes the fallacy of appeal to spite?\nA. responding to an argument with an expression of derision instead of a counter argument\nB. arguing against a position based only on negative personal feelings toward the position\nC. arguing someone should do something only because that person dislikes someone else\nD. saying someone shouldn't do something because if he or she does it people won't like him or her\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "Arguing that someone couldn't have done something good because he is incapable of doing good commits the fallacy of\nA. Begging the question\nB. False dilemma\nC. Accident\nD. False dichotomy\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "During an isothermal expansion, a confined ideal gas does 150 J of work against its surroundings. Which of the following describes the heat transfer during this process?\nA. 150 J of heat was added to the gas.\nB. 150 J of heat was removed from the gas.\nC. 300 J of heat was added to the gas.\nD. 300 J of heat was removed from the gas.\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "Which of the following is the most appropriate unit for expressing the weight of a pencil?\nA. pounds\nB. ounces\nC. quarts\nD. pints\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "If A = {1, 2, 3} then relation S = {(1, 1), (2, 2)} is\nA. symmetric only\nB. anti-symmetric only\nC. both symmetric and anti-symmetric\nD. an equivalence relation\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "Find the characteristic of the ring Z_3 x Z_3.\nA. 0\nB. 3\nC. 12\nD. 30\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "The concomitant variation fallacy is\nA. attributing the cause of an event to a single cause when the cause is more complicated\nB. arguing that since two events happened at the same time, one event must have caused the other\nC. arguing that since one event preceded another event it must have caused the second event\nD. drawing a conclusion based on sign reasoning when there is not really a direct relationship between the alleged sign and the subject of the conclusion\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "logical_fallacies"
+    },
+    {
+      "question": "Let A and B be sets, f: A -> B and g: B -> A be functions such that for all a \\in A, g(f(a)) = a. Statement 1 | The function g must necessarily be injective. Statement 2 | The function g must necessarily be surjective.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "Statement 1 | If R is a ring and f(x) and g(x) are in R[x], then deg (f(x)+g(x)) = maximum (deg f(x), deg g(x)). Statement 2 | If F is a field then every ideal of F[x] is principal.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "D",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "An object carries a charge of –1 C. How many excess electrons does it contain?\nA. 6.25 × 10^18\nB. 8.00 × 10^18\nC. 1.60 × 10^19\nD. 3.20 × 10^19\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "Which is the best buy?\nA. 10 bars of soap for $23.20\nB. 16 bars of soap for $36.48\nC. 13 bars of soap for $29.51\nD. 12 bars of soap for $27.60\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "A sound wave with frequency f travels through air at speed v. With what speed will a sound wave with frequency 4f travel through the air?\nA. v/4\nB. v\nC. 2v\nD. 4v\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "What is a reasonable height for a doorway?\nA. 2 km\nB. 2 cm\nC. 2 m\nD. 2 mm\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Identify a solution for the equation x + 2.7 = 8.4 from the given numbers.\nA. 11.1\nB. 5.7\nC. 3.7\nD. 22.68\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "A bi-convex lens has a radius of curvature of magnitude 20 cm. Which of the following best describes the image formed of an object of height 2 cm placed 30 cm from the lens?\nA. Real, inverted, height = 1 cm\nB. Virtual, upright, height = 0.25 cm\nC. Real, upright, height = 1 cm\nD. Virtual, inverted, height = 0.25 cm\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "high_school_physics"
+    },
+    {
+      "question": "Lily is going to give away all the pieces of candy in a bag. She can give an equal number of pieces of candy to 5, 3, or 2 people. Which number of pieces of candy could be in Lily’s bag?\nA. 12\nB. 20\nC. 30\nD. 45\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": "Find the sum of the given polynomials in the given polynomial ring. f(x) = 4x - 5, g(x) = 2x^2 - 4x + 2 in Z_8[x].\nA. 2x^2 + 5\nB. 6x^2 + 4x + 6\nC. 0\nD. x^2 + 1\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "A",
+      "subject": "abstract_algebra"
+    },
+    {
+      "question": "Write 7 over 33 as a decimal.\nA. 0.021 repeating\nB. 0.21 Repeating\nC. 0.22 Repeating\nD. 0.2121\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    },
+    {
+      "question": " Which goddess is worshipped during the festival of Divali?\nA. Durga\nB. Sri Lakshmi\nC. Kali\nD. Mahavira\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "world_religions"
+    },
+    {
+      "question": " Icons are a main feature of which church?\nA. Anglican\nB. Catholic\nC. Orthodox\nD. Lutheran\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "C",
+      "subject": "world_religions"
+    },
+    {
+      "question": "Which number written in exponential notation is equivalent to 343?\nA. 3^7\nB. 7^3\nC. 7^49\nD. 294^49\nAnswer with ONLY the letter (A, B, C, or D).",
+      "answer": "B",
+      "subject": "elementary_mathematics"
+    }
+  ]
+}

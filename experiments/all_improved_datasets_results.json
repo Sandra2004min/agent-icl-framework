@@ -1,0 +1,558 @@
+[
+  {
+    "experiment": "GSM8K (Reflective)",
+    "dataset": "GSM8K",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 1.0,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "iterations": 1,
+    "elapsed_seconds": 129.1,
+    "score_history": [
+      1.0,
+      1.0
+    ],
+    "candidate_pool_size": 2,
+    "best_instruction": "You are a math problem solver. Solve the problem step by step. At the end, write your final numerical answer after '#### '. For example: #### 42"
+  },
+  {
+    "experiment": "GSM8K (FewShot-CoT)",
+    "dataset": "GSM8K",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 1.0,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "iterations": 1,
+    "elapsed_seconds": 109.4,
+    "score_history": [
+      1.0,
+      1.0
+    ],
+    "candidate_pool_size": 2,
+    "best_instruction": "You are a math problem solver. Solve the problem step by step. At the end, write your final numerical answer after '#### '. For example: #### 42"
+  },
+  {
+    "experiment": "GSM8K (Retrieval-v3)",
+    "dataset": "GSM8K",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 1.0,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "iterations": 1,
+    "elapsed_seconds": 108.5,
+    "score_history": [
+      1.0,
+      1.0
+    ],
+    "candidate_pool_size": 2,
+    "best_instruction": "You are a math problem solver. Solve the problem step by step. At the end, write your final numerical answer after '#### '. For example: #### 42"
+  },
+  {
+    "experiment": "Logic-Std (Reflective)",
+    "dataset": "Logic-Std",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.95,
+    "final_score": 0.9,
+    "best_score": 0.95,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 99.0,
+    "score_history": [
+      0.95,
+      0.95,
+      0.9
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "Logic-Std (FewShot-CoT)",
+    "dataset": "Logic-Std",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.95,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 5.26,
+    "iterations": 1,
+    "elapsed_seconds": 41.5,
+    "score_history": [
+      0.95,
+      1.0
+    ],
+    "candidate_pool_size": 2,
+    "best_instruction": "You are a helpful assistant. Answer the question.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: There are 5 people in a room. Each shakes hands with every other person exactly once. How many handshakes occur? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 10\n\n--- Example 2 ---\nQuestion: If today is Wednesday, what day will it be 100 days from now? Answer with ONLY the day name in lowercase.\nReasoning: No reasoning steps recorded\nAnswer: friday\n\n--- Example 3 ---\nQuestion: A farmer has 17 sheep. All but 9 die. How many sheep are left? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 9\n\n--- Example 4 ---\nQuestion: How many months have 28 days? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 12\n\n--- Example 5 ---\nQuestion: If you have a bowl with six apples and you take away four, how many do you have? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 4\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost in cents? Answer with ONLY the number.\nWrong Answer: 10\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: How many times can you subtract 5 from 25? Answer with ONLY the number.\nWrong Answer: 5\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "Logic-Std (Retrieval-v3)",
+    "dataset": "Logic-Std",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.95,
+    "final_score": 0.9,
+    "best_score": 0.95,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 76.2,
+    "score_history": [
+      0.95,
+      0.9,
+      0.9
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a helpful assistant. Answer the question."
+  },
+  {
+    "experiment": "MATH-Hard (Reflective)",
+    "dataset": "MATH-Hard",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 0.9,
+    "final_score": 0.9,
+    "best_score": 0.9,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 1009.1,
+    "score_history": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a math competition solver. Solve the problem step by step using rigorous mathematical reasoning. At the end, write your final numerical answer after '#### '. For example: #### 42"
+  },
+  {
+    "experiment": "MATH-Hard (FewShot-CoT)",
+    "dataset": "MATH-Hard",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 0.9,
+    "final_score": 0.9,
+    "best_score": 0.9,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 375.3,
+    "score_history": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a math competition solver. Solve the problem step by step using rigorous mathematical reasoning. At the end, write your final numerical answer after '#### '. For example: #### 42"
+  },
+  {
+    "experiment": "MATH-Hard (Retrieval-v3)",
+    "dataset": "MATH-Hard",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 20,
+    "val_size": 10,
+    "initial_score": 0.9,
+    "final_score": 0.9,
+    "best_score": 0.9,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 697.2,
+    "score_history": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a math competition solver. Solve the problem step by step using rigorous mathematical reasoning. At the end, write your final numerical answer after '#### '. For example: #### 42"
+  },
+  {
+    "experiment": "Logic-Hard (Reflective)",
+    "dataset": "Logic-Hard",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.5,
+    "final_score": 0.8,
+    "best_score": 0.85,
+    "improvement_pct": 70.0,
+    "iterations": 2,
+    "elapsed_seconds": 419.6,
+    "score_history": [
+      0.5,
+      0.85,
+      0.8
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully, but do not include any reasoning in your final answer. Output ONLY the exact requested answer in the specified format: if the question asks for a single word, output that word only; if a number, output only the digit(s); if a fraction, output in lowest terms (e.g., 3/8) with no extra text, no box, no markdown. Do not add explanations, context, or any additional characters. Your entire response must be just the answer."
+  },
+  {
+    "experiment": "Logic-Hard (FewShot-CoT)",
+    "dataset": "Logic-Hard",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.5,
+    "final_score": 0.5,
+    "best_score": 0.55,
+    "improvement_pct": 10.0,
+    "iterations": 2,
+    "elapsed_seconds": 131.0,
+    "score_history": [
+      0.5,
+      0.55,
+      0.5
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: In the Monty Hall problem, you pick door 1. The host opens door 3 (which has a goat). Should you switch to door 2 or stay with door 1 to maximize your chance of winning the car? Answer with ONLY 'switch' or 'stay'.\nReasoning: No reasoning steps recorded\nAnswer: switch\n\n--- Example 2 ---\nQuestion: You have 12 identical-looking coins, one of which is either heavier or lighter than the rest. Using a balance scale, what is the minimum number of weighings needed to identify the odd coin AND determine if it's heavier or lighter? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 3\n\n--- Example 3 ---\nQuestion: What is the next number: 1, 11, 21, 1211, 111221, ...? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 312211\n\n--- Example 4 ---\nQuestion: On an island, blue-eyed people must leave on the night they discover they have blue eyes. Everyone can see others' eyes but not their own. If there are 3 blue-eyed people and a visitor says 'I see someone with blue eyes', on which night do they leave? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 3\n\n--- Example 5 ---\nQuestion: You have 8 identical-looking balls. One is slightly heavier. Using a balance scale, what is the minimum number of weighings needed to find the heavy ball? Answer with ONLY the number.\nReasoning: No reasoning steps recorded\nAnswer: 2\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: You flip a fair coin 4 times. What is the probability of getting exactly 2 heads? Express as a fraction in lowest terms (e.g. 3/8).\nWrong Answer: We flip a fair coin 4 times.  \nThe total number of possible outcomes is \\(2^4 = 16\\).  \n\nThe number of ways to get exactly 2 heads in 4 flips is given by the binomial coefficient:  \n\\[\n\\binom{4}{2} = \\frac{4!}{2!2!} = 6\n\\]  \n\nSo the probability is:  \n\\[\n\\frac{6}{16} = \\frac{3}{8}\n\\]  \n\n\\boxed{\\frac{3}{8}}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: Alice, Bob, and Carol each wear a different color hat: red, blue, green. Alice says: 'I'm not wearing red.' Bob says: 'I'm not wearing blue.' Carol says: 'I'm not wearing red.' If exactly one person is lying, who is wearing the red hat? Answer with ONLY the name.\nWrong Answer: Bob\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "Logic-Hard (Retrieval-v3)",
+    "dataset": "Logic-Hard",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 20,
+    "val_size": 20,
+    "initial_score": 0.5,
+    "final_score": 0.4,
+    "best_score": 0.5,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 148.4,
+    "score_history": [
+      0.5,
+      0.35,
+      0.4
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a logic puzzle expert. Think step by step and reason carefully. Answer the question following the exact format requested."
+  },
+  {
+    "experiment": "Code-Fix (Reflective)",
+    "dataset": "Code-Fix",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 10,
+    "val_size": 5,
+    "initial_score": 0.8,
+    "final_score": 0.94,
+    "best_score": 0.94,
+    "improvement_pct": 17.5,
+    "iterations": 2,
+    "elapsed_seconds": 65.8,
+    "score_history": [
+      0.8,
+      0.94,
+      0.94
+    ],
+    "candidate_pool_size": 2,
+    "best_instruction": "You are an expert software engineer specializing in debugging. Identify the bug precisely and explain the fix concisely."
+  },
+  {
+    "experiment": "Code-Fix-Keyword (Reflective)",
+    "dataset": "Code-Fix-Keyword",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 10,
+    "val_size": 5,
+    "initial_score": 0.586,
+    "final_score": 0.714,
+    "best_score": 0.714,
+    "improvement_pct": 21.84,
+    "iterations": 2,
+    "elapsed_seconds": 52.6,
+    "score_history": [
+      0.586,
+      0.492,
+      0.714
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are an expert software engineer specializing in debugging. Identify the bug precisely and explain the fix concisely. \n\nCRITICAL FORMAT RULE: If the user explicitly requests a specific response format (e.g., 'Answer with ONLY the fix in one sentence'), you must obey that format exactly. Output only the requested content—no introductory phrases, no explanations, no extra words. For example, if asked for 'ONLY the fix in one sentence,' your entire response must be that single sentence containing the fix (e.g., 'Change `result = 0` to `result = 1`.'). Do not add any commentary, even if it seems helpful. Failure to follow format instructions will result in a score of 0."
+  },
+  {
+    "experiment": "Code-Hard (Reflective)",
+    "dataset": "Code-Hard",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 10,
+    "val_size": 5,
+    "initial_score": 0.7,
+    "final_score": 0.96,
+    "best_score": 0.96,
+    "improvement_pct": 37.14,
+    "iterations": 2,
+    "elapsed_seconds": 83.5,
+    "score_history": [
+      0.7,
+      0.6,
+      0.96
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are an expert software engineer specializing in debugging. Identify the bug precisely and explain the fix concisely. The answer must be a single sentence that: (a) names the exact code issue (e.g., incorrect return type, missing method call, wrong operator), (b) references the relevant code elements (e.g., function name, variable, line), and (c) states the minimal fix. Do not invent edge cases or bugs not shown in the provided code snippet. Base your analysis only on the code and the described bug scenario."
+  },
+  {
+    "experiment": "Code-Hard-Keyword (Reflective)",
+    "dataset": "Code-Hard-Keyword",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 10,
+    "val_size": 5,
+    "initial_score": 0.316,
+    "final_score": 0.432,
+    "best_score": 0.432,
+    "improvement_pct": 36.71,
+    "iterations": 2,
+    "elapsed_seconds": 51.7,
+    "score_history": [
+      0.316,
+      0.24,
+      0.432
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are an expert software engineer specializing in debugging. Identify the bug precisely and explain the fix concisely. When the user specifies 'Answer with ONLY the fix in one sentence', you must respond with exactly one sentence that states the bug and the fix, using the same level of detail and key terms as the provided answer. Do not add extra explanations, introductions, or formatting. Your response must match the expected answer in content and brevity."
+  },
+  {
+    "experiment": "HotpotQA-v2 (Reflective)",
+    "dataset": "HotpotQA-v2",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 50,
+    "val_size": 100,
+    "initial_score": 0.4571,
+    "final_score": 0.4201,
+    "best_score": 0.4571,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 297.1,
+    "score_history": [
+      0.4571,
+      0.4281,
+      0.4201
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a knowledgeable assistant. Answer the question concisely. Your answer should be as short as possible - typically a name, date, number, or a few words. Do NOT provide explanations."
+  },
+  {
+    "experiment": "HotpotQA-v2 (FewShot-CoT)",
+    "dataset": "HotpotQA-v2",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 50,
+    "val_size": 100,
+    "initial_score": 0.4593,
+    "final_score": 0.4131,
+    "best_score": 0.4593,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 258.7,
+    "score_history": [
+      0.4593,
+      0.4131,
+      0.4131
+    ],
+    "candidate_pool_size": 2,
+    "best_instruction": "You are a knowledgeable assistant. Answer the question concisely. Your answer should be as short as possible - typically a name, date, number, or a few words. Do NOT provide explanations."
+  },
+  {
+    "experiment": "HotpotQA-v2 (Retrieval-v3)",
+    "dataset": "HotpotQA-v2",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 50,
+    "val_size": 100,
+    "initial_score": 0.4593,
+    "final_score": 0.4593,
+    "best_score": 0.4593,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 263.3,
+    "score_history": [
+      0.4593,
+      0.4593,
+      0.4593
+    ],
+    "candidate_pool_size": 1,
+    "best_instruction": "You are a knowledgeable assistant. Answer the question concisely. Your answer should be as short as possible - typically a name, date, number, or a few words. Do NOT provide explanations."
+  },
+  {
+    "experiment": "HumanEval-v2 (Reflective)",
+    "dataset": "HumanEval-v2",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 40,
+    "val_size": 124,
+    "initial_score": 0.3871,
+    "final_score": 0.4919,
+    "best_score": 0.4919,
+    "improvement_pct": 27.08,
+    "iterations": 2,
+    "elapsed_seconds": 631.4,
+    "score_history": [
+      0.3871,
+      0.4758,
+      0.4919
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are an expert Python programmer. Complete the function implementation based on the docstring. Return ONLY the function body code (properly indented), without repeating the function signature, adding tests, or any explanation. Do NOT include markdown code blocks, backticks, or any surrounding text. The output must be raw Python code that can be directly inserted into the function body. Ensure your code is syntactically correct and does not contain any helper functions, imports, or extra definitions outside the function body. The code should be a valid indented block that would work if placed directly after the function signature."
+  },
+  {
+    "experiment": "HumanEval-v2 (FewShot-CoT)",
+    "dataset": "HumanEval-v2",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 40,
+    "val_size": 124,
+    "initial_score": 0.379,
+    "final_score": 0.7984,
+    "best_score": 0.7984,
+    "improvement_pct": 110.64,
+    "iterations": 2,
+    "elapsed_seconds": 665.6,
+    "score_history": [
+      0.379,
+      0.7258,
+      0.7984
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are an expert Python programmer. Complete the function implementation based on the docstring. Return ONLY the function body code (properly indented), without repeating the function signature, adding tests, or any explanation.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: {'task_id': 'HumanEval/28', 'prompt': 'from typing import List\\n\\n\\ndef concatenate(strings: List[str]) -> str:\\n    \"\"\" Concatenate list of strings into a single string\\n    >>> concatenate([])\\n    \\'\\'\\n    >>> concatenate([\\'a\\', \\'b\\', \\'c\\'])\\n    \\'abc\\'\\n    \"\"\"\\n', 'canonical_solution': \"    return ''.join(strings)\\n\", 'test': \"\\n\\nMETADATA = {\\n    'author': 'jt',\\n    'dataset': 'test'\\n}\\n\\n\\ndef check(candidate):\\n    assert candidate([]) == ''\\n    assert candidate(['x', 'y', 'z']) == 'xyz'\\n    assert candidate(['x', 'y', 'z', 'w', 'k']) == 'xyzwk'\\n\", 'entry_point': 'concatenate'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': \"return ''.join(strings)\", 'prompt': 'from typing import List\\n\\n\\ndef concatenate(strings: List[str]) -> str:\\n    \"\"\" Concatenate list of strings into a single string\\n    >>> concatenate([])\\n    \\'\\'\\n    >>> concatenate([\\'a\\', \\'b\\', \\'c\\'])\\n    \\'abc\\'\\n    \"\"\"\\n'}\n\n--- Example 2 ---\nQuestion: {'task_id': 'HumanEval/37', 'prompt': '\\n\\ndef sort_even(l: list):\\n    \"\"\"This function takes a list l and returns a list l\\' such that\\n    l\\' is identical to l in the odd indicies, while its values at the even indicies are equal\\n    to the values of the even indicies of l, but sorted.\\n    >>> sort_even([1, 2, 3])\\n    [1, 2, 3]\\n    >>> sort_even([5, 6, 3, 4])\\n    [3, 6, 5, 4]\\n    \"\"\"\\n', 'canonical_solution': '    evens = l[::2]\\n    odds = l[1::2]\\n    evens.sort()\\n    ans = []\\n    for e, o in zip(evens, odds):\\n        ans.extend([e, o])\\n    if len(evens) > len(odds):\\n        ans.append(evens[-1])\\n    return ans\\n', 'test': '\\n\\nMETADATA = {}\\n\\n\\ndef check(candidate):\\n    assert tuple(candidate([1, 2, 3])) == tuple([1, 2, 3])\\n    assert tuple(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])) == tuple([-10, 3, -5, 2, -3, 3, 5, 0, 9, 1, 123])\\n    assert tuple(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10])) == tuple([-12, 8, 3, 4, 5, 2, 12, 11, 23, -10])\\n\\n', 'entry_point': 'sort_even'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': '```python\\n    # Extract values at even indices\\n    evens = [l[i] for i in range(0, len(l), 2)]\\n    # Sort the even-indexed values\\n    evens.sort()\\n    # Build the result list\\n    result = []\\n    even_idx = 0\\n    for i in range(len(l)):\\n        if i % 2 == 0:\\n            result.append(evens[even_idx])\\n            even_idx += 1\\n        else:\\n            result.append(l[i])\\n    return result\\n```', 'prompt': '\\n\\ndef sort_even(l: list):\\n    \"\"\"This function takes a list l and returns a list l\\' such that\\n    l\\' is identical to l in the odd indicies, while its values at the even indicies are equal\\n    to the values of the even indicies of l, but sorted.\\n    >>> sort_even([1, 2, 3])\\n    [1, 2, 3]\\n    >>> sort_even([5, 6, 3, 4])\\n    [3, 6, 5, 4]\\n    \"\"\"\\n'}\n\n--- Example 3 ---\nQuestion: {'task_id': 'HumanEval/27', 'prompt': '\\n\\ndef flip_case(string: str) -> str:\\n    \"\"\" For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\\n    >>> flip_case(\\'Hello\\')\\n    \\'hELLO\\'\\n    \"\"\"\\n', 'canonical_solution': '    return string.swapcase()\\n', 'test': \"\\n\\nMETADATA = {\\n    'author': 'jt',\\n    'dataset': 'test'\\n}\\n\\n\\ndef check(candidate):\\n    assert candidate('') == ''\\n    assert candidate('Hello!') == 'hELLO!'\\n    assert candidate('These violent delights have violent ends') == 'tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS'\\n\", 'entry_point': 'flip_case'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': 'return string.swapcase()', 'prompt': '\\n\\ndef flip_case(string: str) -> str:\\n    \"\"\" For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\\n    >>> flip_case(\\'Hello\\')\\n    \\'hELLO\\'\\n    \"\"\"\\n'}\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: {'task_id': 'HumanEval/130', 'prompt': '\\ndef tri(n):\\n    \"\"\"Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in \\n    the last couple centuries. However, what people don\\'t know is Tribonacci sequence.\\n    Tribonacci sequence is defined by the recurrence:\\n    tri(1) = 3\\n    tri(n) = 1 + n / 2, if n is even.\\n    tri(n) =  tri(n - 1) + tri(n - 2) + tri(n + 1), if n is odd.\\n    For example:\\n    tri(2) = 1 + (2 / 2) = 2\\n    tri(4) = 3\\n    tri(3) = tri(2) + tri(1) + tri(4)\\n           = 2 + 3 + 3 = 8 \\n    You are given a non-negative integer number n, you have to a return a list of the \\n    first n + 1 numbers of the Tribonacci sequence.\\n    Examples:\\n    tri(3) = [1, 3, 2, 8]\\n    \"\"\"\\n', 'canonical_solution': '    if n == 0:\\n        return [1]\\n    my_tri = [1, 3]\\n    for i in range(2, n + 1):\\n        if i % 2 == 0:\\n            my_tri.append(i / 2 + 1)\\n        else:\\n            my_tri.append(my_tri[i - 1] + my_tri[i - 2] + (i + 3) / 2)\\n    return my_tri\\n', 'test': 'def check(candidate):\\n\\n    # Check some simple cases\\n    \\n    assert candidate(3) == [1, 3, 2.0, 8.0]\\n    assert candidate(4) == [1, 3, 2.0, 8.0, 3.0]\\n    assert candidate(5) == [1, 3, 2.0, 8.0, 3.0, 15.0]\\n    assert candidate(6) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0]\\n    assert candidate(7) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0]\\n    assert candidate(8) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0]\\n    assert candidate(9) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0]\\n    assert candidate(20) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0, 6.0, 48.0, 7.0, 63.0, 8.0, 80.0, 9.0, 99.0, 10.0, 120.0, 11.0]\\n\\n    # Check some edge cases that are easy to work out by hand.\\n    assert candidate(0) == [1]\\n    assert candidate(1) == [1, 3]\\n', 'entry_point': 'tri'}\nWrong Answer: {'code': 'Here’s the implementation for the function:\\n\\n```python\\ndef tri(n):\\n    if n < 0:\\n        return []\\n    seq = [0] * (n + 1)\\n    seq[0] = 1\\n    if n >= 1:\\n        seq[1] = 3\\n    for i in range(2, n + 1):\\n        if i % 2 == 0:\\n            seq[i] = 1 + i // 2\\n        else:\\n            seq[i] = seq[i - 1] + seq[i - 2] + seq[i + 1] if i + 1 <= n else 0\\n    return seq\\n```', 'prompt': '\\ndef tri(n):\\n    \"\"\"Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in \\n    the last couple centuries. However, what people don\\'t know is Tribonacci sequence.\\n    Tribonacci sequence is defined by the recurrence:\\n    tri(1) = 3\\n    tri(n) = 1 + n / 2, if n is even.\\n    tri(n) =  tri(n - 1) + tri(n - 2) + tri(n + 1), if n is odd.\\n    For example:\\n    tri(2) = 1 + (2 / 2) = 2\\n    tri(4) = 3\\n    tri(3) = tri(2) + tri(1) + tri(4)\\n           = 2 + 3 + 3 = 8 \\n    You are given a non-negative integer number n, you have to a return a list of the \\n    first n + 1 numbers of the Tribonacci sequence.\\n    Examples:\\n    tri(3) = [1, 3, 2, 8]\\n    \"\"\"\\n'}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: {'task_id': 'HumanEval/150', 'prompt': '\\ndef x_or_y(n, x, y):\\n    \"\"\"A simple program which should return the value of x if n is \\n    a prime number and should return the value of y otherwise.\\n\\n    Examples:\\n    for x_or_y(7, 34, 12) == 34\\n    for x_or_y(15, 8, 5) == 5\\n    \\n    \"\"\"\\n', 'canonical_solution': '    if n == 1:\\n        return y\\n    for i in range(2, n):\\n        if n % i == 0:\\n            return y\\n            break\\n    else:\\n        return x\\n', 'test': 'def check(candidate):\\n\\n    # Check some simple cases\\n    assert candidate(7, 34, 12) == 34\\n    assert candidate(15, 8, 5) == 5\\n    assert candidate(3, 33, 5212) == 33\\n    assert candidate(1259, 3, 52) == 3\\n    assert candidate(7919, -1, 12) == -1\\n    assert candidate(3609, 1245, 583) == 583\\n    assert candidate(91, 56, 129) == 129\\n    assert candidate(6, 34, 1234) == 1234\\n    \\n\\n    # Check some edge cases that are easy to work out by hand.\\n    assert candidate(1, 2, 0) == 0\\n    assert candidate(2, 2, 0) == 2\\n\\n', 'entry_point': 'x_or_y'}\nWrong Answer: {'code': 'if n < 2:\\n    return y\\nfor i in range(2, int(n**0.5) + 1):\\n    if n % i == 0:\\n        return y\\nreturn x', 'prompt': '\\ndef x_or_y(n, x, y):\\n    \"\"\"A simple program which should return the value of x if n is \\n    a prime number and should return the value of y otherwise.\\n\\n    Examples:\\n    for x_or_y(7, 34, 12) == 34\\n    for x_or_y(15, 8, 5) == 5\\n    \\n    \"\"\"\\n'}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: {'task_id': 'HumanEval/130', 'prompt': '\\ndef tri(n):\\n    \"\"\"Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in \\n    the last couple centuries. However, what people don\\'t know is Tribonacci sequence.\\n    Tribonacci sequence is defined by the recurrence:\\n    tri(1) = 3\\n    tri(n) = 1 + n / 2, if n is even.\\n    tri(n) =  tri(n - 1) + tri(n - 2) + tri(n + 1), if n is odd.\\n    For example:\\n    tri(2) = 1 + (2 / 2) = 2\\n    tri(4) = 3\\n    tri(3) = tri(2) + tri(1) + tri(4)\\n           = 2 + 3 + 3 = 8 \\n    You are given a non-negative integer number n, you have to a return a list of the \\n    first n + 1 numbers of the Tribonacci sequence.\\n    Examples:\\n    tri(3) = [1, 3, 2, 8]\\n    \"\"\"\\n', 'canonical_solution': '    if n == 0:\\n        return [1]\\n    my_tri = [1, 3]\\n    for i in range(2, n + 1):\\n        if i % 2 == 0:\\n            my_tri.append(i / 2 + 1)\\n        else:\\n            my_tri.append(my_tri[i - 1] + my_tri[i - 2] + (i + 3) / 2)\\n    return my_tri\\n', 'test': 'def check(candidate):\\n\\n    # Check some simple cases\\n    \\n    assert candidate(3) == [1, 3, 2.0, 8.0]\\n    assert candidate(4) == [1, 3, 2.0, 8.0, 3.0]\\n    assert candidate(5) == [1, 3, 2.0, 8.0, 3.0, 15.0]\\n    assert candidate(6) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0]\\n    assert candidate(7) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0]\\n    assert candidate(8) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0]\\n    assert candidate(9) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0]\\n    assert candidate(20) == [1, 3, 2.0, 8.0, 3.0, 15.0, 4.0, 24.0, 5.0, 35.0, 6.0, 48.0, 7.0, 63.0, 8.0, 80.0, 9.0, 99.0, 10.0, 120.0, 11.0]\\n\\n    # Check some edge cases that are easy to work out by hand.\\n    assert candidate(0) == [1]\\n    assert candidate(1) == [1, 3]\\n', 'entry_point': 'tri'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': 'if n == 0:\\n        return [1]\\n    my_tri = [1, 3]\\n    for i in range(2, n + 1):\\n        if i % 2 == 0:\\n            my_tri.append(1 + i / 2)\\n        else:\\n            my_tri.append(my_tri[i - 1] + my_tri[i - 2] + (i + 3) / 2)\\n    return my_tri', 'prompt': '\\ndef tri(n):\\n    \"\"\"Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in \\n    the last couple centuries. However, what people don\\'t know is Tribonacci sequence.\\n    Tribonacci sequence is defined by the recurrence:\\n    tri(1) = 3\\n    tri(n) = 1 + n / 2, if n is even.\\n    tri(n) =  tri(n - 1) + tri(n - 2) + tri(n + 1), if n is odd.\\n    For example:\\n    tri(2) = 1 + (2 / 2) = 2\\n    tri(4) = 3\\n    tri(3) = tri(2) + tri(1) + tri(4)\\n           = 2 + 3 + 3 = 8 \\n    You are given a non-negative integer number n, you have to a return a list of the \\n    first n + 1 numbers of the Tribonacci sequence.\\n    Examples:\\n    tri(3) = [1, 3, 2, 8]\\n    \"\"\"\\n'}\n\n--- Example 2 ---\nQuestion: {'task_id': 'HumanEval/150', 'prompt': '\\ndef x_or_y(n, x, y):\\n    \"\"\"A simple program which should return the value of x if n is \\n    a prime number and should return the value of y otherwise.\\n\\n    Examples:\\n    for x_or_y(7, 34, 12) == 34\\n    for x_or_y(15, 8, 5) == 5\\n    \\n    \"\"\"\\n', 'canonical_solution': '    if n == 1:\\n        return y\\n    for i in range(2, n):\\n        if n % i == 0:\\n            return y\\n            break\\n    else:\\n        return x\\n', 'test': 'def check(candidate):\\n\\n    # Check some simple cases\\n    assert candidate(7, 34, 12) == 34\\n    assert candidate(15, 8, 5) == 5\\n    assert candidate(3, 33, 5212) == 33\\n    assert candidate(1259, 3, 52) == 3\\n    assert candidate(7919, -1, 12) == -1\\n    assert candidate(3609, 1245, 583) == 583\\n    assert candidate(91, 56, 129) == 129\\n    assert candidate(6, 34, 1234) == 1234\\n    \\n\\n    # Check some edge cases that are easy to work out by hand.\\n    assert candidate(1, 2, 0) == 0\\n    assert candidate(2, 2, 0) == 2\\n\\n', 'entry_point': 'x_or_y'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': 'if n < 2:\\n        return y\\n    for i in range(2, int(n**0.5) + 1):\\n        if n % i == 0:\\n            return y\\n    return x', 'prompt': '\\ndef x_or_y(n, x, y):\\n    \"\"\"A simple program which should return the value of x if n is \\n    a prime number and should return the value of y otherwise.\\n\\n    Examples:\\n    for x_or_y(7, 34, 12) == 34\\n    for x_or_y(15, 8, 5) == 5\\n    \\n    \"\"\"\\n'}\n\n--- Example 3 ---\nQuestion: {'task_id': 'HumanEval/28', 'prompt': 'from typing import List\\n\\n\\ndef concatenate(strings: List[str]) -> str:\\n    \"\"\" Concatenate list of strings into a single string\\n    >>> concatenate([])\\n    \\'\\'\\n    >>> concatenate([\\'a\\', \\'b\\', \\'c\\'])\\n    \\'abc\\'\\n    \"\"\"\\n', 'canonical_solution': \"    return ''.join(strings)\\n\", 'test': \"\\n\\nMETADATA = {\\n    'author': 'jt',\\n    'dataset': 'test'\\n}\\n\\n\\ndef check(candidate):\\n    assert candidate([]) == ''\\n    assert candidate(['x', 'y', 'z']) == 'xyz'\\n    assert candidate(['x', 'y', 'z', 'w', 'k']) == 'xyzwk'\\n\", 'entry_point': 'concatenate'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': \"    return ''.join(strings)\", 'prompt': 'from typing import List\\n\\n\\ndef concatenate(strings: List[str]) -> str:\\n    \"\"\" Concatenate list of strings into a single string\\n    >>> concatenate([])\\n    \\'\\'\\n    >>> concatenate([\\'a\\', \\'b\\', \\'c\\'])\\n    \\'abc\\'\\n    \"\"\"\\n'}\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: {'task_id': 'HumanEval/102', 'prompt': '\\ndef choose_num(x, y):\\n    \"\"\"This function takes two positive numbers x and y and returns the\\n    biggest even integer number that is in the range [x, y] inclusive. If \\n    there\\'s no such number, then the function should return -1.\\n\\n    For example:\\n    choose_num(12, 15) = 14\\n    choose_num(13, 12) = -1\\n    \"\"\"\\n', 'canonical_solution': '    if x > y:\\n        return -1\\n    if y % 2 == 0:\\n        return y\\n    if x == y:\\n        return -1\\n    return y - 1\\n', 'test': 'def check(candidate):\\n\\n    # Check some simple cases\\n    assert candidate(12, 15) == 14\\n    assert candidate(13, 12) == -1\\n    assert candidate(33, 12354) == 12354\\n    assert candidate(5234, 5233) == -1\\n    assert candidate(6, 29) == 28\\n    assert candidate(27, 10) == -1\\n\\n    # Check some edge cases that are easy to work out by hand.\\n    assert candidate(7, 7) == -1\\n    assert candidate(546, 546) == 546\\n\\n', 'entry_point': 'choose_num'}\nWrong Answer: {'code': 'if y < x:\\n    return -1\\nif y % 2 == 0:\\n    return y\\nelif y - 1 >= x:\\n    return y - 1\\nelse:\\n    return -1', 'prompt': '\\ndef choose_num(x, y):\\n    \"\"\"This function takes two positive numbers x and y and returns the\\n    biggest even integer number that is in the range [x, y] inclusive. If \\n    there\\'s no such number, then the function should return -1.\\n\\n    For example:\\n    choose_num(12, 15) = 14\\n    choose_num(13, 12) = -1\\n    \"\"\"\\n'}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: {'task_id': 'HumanEval/47', 'prompt': '\\n\\ndef median(l: list):\\n    \"\"\"Return median of elements in the list l.\\n    >>> median([3, 1, 2, 4, 5])\\n    3\\n    >>> median([-10, 4, 6, 1000, 10, 20])\\n    15.0\\n    \"\"\"\\n', 'canonical_solution': '    l = sorted(l)\\n    if len(l) % 2 == 1:\\n        return l[len(l) // 2]\\n    else:\\n        return (l[len(l) // 2 - 1] + l[len(l) // 2]) / 2.0\\n', 'test': '\\n\\nMETADATA = {}\\n\\n\\ndef check(candidate):\\n    assert candidate([3, 1, 2, 4, 5]) == 3\\n    assert candidate([-10, 4, 6, 1000, 10, 20]) == 8.0\\n    assert candidate([5]) == 5\\n    assert candidate([6, 5]) == 5.5\\n    assert candidate([8, 1, 3, 9, 9, 2, 7]) == 7 \\n\\n', 'entry_point': 'median'}\nWrong Answer: {'code': 'l.sort()\\nn = len(l)\\nif n % 2 == 1:\\n    return l[n // 2]\\nelse:\\n    return (l[n // 2 - 1] + l[n // 2]) / 2', 'prompt': '\\n\\ndef median(l: list):\\n    \"\"\"Return median of elements in the list l.\\n    >>> median([3, 1, 2, 4, 5])\\n    3\\n    >>> median([-10, 4, 6, 1000, 10, 20])\\n    15.0\\n    \"\"\"\\n'}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "HumanEval-v2 (Retrieval-v3)",
+    "dataset": "HumanEval-v2",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 40,
+    "val_size": 124,
+    "initial_score": 0.3871,
+    "final_score": 0.5645,
+    "best_score": 0.6935,
+    "improvement_pct": 79.17,
+    "iterations": 2,
+    "elapsed_seconds": 676.9,
+    "score_history": [
+      0.3871,
+      0.6935,
+      0.5645
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "## Task\nInput: {'task_id': 'HumanEval/130', 'prompt': '\\ndef tri(n):\\n    \"\"\"Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in \\n    the last couple centuries. However, what people don\\'t know is Tribonacci sequence.\\n    Tribonacci sequence is defined by the recurrence:\\n    tri(1) = 3\\n    tri(n) = 1 + n / 2, if n is even.\\n    tri(n) =  tri(n - 1) + tri(n - 2) + tri(n + 1), if n is odd.\\n    For example:\\n    tri(2) = 1 + (2 / 2) = 2\\n    tri(4) = 3\\n    tri(3) = tri(2) + tri(1) + tri(4)\\n           = 2 + 3 +...\n\n## System\nYou are an expert Python programmer. Complete the function implementation based on the docstring. Return ONLY the function body code (properly indented), without repeating the function signature, adding tests, or any explanation.\n\n## Plan\n- 1. Use only relevant retrieved knowledge.\n* 2. Apply learned rules silently.\n- 3. Return the final answer in the requested format.\n\n## Relevant Knowledge\n- [rule, confidence=0.70] Verify the prompt includes all necessary imports, type hints, and example test cases to match the expected task format.\n- [rule, confidence=0.70] Ensure the prompt contains a fully defined function body with correct indentation and no missing closing brackets or parentheses.\n- [rule, confidence=0.70] Always include complete function signatures and docstrings without truncating the prompt text to avoid syntax errors.\n\n## Examples\n- [success, score=1.00] Input: {'task_id': 'HumanEval/28', 'prompt': 'from typing import List\\n\\n\\ndef concatenate(strings: List[str]) -> str:\\n    \"\"\" Concatenate list of strings into a single string\\n    >>> concatenate([])\\n    \\'\\'\\n    >>> concatenate([\\'a\\', \\'b\\', \\'c\\'])\\n    \\'abc\\'\\n    \"\"\"\\n', 'canonical_solution': \"    return ''.join(strings)\\n\", 'test': \"\\n\\nMETADATA = {\\n    'author': 'jt',\\n    'dataset': 'test'\\n}\\n\\n\\ndef check(candidate):\\n    assert candidate([]) == ''\\n...\n\nApply the relevant knowledge above only when it matches the current question. Do not copy examples or explanations into the final answer."
+  },
+  {
+    "experiment": "MMLU-v2 (Reflective)",
+    "dataset": "MMLU-v2",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 50,
+    "val_size": 200,
+    "initial_score": 0.865,
+    "final_score": 0.835,
+    "best_score": 0.865,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 396.6,
+    "score_history": [
+      0.865,
+      0.84,
+      0.835
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a knowledgeable expert. Read the question and the four options carefully. Answer with ONLY the letter of the correct option (A, B, C, or D). Do not include any explanation."
+  },
+  {
+    "experiment": "MMLU-v2 (FewShot-CoT)",
+    "dataset": "MMLU-v2",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 50,
+    "val_size": 200,
+    "initial_score": 0.865,
+    "final_score": 0.87,
+    "best_score": 0.87,
+    "improvement_pct": 0.58,
+    "iterations": 2,
+    "elapsed_seconds": 429.6,
+    "score_history": [
+      0.865,
+      0.865,
+      0.87
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a knowledgeable expert. Read the question and the four options carefully. Answer with ONLY the letter of the correct option (A, B, C, or D). Do not include any explanation.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: Find the product of 5 • (−9).\nA. 14\nB. −4\nC. 45\nD. −45\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: D\n\n--- Example 2 ---\nQuestion: If A = {1, 2, 3} then relation S = {(1, 1), (2, 2)} is\nA. symmetric only\nB. anti-symmetric only\nC. both symmetric and anti-symmetric\nD. an equivalence relation\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: C\n\n--- Example 3 ---\nQuestion: Fei Yen’s dog eats 8 ounces of dog food each day. Fei Yen bought a 28-pound bag of dog food. How many 8-ounce servings are in a 28-pound bag of dog food?\nA. 14\nB. 56\nC. 224\nD. 448\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: B\n\n--- Example 4 ---\nQuestion:  When was the first Buddhist temple constructed in Japan?\nA. 325 CE\nB. 119 CE\nC. 451 CE\nD. 596 CE\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: D\n\n--- Example 5 ---\nQuestion: Marguerite earned a score between 75 and 89 on all of her previous spelling tests. She earned a score of 100 on her next test. Which of the following statements is true?\nA. The mode will increase.\nB. The mean will increase.\nC. The mean will decrease.\nD. The median will decrease.\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: B\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: The complex proposition fallacy involves\nA. including more than one claim in the proposition and treating proof for one claim as proof for all the claims.\nB. asking a question that includes either an unproven assumption or more than one question, thus making a straightforward yes or no answer meaningless.\nC. arguing that a claim must be true because there is no evidence that it is false.\nD. arguing something is inferior just because it doesn't do something it was never intended to do.\nAnswer with ONLY the letter (A, B, C, or D).\nWrong Answer: B\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: Statement 1 | A ring homomorphism is one to one if and only if the kernel is {0}. Statement 2 | Q is an ideal in R.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer with ONLY the letter (A, B, C, or D).\nWrong Answer: C\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: Find the product of 5 • (−9).\nA. 14\nB. −4\nC. 45\nD. −45\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: D\n\n--- Example 2 ---\nQuestion: If A = {1, 2, 3} then relation S = {(1, 1), (2, 2)} is\nA. symmetric only\nB. anti-symmetric only\nC. both symmetric and anti-symmetric\nD. an equivalence relation\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: C\n\n--- Example 3 ---\nQuestion: Fei Yen’s dog eats 8 ounces of dog food each day. Fei Yen bought a 28-pound bag of dog food. How many 8-ounce servings are in a 28-pound bag of dog food?\nA. 14\nB. 56\nC. 224\nD. 448\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: B\n\n--- Example 4 ---\nQuestion:  When was the first Buddhist temple constructed in Japan?\nA. 325 CE\nB. 119 CE\nC. 451 CE\nD. 596 CE\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: D\n\n--- Example 5 ---\nQuestion: Marguerite earned a score between 75 and 89 on all of her previous spelling tests. She earned a score of 100 on her next test. Which of the following statements is true?\nA. The mode will increase.\nB. The mean will increase.\nC. The mean will decrease.\nD. The median will decrease.\nAnswer with ONLY the letter (A, B, C, or D).\nReasoning: No reasoning steps recorded\nAnswer: B\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: Statement 1 | A ring homomorphism is one to one if and only if the kernel is {0}. Statement 2 | Q is an ideal in R.\nA. True, True\nB. False, False\nC. True, False\nD. False, True\nAnswer with ONLY the letter (A, B, C, or D).\nWrong Answer: C\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: \" _Ad novitatem_ \" is a specific kind of fallacy of\nA. Division\nB. False sign\nC. False cause\nD. Hasty Generalization\nAnswer with ONLY the letter (A, B, C, or D).\nWrong Answer: C\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "MMLU-v2 (Retrieval-v3)",
+    "dataset": "MMLU-v2",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 50,
+    "val_size": 200,
+    "initial_score": 0.865,
+    "final_score": 0.87,
+    "best_score": 0.87,
+    "improvement_pct": 0.58,
+    "iterations": 2,
+    "elapsed_seconds": 401.9,
+    "score_history": [
+      0.865,
+      0.87,
+      0.87
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "## Task\nInput: The complex proposition fallacy involves\nA. including more than one claim in the proposition and treating proof for one claim as proof for all the claims.\nB. asking a question that includes either an unproven assumption or more than one question, thus making a straightforward yes or no answer meaningless.\nC. arguing that a claim must be true because there is no evidence that it is false.\nD. arguing something is inferior just because it doesn't do something it was never intended to do.\nAnswer with ONLY the letter (A, B, C, or...\n\n## System\nYou are a knowledgeable expert. Read the question and the four options carefully. Answer with ONLY the letter of the correct option (A, B, C, or D). Do not include any explanation.\n\n## Plan\n- 1. Use only relevant retrieved knowledge.\n* 2. Apply learned rules silently.\n- 3. Return the final answer in the requested format.\n\n## Relevant Knowledge\n- [example, confidence=0.90] Example 1:\n  trajectory_id: 9c9efc58-64bb-48f7-842c-710224e7af61\n  input_data: {'question': 'Find the product of 5 • (−9).\\nA. 14\\nB. −4\\nC. 45\\nD. −45\\nAnswer with ONLY the letter (A, B, C, or D).', 'answer': 'D', 'subject': 'elementary_mathematics'}\n  output_data: {'answer': 'D'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reasoning steps recorded\n  feedback: Execution successful\n  metadata: {}\n\nExample 2:\n  trajectory_id: aa15e029-e780-4b15-bb59-bbfce8719748\n  input_data: {'question': 'If A = {1, 2, 3} then relation S = {(1, 1), (2, 2)} is\\nA. symmetric only\\nB. anti-symmetric only\\nC. both symmetric and anti-symmetric\\nD. an equivalence relation\\nAnswer with ONLY the letter (A, B, C, or D).', 'answer': 'C', 'subject': 'abstract_algebra'}\n  output_data: {'answer': 'C'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reasoning steps recorded\n  feedback: Execution successful\n  metadata: {}\n\nExample 3:\n  trajectory_id: 6c22bafb-0de2-401d-b915-afa43da0b0a8\n  input_data: {'question': 'Fei Yen’s dog eats 8 ounces of dog food each day. Fei Yen bought a 28-pound bag of dog food. How many 8-ounce servings are in a 28-pound bag of dog food?\\nA. 14\\nB. 56\\nC. 224\\nD. 448\\nAnswer with ONLY the letter (A, B, C, or D).', 'answer': 'B', 'subject': 'elementary_mathematics'}\n  output_data: {'answer': 'B'}\n  score: 1.0\n  is_failure: False\n  error_patterns: []\n  reasoning_summary: No reasoning ste...\n\n## Examples\n- [success, score=1.00] Input: {'question': 'Find the product of 5 • (−9).\\nA. 14\\nB. −4\\nC. 45\\nD. −45\\nAnswer with ONLY the letter (A, B, C, or D).', 'answer': 'D', 'subject': 'elementary_mathematics'} Output: {'answer': 'D'} Feedback: Execution successful\n\nApply the relevant knowledge above only when it matches the current question. Do not copy examples or explanations into the final answer."
+  },
+  {
+    "experiment": "BBH-small (Reflective)",
+    "dataset": "BBH-small",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.6,
+    "final_score": 0.68,
+    "best_score": 0.68,
+    "improvement_pct": 13.33,
+    "iterations": 2,
+    "elapsed_seconds": 202.0,
+    "score_history": [
+      0.6,
+      0.64,
+      0.68
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a careful reasoner. Before answering, reason step-by-step internally. Break down the problem, perform any necessary calculations, and verify your reasoning. Pay special attention to: \n- For logical deduction problems: draw a clear ordering or use systematic elimination. \n- For boolean expressions: apply operator precedence (not > and > or) and evaluate stepwise. \n- For navigation tasks: track net displacement or direction changes precisely. \n- For date problems: correctly handle month boundaries and year rollovers. \nThen, provide your final answer in the required format: \n- If the question has options like (A), (B), (C)..., answer with ONLY the option label in parentheses, e.g. (A) or (B). \n- If the question asks for True/False or Yes/No, answer with ONLY that word. \nDo NOT include any explanation or reasoning in your output. If you are unsure, double-check your reasoning before outputting."
+  },
+  {
+    "experiment": "BBH-small (FewShot-CoT)",
+    "dataset": "BBH-small",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.6,
+    "final_score": 0.56,
+    "best_score": 0.68,
+    "improvement_pct": 13.33,
+    "iterations": 2,
+    "elapsed_seconds": 131.3,
+    "score_history": [
+      0.6,
+      0.68,
+      0.56
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a careful reasoner. Read the question and options, then provide your final answer. If the question has options like (A), (B), (C)..., you MUST answer with ONLY the option label in parentheses, e.g. (A) or (B). If the question asks for True/False or Yes/No, answer with ONLY that word. Do NOT include any explanation or reasoning in your output.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. In a golf tournament, there were five golfers: Amy, Mel, Rob, Joe, and Ada. Joe finished second. Joe finished below Amy. Mel finished second-to-last. Ada finished last.\nOptions:\n(A) Amy finished first\n(B) Mel finished first\n(C) Rob finished first\n(D) Joe finished first\n(E) Ada finished first\nReasoning: No reasoning steps recorded\nAnswer: (A)\n\n--- Example 2 ---\nQuestion: If you follow these instructions, do you return to the starting point? Take 8 steps. Turn left. Take 9 steps. Take 7 steps. Turn around.\nOptions:\n- Yes\n- No\nReasoning: No reasoning steps recorded\nAnswer: No\n\n--- Example 3 ---\nQuestion: The deadline is Jun 1, 2021, which is 2 days away from now. What is the date 10 days ago in MM/DD/YYYY?\nOptions:\n(A) 04/29/2021\n(B) 05/21/2021\n(C) 04/06/2021\n(D) 06/24/2021\n(E) 05/20/2021\nReasoning: No reasoning steps recorded\nAnswer: (E)\n\n--- Example 4 ---\nQuestion: How would a typical person answer each of the following questions about causation?\nTom works for a demolition company, and today he is demolishing a building by implosion. The building will implode automatically at 5:00 PM if either the safety switch is off or knob A is switched on. At 4:00 PM, the safety switch is off, and knob A is off. At that time, Tom checks to see if knob A is on, and he sees that it's off. So, he changes the position of knob A to the on position. Because the building will implode if either the safety switch is off or knob A is switched on, the building implodes at 5:00 PM. Did the building implode because Tom changed the position of knob A?\nOptions:\n- Yes\n- No\nReasoning: No reasoning steps recorded\nAnswer: No\n\n--- Example 5 ---\nQuestion: not ( True ) and ( False ) is\nReasoning: No reasoning steps recorded\nAnswer: (False)\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: The following paragraphs each describe a set of five objects arranged in a fixed order. The statements are logically consistent within each paragraph. In a golf tournament, there were five golfers: Dan, Ana, Eli, Mya, and Amy. Amy finished above Eli. Ana finished above Amy. Mya finished below Eli. Dan finished last.\nOptions:\n(A) Dan finished third\n(B) Ana finished third\n(C) Eli finished third\n(D) Mya finished third\n(E) Amy finished third\nWrong Answer: (E)\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: If you follow these instructions, do you return to the starting point? Turn left. Turn right. Take 5 steps. Take 4 steps. Turn around. Take 9 steps.\nOptions:\n- Yes\n- No\nWrong Answer: No\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples."
+  },
+  {
+    "experiment": "BBH-small (Retrieval-v3)",
+    "dataset": "BBH-small",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.6,
+    "final_score": 0.6,
+    "best_score": 0.6,
+    "improvement_pct": 0.0,
+    "iterations": 2,
+    "elapsed_seconds": 127.0,
+    "score_history": [
+      0.6,
+      0.52,
+      0.6
+    ],
+    "candidate_pool_size": 3,
+    "best_instruction": "You are a careful reasoner. Read the question and options, then provide your final answer. If the question has options like (A), (B), (C)..., you MUST answer with ONLY the option label in parentheses, e.g. (A) or (B). If the question asks for True/False or Yes/No, answer with ONLY that word. Do NOT include any explanation or reasoning in your output."
+  }
+]

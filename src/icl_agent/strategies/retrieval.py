@@ -15,6 +15,7 @@ v3 改进 (修复灾难性退化问题):
 from typing import List, Dict, Any
 from .base import LearningStrategy
 from ..core.context import ContextData
+from ..core.context_builder import ContextBudget, ContextBuilder
 from ..core.knowledge import KnowledgeExtractor, KnowledgeType
 
 
@@ -39,6 +40,8 @@ class RetrievalLearningStrategy(LearningStrategy):
         max_guidelines_chars: int = 1500,
         noise_threshold: float = 0.7,
         decay_rate: float = 0.15,
+        use_context_builder: bool = True,
+        context_budget: ContextBudget = None,
     ):
         """
         Args:
@@ -50,6 +53,8 @@ class RetrievalLearningStrategy(LearningStrategy):
             max_guidelines_chars: guidelines 文本最大字符数
             noise_threshold: 失败率熔断阈值，超过则跳过知识提取
             decay_rate: 每轮未改进时知识置信度衰减量
+            use_context_builder: 是否使用 ContextBuilder 控制知识注入
+            context_budget: ContextBuilder 使用的字符预算
         """
         super().__init__(name="RetrievalLearning")
         self.top_k = top_k
@@ -60,6 +65,18 @@ class RetrievalLearningStrategy(LearningStrategy):
         self.max_guidelines_chars = max_guidelines_chars
         self.noise_threshold = noise_threshold
         self.decay_rate = decay_rate
+        self.use_context_builder = use_context_builder
+        self.context_builder = ContextBuilder(
+            context_budget or ContextBudget(
+                total_chars=max_guidelines_chars + 1200,
+                system_chars=900,
+                knowledge_chars=max_guidelines_chars,
+                memory_chars=0,
+                examples_chars=500,
+                plan_chars=300,
+            )
+        )
+        self.last_context_package = None
         # 保存原始提示词，防止每轮累加膨胀
         self._base_prompt = None
         # 跟踪上一轮分数，用于判断知识是否有效
@@ -102,9 +119,12 @@ class RetrievalLearningStrategy(LearningStrategy):
 
         # 3. 从知识库检索（带置信度过滤）
         knowledge_base = knowledge_extractor.get_knowledge_base()
-        qualified = knowledge_base.filter_by_confidence(self.min_confidence)
-        qualified.sort(key=lambda x: x.confidence, reverse=True)
-        top_knowledge = qualified[:self.top_k]
+        retrieval_query = self._build_retrieval_query(contexts, failed_contexts)
+        top_knowledge = knowledge_base.retrieve(
+            retrieval_query,
+            k=self.top_k,
+            min_confidence=self.min_confidence,
+        )
 
         # 4. 保守回退: 无合格知识时返回原始 prompt
         if not top_knowledge:
@@ -117,23 +137,100 @@ class RetrievalLearningStrategy(LearningStrategy):
         self._last_used_knowledge_ids = [k.knowledge_id for k in top_knowledge]
 
         # 5. 格式化为可操作的指导建议（带长度限制）
-        guidelines = self._format_as_guidelines(top_knowledge)
-        if len(guidelines) > self.max_guidelines_chars:
-            guidelines = guidelines[:self.max_guidelines_chars].rsplit('\n', 1)[0]
-
-        # 6. 基于原始提示词拼接（不在上一轮结果上累加）
         new_config = current_config.copy()
-
-        enhanced_prompt = (
-            f"{self._base_prompt}\n\n"
-            f"Important guidelines learned from past experience:\n\n"
-            f"{guidelines}\n\n"
-            f"Apply these guidelines when answering."
-        )
+        if self.use_context_builder:
+            enhanced_prompt = self._build_context_enhanced_prompt(
+                top_knowledge=top_knowledge,
+                contexts=contexts,
+                failed_contexts=failed_contexts,
+            )
+        else:
+            guidelines = self._format_as_guidelines(top_knowledge)
+            if len(guidelines) > self.max_guidelines_chars:
+                guidelines = guidelines[:self.max_guidelines_chars].rsplit('\n', 1)[0]
+            enhanced_prompt = (
+                f"{self._base_prompt}\n\n"
+                f"Important guidelines learned from past experience:\n\n"
+                f"{guidelines}\n\n"
+                f"Apply these guidelines when answering."
+            )
 
         new_config["system_prompt"] = enhanced_prompt
 
         return new_config
+
+    def _build_context_enhanced_prompt(
+        self,
+        top_knowledge,
+        contexts: List[ContextData],
+        failed_contexts: List[ContextData],
+    ) -> str:
+        """Use ContextBuilder to control retrieved knowledge injection."""
+        task = self._build_retrieval_query(contexts, failed_contexts)
+        package = self.context_builder.build(
+            task=task,
+            system_prompt=self._base_prompt,
+            plan=[
+                "Use only relevant retrieved knowledge.",
+                "Apply learned rules silently.",
+                "Return the final answer in the requested format.",
+            ],
+            current_subgoal="Apply learned rules silently.",
+            knowledge_items=top_knowledge,
+            examples=self._select_context_examples(contexts, failed_contexts),
+        )
+        self.last_context_package = package
+        prompt = package.to_prompt()
+        if not prompt:
+            return self._base_prompt
+        return (
+            f"{prompt}\n\n"
+            "Apply the relevant knowledge above only when it matches the current question. "
+            "Do not copy examples or explanations into the final answer."
+        )
+
+    def _select_context_examples(
+        self,
+        contexts: List[ContextData],
+        failed_contexts: List[ContextData],
+    ) -> List[ContextData]:
+        """Choose a small mix of failures and successes for the context package."""
+        successful = [
+            ctx for ctx in contexts
+            if not ctx.is_failure and ctx.score > 0.8
+        ]
+        return failed_contexts[:2] + successful[:2]
+
+    def _build_retrieval_query(
+        self,
+        contexts: List[ContextData],
+        failed_contexts: List[ContextData],
+    ) -> str:
+        """Build a compact query that represents the current optimization need."""
+        selected_contexts = failed_contexts[:5] if failed_contexts else contexts[:5]
+        query_parts = []
+
+        for ctx in selected_contexts:
+            input_text = (
+                ctx.input_data.get("question", str(ctx.input_data))
+                if isinstance(ctx.input_data, dict)
+                else str(ctx.input_data)
+            )
+            output_text = (
+                ctx.output_data.get("answer", str(ctx.output_data))
+                if isinstance(ctx.output_data, dict)
+                else str(ctx.output_data)
+            )
+            query_parts.append(f"Input: {input_text}")
+            query_parts.append(f"Output: {output_text}")
+            if ctx.feedback:
+                query_parts.append(f"Feedback: {ctx.feedback}")
+            if ctx.error_patterns:
+                query_parts.append(f"Errors: {' '.join(ctx.error_patterns)}")
+            if ctx.reasoning_summary:
+                query_parts.append(f"Reasoning: {ctx.reasoning_summary}")
+
+        return "\n".join(query_parts) if query_parts else self._base_prompt or ""
 
     def _compute_avg_score(self, contexts: List[ContextData]) -> float:
         """计算当前轮次的平均分数"""
@@ -174,7 +271,10 @@ class RetrievalLearningStrategy(LearningStrategy):
             return
 
         # 按置信度排序，保留 top max_knowledge_items
-        items.sort(key=lambda x: x.confidence, reverse=True)
+        items.sort(
+            key=lambda x: (x.confidence, x.success_rate, x.importance),
+            reverse=True
+        )
         kept = items[:self.max_knowledge_items]
 
         # 重建知识库

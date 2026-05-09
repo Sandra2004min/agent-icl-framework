@@ -16,6 +16,7 @@ import json
 from .trajectory import Trajectory, TrajectoryBatch, TrajectoryCapture
 from .context import ContextAnalyzer, ContextData
 from .knowledge import KnowledgeExtractor, Knowledge, KnowledgeBase
+from .candidate import PromptCandidate, PromptCandidatePool
 
 
 @dataclass
@@ -48,6 +49,7 @@ class OptimizationResult:
 
     # 知识库
     knowledge_base: Optional[KnowledgeBase] = None
+    candidate_pool: List[PromptCandidate] = field(default_factory=list)
 
     # 元数据
     metadata: Dict[str, Any] = field(default_factory=dict)
@@ -66,6 +68,8 @@ class OptimizationResult:
             "best_agent_config": self.best_agent_config,
             "best_instruction": self.best_instruction,
             "score_history": self.score_history,
+            "iteration_logs": self.iteration_logs,
+            "candidate_pool": [candidate.to_dict() for candidate in self.candidate_pool],
             "metadata": self.metadata,
         }
 
@@ -91,7 +95,8 @@ class AgentOptimizer:
         max_iterations: int = 10,
         min_improvement: float = 0.01,
         failure_threshold: float = 0.5,
-        verbose: bool = True
+        verbose: bool = True,
+        candidate_pool_size: int = 8,
     ):
         """
         初始化优化器
@@ -105,6 +110,7 @@ class AgentOptimizer:
             min_improvement: 最小改进阈值
             failure_threshold: 失败判定阈值（分数低于此值视为失败，默认0.5）
             verbose: 是否打印详细信息
+            candidate_pool_size: 最大候选prompt数量
         """
         self.initial_agent_config = initial_agent_config
         self.learning_strategy = learning_strategy
@@ -126,6 +132,8 @@ class AgentOptimizer:
 
         self.score_history = []
         self.iteration_logs = []
+        self.candidate_pool = PromptCandidatePool(max_size=candidate_pool_size)
+        self._current_candidate_id = None
 
     def optimize(
         self,
@@ -160,6 +168,15 @@ class AgentOptimizer:
         )
         self.best_score = initial_score
         self.score_history.append(initial_score)
+        initial_candidate = PromptCandidate.from_config(
+            self.current_agent_config,
+            mutation_reason="initial",
+            score=initial_score,
+            failure_coverage=0.0,
+            metadata={"iteration": -1},
+        )
+        self.candidate_pool.add(initial_candidate)
+        self._current_candidate_id = initial_candidate.candidate_id
 
         if self.verbose:
             print(f"初始分数: {initial_score:.4f}\n")
@@ -204,9 +221,12 @@ class AgentOptimizer:
             score_history=self.score_history,
             iteration_logs=self.iteration_logs,
             knowledge_base=self.knowledge_extractor.get_knowledge_base(),
+            candidate_pool=self.candidate_pool.candidates,
             metadata={
                 "max_iterations": self.max_iterations,
                 "min_improvement": self.min_improvement,
+                "candidate_pool_size": self.candidate_pool.max_size,
+                "candidate_pool": self.candidate_pool.to_dict(),
                 "strategy": type(self.learning_strategy).__name__,
                 "adapter": type(self.adapter).__name__,
             }
@@ -282,6 +302,22 @@ class AgentOptimizer:
             print(f"  - 新分数: {new_score:.4f}")
             print(f"  - 改进: {improvement:+.4f}")
 
+        failure_coverage = self._compute_failure_coverage(contexts, failed_contexts)
+        candidate = PromptCandidate.from_config(
+            improved_config,
+            parent_ids=[self._current_candidate_id] if self._current_candidate_id else [],
+            mutation_reason=type(self.learning_strategy).__name__,
+            score=new_score,
+            failure_coverage=failure_coverage,
+            metadata={
+                "iteration": iteration,
+                "old_score": old_score,
+                "improvement": improvement,
+                "num_failures": len(failed_contexts),
+            },
+        )
+        self.candidate_pool.add(candidate)
+
         # 5. 更新最佳配置
         if new_score > self.best_score:
             self.best_score = new_score
@@ -292,11 +328,17 @@ class AgentOptimizer:
         # 6. 更新当前配置（可选：只在改进时更新）
         if new_score >= old_score:
             self.current_agent_config = improved_config
+            self._current_candidate_id = candidate.candidate_id
         else:
+            best_candidate = self.candidate_pool.get_best()
+            if best_candidate is not None:
+                self.current_agent_config = best_candidate.agent_config.copy()
+                self._current_candidate_id = best_candidate.candidate_id
             if self.verbose:
                 print(f"  [SKIP] 性能下降, 保持原配置")
 
         self.score_history.append(new_score)
+        pareto_front = self.candidate_pool.get_pareto_front()
 
         return {
             "iteration": iteration,
@@ -306,6 +348,10 @@ class AgentOptimizer:
             "num_trajectories": len(trajectories),
             "num_failures": len(failed_contexts),
             "is_best": new_score == self.best_score,
+            "candidate_id": candidate.candidate_id,
+            "parent_ids": candidate.parent_ids,
+            "candidate_pool_size": len(self.candidate_pool.candidates),
+            "pareto_front_ids": [item.candidate_id for item in pareto_front],
         }
 
     def _execute_and_capture(
@@ -365,6 +411,16 @@ class AgentOptimizer:
         trajectories = self._execute_and_capture(agent_config, dataset)
         scores = [t.score for t in trajectories if t.score is not None]
         return sum(scores) / len(scores) if scores else 0.0
+
+    def _compute_failure_coverage(
+        self,
+        contexts: List[ContextData],
+        failed_contexts: List[ContextData],
+    ) -> float:
+        """Estimate how much of the current rollout is not covered by failures."""
+        if not contexts:
+            return 0.0
+        return 1.0 - (len(failed_contexts) / len(contexts))
 
     def _should_stop(self, iteration_result: Dict[str, Any]) -> bool:
         """

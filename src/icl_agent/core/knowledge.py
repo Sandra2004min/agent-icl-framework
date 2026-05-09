@@ -1,46 +1,49 @@
 """
-Knowledge Module - 知识提取模块
+Knowledge Module
 
-从上下文中提取可学习的知识：
-- 从反思中学习
-- 从示例中学习
-- 从检索中学习
-- 知识表示和存储
+Stores reusable knowledge extracted from trajectories, reflections,
+examples, and retrieval results.
 """
 
-from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
+from datetime import datetime
 from enum import Enum
+from typing import Any, Dict, List, Optional, Union
 import json
+import re
 
 
 class KnowledgeType(Enum):
-    """知识类型枚举"""
-    REFLECTION = "reflection"  # 反思型知识
-    EXAMPLE = "example"        # 示例型知识
-    RETRIEVAL = "retrieval"    # 检索型知识
-    RULE = "rule"              # 规则型知识
+    """Supported knowledge categories."""
+
+    REFLECTION = "reflection"
+    EXAMPLE = "example"
+    RETRIEVAL = "retrieval"
+    RULE = "rule"
 
 
 @dataclass
 class Knowledge:
-    """
-    知识单元
-
-    表示从执行经验中提取的一条知识
-    """
+    """A reusable knowledge item learned from agent experience."""
 
     knowledge_id: str
     knowledge_type: KnowledgeType
     content: str
-    source: str  # 知识来源
-    confidence: float = 1.0  # 置信度 (0-1)
-    usage_count: int = 0  # 使用次数
-    success_rate: float = 0.0  # 成功率
+    source: str
+    confidence: float = 1.0
+    usage_count: int = 0
+    success_rate: float = 0.0
     metadata: Dict[str, Any] = field(default_factory=dict)
+    importance: float = 0.5
+    created_at: datetime = field(default_factory=datetime.now)
+    last_used_at: Optional[datetime] = None
+    source_task: str = ""
+    source_score: float = 0.0
+    failure_signature: str = ""
+    evidence_ids: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
-        """转换为字典"""
+        """Convert to a JSON-serializable dictionary."""
         return {
             "knowledge_id": self.knowledge_id,
             "knowledge_type": self.knowledge_type.value,
@@ -50,24 +53,50 @@ class Knowledge:
             "usage_count": self.usage_count,
             "success_rate": self.success_rate,
             "metadata": self.metadata,
+            "importance": self.importance,
+            "created_at": _serialize_datetime(self.created_at),
+            "last_used_at": _serialize_datetime(self.last_used_at),
+            "source_task": self.source_task,
+            "source_score": self.source_score,
+            "failure_signature": self.failure_signature,
+            "evidence_ids": self.evidence_ids,
         }
 
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "Knowledge":
+        """Create a Knowledge object from serialized data.
+
+        Older saved knowledge files may not contain the memory fields added for
+        relevance-aware retrieval, so defaults are supplied here.
+        """
+        item = data.copy()
+        item["knowledge_type"] = KnowledgeType(item["knowledge_type"])
+        item["created_at"] = _parse_datetime(item.get("created_at")) or datetime.now()
+        item["last_used_at"] = _parse_datetime(item.get("last_used_at"))
+        item.setdefault("metadata", {})
+        item.setdefault("importance", 0.5)
+        item.setdefault("source_task", "")
+        item.setdefault("source_score", 0.0)
+        item.setdefault("failure_signature", "")
+        item.setdefault("evidence_ids", [])
+        return cls(**item)
+
     def update_usage(self, success: bool):
-        """更新使用统计"""
+        """Update usage statistics after downstream evaluation."""
         self.usage_count += 1
-        # 更新成功率（使用移动平均）
+        self.last_used_at = datetime.now()
         self.success_rate = (
             (self.success_rate * (self.usage_count - 1) + (1.0 if success else 0.0))
             / self.usage_count
         )
 
+    def touch(self):
+        """Record that this item was retrieved."""
+        self.last_used_at = datetime.now()
+
 
 class KnowledgeBase:
-    """
-    知识库
-
-    存储和管理提取的知识
-    """
+    """In-memory store for learned knowledge."""
 
     def __init__(self):
         self.knowledge_items: List[Knowledge] = []
@@ -76,66 +105,114 @@ class KnowledgeBase:
         }
 
     def add(self, knowledge: Knowledge):
-        """添加知识"""
+        """Add a knowledge item."""
         self.knowledge_items.append(knowledge)
         self._index_by_type[knowledge.knowledge_type].append(knowledge)
 
     def get_by_type(self, knowledge_type: KnowledgeType) -> List[Knowledge]:
-        """按类型获取知识"""
+        """Get knowledge items by type."""
         return self._index_by_type[knowledge_type]
 
     def get_top_k(self, k: int = 5, by: str = "confidence") -> List[Knowledge]:
-        """
-        获取Top-K知识
-
-        Args:
-            k: 数量
-            by: 排序依据 ("confidence", "success_rate", "usage_count")
-
-        Returns:
-            List[Knowledge]: 排序后的知识列表
-        """
+        """Get top-k knowledge by a single quality signal."""
         if by == "confidence":
             sorted_items = sorted(self.knowledge_items, key=lambda x: x.confidence, reverse=True)
         elif by == "success_rate":
             sorted_items = sorted(self.knowledge_items, key=lambda x: x.success_rate, reverse=True)
         elif by == "usage_count":
             sorted_items = sorted(self.knowledge_items, key=lambda x: x.usage_count, reverse=True)
+        elif by == "importance":
+            sorted_items = sorted(self.knowledge_items, key=lambda x: x.importance, reverse=True)
         else:
             sorted_items = self.knowledge_items
 
         return sorted_items[:k]
 
     def filter_by_confidence(self, min_confidence: float = 0.5) -> List[Knowledge]:
-        """筛选高置信度知识"""
+        """Filter knowledge items by confidence."""
         return [k for k in self.knowledge_items if k.confidence >= min_confidence]
 
+    def retrieve(
+        self,
+        query: Union[str, Dict[str, Any], Any],
+        k: int = 5,
+        min_confidence: float = 0.0,
+        weights: Optional[Dict[str, float]] = None,
+        touch: bool = True,
+    ) -> List[Knowledge]:
+        """Retrieve knowledge relevant to the current query/context.
+
+        The ranking combines textual relevance with quality and memory signals:
+        similarity, confidence, success rate, importance, and recency.
+        """
+        candidates = [
+            item for item in self.knowledge_items
+            if item.confidence >= min_confidence
+        ]
+        if not candidates or k <= 0:
+            return []
+
+        query_text = _query_to_text(query)
+        similarities = _compute_text_similarities(
+            query_text,
+            [_knowledge_to_text(item) for item in candidates],
+        )
+
+        score_weights = {
+            "similarity": 0.45,
+            "confidence": 0.20,
+            "success_rate": 0.15,
+            "importance": 0.10,
+            "recency": 0.10,
+        }
+        if weights:
+            score_weights.update(weights)
+
+        now = datetime.now()
+        scored_items = []
+        for item, similarity in zip(candidates, similarities):
+            recency = _recency_score(item, now)
+            score = (
+                score_weights["similarity"] * similarity
+                + score_weights["confidence"] * _clamp01(item.confidence)
+                + score_weights["success_rate"] * _clamp01(item.success_rate)
+                + score_weights["importance"] * _clamp01(item.importance)
+                + score_weights["recency"] * recency
+            )
+            item.metadata["last_retrieval_score"] = round(score, 6)
+            item.metadata["last_retrieval_similarity"] = round(similarity, 6)
+            scored_items.append((score, similarity, item.confidence, item))
+
+        scored_items.sort(key=lambda x: (x[0], x[1], x[2]), reverse=True)
+        results = [item for _, _, _, item in scored_items[:k]]
+
+        if touch:
+            for item in results:
+                item.touch()
+
+        return results
+
     def save_to_file(self, filepath: str):
-        """保存到文件"""
+        """Save the knowledge base to disk."""
         data = [k.to_dict() for k in self.knowledge_items]
-        with open(filepath, 'w', encoding='utf-8') as f:
+        with open(filepath, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
     @classmethod
     def load_from_file(cls, filepath: str) -> "KnowledgeBase":
-        """从文件加载"""
-        with open(filepath, 'r', encoding='utf-8') as f:
+        """Load a knowledge base from disk."""
+        with open(filepath, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         kb = cls()
         for item in data:
-            item["knowledge_type"] = KnowledgeType(item["knowledge_type"])
-            kb.add(Knowledge(**item))
+            kb.add(Knowledge.from_dict(item))
 
         return kb
 
 
 class KnowledgeExtractor:
-    """
-    知识提取器
-
-    从不同来源提取知识
-    """
+    """Extract and store knowledge from different learning signals."""
 
     def __init__(self):
         self.knowledge_base = KnowledgeBase()
@@ -143,33 +220,34 @@ class KnowledgeExtractor:
     def extract_from_reflection(
         self,
         reflective_data: Dict[str, Any],
-        improved_instruction: str
+        improved_instruction: str,
     ) -> Knowledge:
-        """
-        从反思数据中提取知识
-
-        Args:
-            reflective_data: 反思数据
-            improved_instruction: 改进后的指令
-
-        Returns:
-            Knowledge: 提取的知识
-        """
+        """Extract knowledge from reflection results."""
         import uuid
 
-        # 分析反思数据，提取关键洞察
+        failures = reflective_data.get("failures", [])
         insights = self._analyze_reflection(reflective_data)
+        evidence_ids = [
+            str(f.get("trajectory_id"))
+            for f in failures
+            if isinstance(f, dict) and f.get("trajectory_id")
+        ]
+        failure_signature = "; ".join(insights[:3])
 
         knowledge = Knowledge(
             knowledge_id=str(uuid.uuid4()),
             knowledge_type=KnowledgeType.REFLECTION,
             content=improved_instruction,
             source="reflection",
-            confidence=0.8,  # 初始置信度
+            confidence=0.8,
+            importance=0.7,
+            source_task=reflective_data.get("task", ""),
+            failure_signature=failure_signature,
+            evidence_ids=evidence_ids,
             metadata={
                 "insights": insights,
-                "num_failures_analyzed": len(reflective_data.get("failures", []))
-            }
+                "num_failures_analyzed": len(failures),
+            },
         )
 
         self.knowledge_base.add(knowledge)
@@ -178,22 +256,22 @@ class KnowledgeExtractor:
     def extract_from_examples(
         self,
         examples: List[Dict[str, Any]],
-        context: str = ""
+        context: str = "",
     ) -> Knowledge:
-        """
-        从示例中提取知识
-
-        Args:
-            examples: 示例列表
-            context: 上下文信息
-
-        Returns:
-            Knowledge: 提取的知识
-        """
+        """Extract example knowledge from successful demonstrations."""
         import uuid
 
-        # 格式化示例为知识
         formatted_examples = self._format_examples(examples)
+        scores = [
+            float(ex["score"])
+            for ex in examples
+            if isinstance(ex, dict) and isinstance(ex.get("score"), (int, float))
+        ]
+        evidence_ids = [
+            str(ex.get("trajectory_id"))
+            for ex in examples
+            if isinstance(ex, dict) and ex.get("trajectory_id")
+        ]
 
         knowledge = Knowledge(
             knowledge_id=str(uuid.uuid4()),
@@ -201,10 +279,14 @@ class KnowledgeExtractor:
             content=formatted_examples,
             source="few_shot_examples",
             confidence=0.9,
+            importance=0.65,
+            source_task=context,
+            source_score=sum(scores) / len(scores) if scores else 0.0,
+            evidence_ids=evidence_ids,
             metadata={
                 "num_examples": len(examples),
-                "context": context
-            }
+                "context": context,
+            },
         )
 
         self.knowledge_base.add(knowledge)
@@ -213,21 +295,11 @@ class KnowledgeExtractor:
     def extract_from_retrieval(
         self,
         retrieved_docs: List[str],
-        query: str
+        query: str,
     ) -> Knowledge:
-        """
-        从检索结果中提取知识
-
-        Args:
-            retrieved_docs: 检索到的文档列表
-            query: 查询
-
-        Returns:
-            Knowledge: 提取的知识
-        """
+        """Extract knowledge from retrieved documents."""
         import uuid
 
-        # 整合检索结果
         combined_content = self._combine_retrieval_results(retrieved_docs)
 
         knowledge = Knowledge(
@@ -236,28 +308,19 @@ class KnowledgeExtractor:
             content=combined_content,
             source="retrieval",
             confidence=0.7,
+            importance=0.5,
+            source_task=query,
             metadata={
                 "num_docs": len(retrieved_docs),
-                "query": query
-            }
+                "query": query,
+            },
         )
 
         self.knowledge_base.add(knowledge)
         return knowledge
 
-    def extract_rules(
-        self,
-        patterns: Dict[str, Any]
-    ) -> List[Knowledge]:
-        """
-        提取规则型知识
-
-        Args:
-            patterns: 发现的模式
-
-        Returns:
-            List[Knowledge]: 规则列表
-        """
+    def extract_rules(self, patterns: Dict[str, Any]) -> List[Knowledge]:
+        """Extract rule knowledge from discovered patterns."""
         import uuid
 
         rules = []
@@ -271,10 +334,13 @@ class KnowledgeExtractor:
                 content=rule_content,
                 source="pattern_analysis",
                 confidence=pattern_data.get("confidence", 0.7),
+                importance=pattern_data.get("importance", 0.6),
+                source_task=pattern_name,
+                failure_signature=pattern_data.get("failure_signature", ""),
                 metadata={
                     "pattern_name": pattern_name,
-                    "pattern_data": pattern_data
-                }
+                    "pattern_data": pattern_data,
+                },
             )
 
             rules.append(knowledge)
@@ -283,32 +349,35 @@ class KnowledgeExtractor:
         return rules
 
     def get_knowledge_base(self) -> KnowledgeBase:
-        """获取知识库"""
+        """Get the underlying knowledge base."""
         return self.knowledge_base
 
-    # ===== 私有辅助方法 =====
-
     def _analyze_reflection(self, reflective_data: Dict[str, Any]) -> List[str]:
-        """分析反思数据，提取关键洞察"""
+        """Analyze reflection data and extract key insights."""
         insights = []
+        failures = reflective_data.get("failures", [])
 
-        # 从失败案例中提取模式
-        if "failures" in reflective_data:
-            failures = reflective_data["failures"]
-            if failures:
-                insights.append(f"Analyzed {len(failures)} failure cases")
+        if failures:
+            insights.append(f"Analyzed {len(failures)} failure cases")
 
-                # 提取常见错误类型
-                error_types = [f.get("error_type", "unknown") for f in failures]
-                from collections import Counter
-                common_errors = Counter(error_types).most_common(3)
-                if common_errors:
-                    insights.append(f"Common errors: {', '.join(e[0] for e in common_errors)}")
+            error_types = []
+            for failure in failures:
+                if not isinstance(failure, dict):
+                    continue
+                if failure.get("error_type"):
+                    error_types.append(failure["error_type"])
+                error_types.extend(failure.get("error_patterns", []))
+
+            from collections import Counter
+
+            common_errors = Counter(error_types).most_common(3)
+            if common_errors:
+                insights.append(f"Common errors: {', '.join(e[0] for e in common_errors)}")
 
         return insights
 
     def _format_examples(self, examples: List[Dict[str, Any]]) -> str:
-        """格式化示例为文本"""
+        """Format examples as text."""
         formatted = []
 
         for i, example in enumerate(examples, 1):
@@ -320,50 +389,157 @@ class KnowledgeExtractor:
         return "\n".join(formatted)
 
     def _combine_retrieval_results(self, docs: List[str]) -> str:
-        """整合检索结果"""
-        # 简单拼接，实际应用中可能需要更复杂的整合策略
-        return "\n\n---\n\n".join(docs[:5])  # 只取前5个文档
+        """Combine retrieved documents into a compact knowledge block."""
+        return "\n\n---\n\n".join(docs[:5])
 
     def _formulate_rule(self, pattern_name: str, pattern_data: Dict[str, Any]) -> str:
-        """根据模式制定规则"""
-        # 简单实现
+        """Create a natural-language rule from a discovered pattern."""
         return f"Rule from pattern '{pattern_name}': {pattern_data.get('description', 'No description')}"
 
 
-# 示例使用
-if __name__ == "__main__":
-    # 创建知识提取器
-    extractor = KnowledgeExtractor()
+def _serialize_datetime(value: Optional[datetime]) -> Optional[str]:
+    if value is None:
+        return None
+    return value.isoformat() if isinstance(value, datetime) else str(value)
 
-    # 从反思中提取知识
-    reflective_data = {
-        "failures": [
-            {"error_type": "MathError", "message": "Wrong calculation"},
-            {"error_type": "MathError", "message": "Another wrong calc"},
-        ]
-    }
-    improved_instruction = "Always double-check arithmetic calculations"
 
-    k1 = extractor.extract_from_reflection(reflective_data, improved_instruction)
-    print(f"Reflection Knowledge: {k1.content}")
-    print(f"  Confidence: {k1.confidence}")
-    print(f"  Insights: {k1.metadata['insights']}")
+def _parse_datetime(value: Any) -> Optional[datetime]:
+    if value is None or isinstance(value, datetime):
+        return value
+    if isinstance(value, str):
+        try:
+            return datetime.fromisoformat(value)
+        except ValueError:
+            return None
+    return None
 
-    # 从示例中提取知识
-    examples = [
-        {"input": "2+2", "output": "4"},
-        {"input": "3+3", "output": "6"},
+
+def _clamp01(value: Optional[float]) -> float:
+    if value is None:
+        return 0.0
+    return max(0.0, min(1.0, float(value)))
+
+
+def _query_to_text(query: Union[str, Dict[str, Any], Any]) -> str:
+    if isinstance(query, str):
+        return query
+    if isinstance(query, dict):
+        return _dict_to_text(query)
+
+    parts = []
+    for attr in ("input_data", "output_data", "feedback", "reasoning_summary", "error_patterns"):
+        if hasattr(query, attr):
+            parts.append(str(getattr(query, attr)))
+    return " ".join(parts) if parts else str(query)
+
+
+def _knowledge_to_text(knowledge: Knowledge) -> str:
+    parts = [
+        knowledge.content,
+        knowledge.source,
+        knowledge.source_task,
+        knowledge.failure_signature,
     ]
-    k2 = extractor.extract_from_examples(examples, context="math problems")
-    print(f"\nExample Knowledge:")
-    print(k2.content)
+    if knowledge.metadata:
+        parts.append(_dict_to_text(knowledge.metadata))
+    return " ".join(str(part) for part in parts if part)
 
-    # 获取知识库
-    kb = extractor.get_knowledge_base()
-    print(f"\nKnowledge Base Size: {len(kb.knowledge_items)}")
 
-    # 获取最高置信度的知识
-    top_knowledge = kb.get_top_k(k=2, by="confidence")
-    print(f"\nTop-2 Knowledge by Confidence:")
-    for k in top_knowledge:
-        print(f"  - {k.knowledge_type.value}: {k.confidence}")
+def _dict_to_text(data: Dict[str, Any]) -> str:
+    parts = []
+    for key, value in data.items():
+        parts.append(str(key))
+        if isinstance(value, dict):
+            parts.append(_dict_to_text(value))
+        elif isinstance(value, list):
+            parts.append(" ".join(_dict_to_text(v) if isinstance(v, dict) else str(v) for v in value))
+        else:
+            parts.append(str(value))
+    return " ".join(parts)
+
+
+def _compute_text_similarities(query_text: str, documents: List[str]) -> List[float]:
+    if not documents:
+        return []
+    if not query_text.strip():
+        return [0.0 for _ in documents]
+
+    from collections import Counter
+    import math
+
+    tokenized = [_tokenize(query_text)] + [_tokenize(doc) for doc in documents]
+    if not tokenized[0]:
+        return [0.0 for _ in documents]
+
+    doc_freq = Counter()
+    for tokens in tokenized:
+        doc_freq.update(set(tokens))
+
+    total_docs = len(tokenized)
+    idf = {
+        token: math.log((1 + total_docs) / (1 + freq)) + 1.0
+        for token, freq in doc_freq.items()
+    }
+
+    query_vec = _tfidf_vector(tokenized[0], idf)
+    return [
+        _vector_cosine(query_vec, _tfidf_vector(tokens, idf))
+        for tokens in tokenized[1:]
+    ]
+
+
+def _token_cosine_similarity(text1: str, text2: str) -> float:
+    from collections import Counter
+    import math
+
+    tokens1 = _tokenize(text1)
+    tokens2 = _tokenize(text2)
+    if not tokens1 or not tokens2:
+        return 0.0
+
+    counts1 = Counter(tokens1)
+    counts2 = Counter(tokens2)
+    overlap = set(counts1) & set(counts2)
+    numerator = sum(counts1[token] * counts2[token] for token in overlap)
+    denom1 = math.sqrt(sum(count * count for count in counts1.values()))
+    denom2 = math.sqrt(sum(count * count for count in counts2.values()))
+    return numerator / (denom1 * denom2) if denom1 and denom2 else 0.0
+
+
+def _tokenize(text: str) -> List[str]:
+    return re.findall(r"\w+", text.lower())
+
+
+def _tfidf_vector(tokens: List[str], idf: Dict[str, float]) -> Dict[str, float]:
+    from collections import Counter
+
+    if not tokens:
+        return {}
+
+    counts = Counter(tokens)
+    total = float(len(tokens))
+    return {
+        token: (count / total) * idf.get(token, 1.0)
+        for token, count in counts.items()
+    }
+
+
+def _vector_cosine(vec1: Dict[str, float], vec2: Dict[str, float]) -> float:
+    import math
+
+    if not vec1 or not vec2:
+        return 0.0
+
+    overlap = set(vec1) & set(vec2)
+    numerator = sum(vec1[token] * vec2[token] for token in overlap)
+    denom1 = math.sqrt(sum(value * value for value in vec1.values()))
+    denom2 = math.sqrt(sum(value * value for value in vec2.values()))
+    return numerator / (denom1 * denom2) if denom1 and denom2 else 0.0
+
+
+def _recency_score(knowledge: Knowledge, now: datetime) -> float:
+    ref_time = knowledge.last_used_at or knowledge.created_at
+    if not isinstance(ref_time, datetime):
+        return 0.5
+    age_days = max(0.0, (now - ref_time).total_seconds() / 86400.0)
+    return 1.0 / (1.0 + age_days / 30.0)

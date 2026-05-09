@@ -40,6 +40,10 @@ class Trajectory:
     errors: List[Dict[str, Any]] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
     score: Optional[float] = None
+    subgoals: List[Dict[str, Any]] = field(default_factory=list)
+    current_subgoal: Optional[str] = None
+    subgoal_summaries: Dict[str, str] = field(default_factory=dict)
+    active_observations: List[Dict[str, Any]] = field(default_factory=list)
 
     def add_reasoning_step(self, step: str, detail: Optional[Dict[str, Any]] = None):
         """添加推理步骤"""
@@ -74,6 +78,88 @@ class Trajectory:
             "timestamp": datetime.now().isoformat()
         })
 
+    def start_subgoal(
+        self,
+        subgoal_id: str,
+        description: str,
+        plan_step: Optional[int] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+    ):
+        """Start or activate a subgoal for hierarchical working memory."""
+        existing = self._find_subgoal(subgoal_id)
+        if existing is None:
+            self.subgoals.append({
+                "subgoal_id": subgoal_id,
+                "description": description,
+                "plan_step": plan_step,
+                "status": "active",
+                "observations": [],
+                "metadata": metadata or {},
+                "created_at": datetime.now().isoformat(),
+                "completed_at": None,
+            })
+        else:
+            existing["description"] = description
+            existing["status"] = "active"
+            existing["metadata"] = metadata or existing.get("metadata", {})
+
+        self.current_subgoal = subgoal_id
+
+    def complete_subgoal(
+        self,
+        subgoal_id: Optional[str] = None,
+        summary: str = "",
+        status: str = "completed",
+    ):
+        """Complete a subgoal and preserve a compact summary."""
+        target_id = subgoal_id or self.current_subgoal
+        if target_id is None:
+            return
+
+        subgoal = self._find_subgoal(target_id)
+        if subgoal is not None:
+            subgoal["status"] = status
+            subgoal["summary"] = summary
+            subgoal["completed_at"] = datetime.now().isoformat()
+
+        if summary:
+            self.subgoal_summaries[target_id] = summary
+
+        if self.current_subgoal == target_id:
+            self.current_subgoal = None
+
+    def add_observation(
+        self,
+        content: str,
+        subgoal_id: Optional[str] = None,
+        importance: float = 0.5,
+        metadata: Optional[Dict[str, Any]] = None,
+    ):
+        """Add an observation to active working memory."""
+        target_id = subgoal_id or self.current_subgoal
+        observation = {
+            "subgoal_id": target_id,
+            "content": content,
+            "importance": importance,
+            "metadata": metadata or {},
+            "timestamp": datetime.now().isoformat(),
+        }
+        self.active_observations.append(observation)
+
+        if target_id is not None:
+            subgoal = self._find_subgoal(target_id)
+            if subgoal is not None:
+                subgoal.setdefault("observations", []).append(observation.copy())
+
+    def get_working_memory(self) -> Dict[str, Any]:
+        """Return compact hierarchical working-memory state."""
+        return {
+            "current_subgoal": self.current_subgoal,
+            "subgoals": self.subgoals,
+            "subgoal_summaries": self.subgoal_summaries,
+            "active_observations": self.active_observations,
+        }
+
     def is_successful(self) -> bool:
         """判断执行是否成功"""
         return len(self.errors) == 0 and self.score is not None and self.score > 0
@@ -90,6 +176,10 @@ class Trajectory:
             "errors": self.errors,
             "metadata": self.metadata,
             "score": self.score,
+            "subgoals": self.subgoals,
+            "current_subgoal": self.current_subgoal,
+            "subgoal_summaries": self.subgoal_summaries,
+            "active_observations": self.active_observations,
         }
 
     def to_json(self) -> str:
@@ -99,8 +189,19 @@ class Trajectory:
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "Trajectory":
         """从字典创建轨迹对象"""
-        data["timestamp"] = datetime.fromisoformat(data["timestamp"])
-        return cls(**data)
+        item = data.copy()
+        item["timestamp"] = datetime.fromisoformat(item["timestamp"])
+        item.setdefault("subgoals", [])
+        item.setdefault("current_subgoal", None)
+        item.setdefault("subgoal_summaries", {})
+        item.setdefault("active_observations", [])
+        return cls(**item)
+
+    def _find_subgoal(self, subgoal_id: str) -> Optional[Dict[str, Any]]:
+        for subgoal in self.subgoals:
+            if subgoal.get("subgoal_id") == subgoal_id:
+                return subgoal
+        return None
 
 
 class TrajectoryCapture:
@@ -164,6 +265,35 @@ class TrajectoryCapture:
     def log_error(self, error_type: str, message: str, detail: Optional[Dict] = None):
         """记录错误"""
         self.trajectory.add_error(error_type, message, detail)
+
+    def start_subgoal(
+        self,
+        subgoal_id: str,
+        description: str,
+        plan_step: Optional[int] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+    ):
+        """记录子目标开始"""
+        self.trajectory.start_subgoal(subgoal_id, description, plan_step, metadata)
+
+    def complete_subgoal(
+        self,
+        subgoal_id: Optional[str] = None,
+        summary: str = "",
+        status: str = "completed",
+    ):
+        """记录子目标完成"""
+        self.trajectory.complete_subgoal(subgoal_id, summary, status)
+
+    def log_observation(
+        self,
+        content: str,
+        subgoal_id: Optional[str] = None,
+        importance: float = 0.5,
+        metadata: Optional[Dict[str, Any]] = None,
+    ):
+        """记录工作记忆观察"""
+        self.trajectory.add_observation(content, subgoal_id, importance, metadata)
 
     def set_score(self, score: float):
         """设置得分"""

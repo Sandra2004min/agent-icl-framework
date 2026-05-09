@@ -1,0 +1,62 @@
+[
+  {
+    "experiment": "Logic-Std-small Reflective",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 5,
+    "val_size": 10,
+    "max_iterations": 1,
+    "initial_score": 1.0,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "score_history": [
+      1.0,
+      1.0
+    ],
+    "iterations": 1,
+    "elapsed_seconds": 14.6,
+    "candidate_pool_size": 1,
+    "pareto_front_size": 1,
+    "knowledge_items": 0
+  },
+  {
+    "experiment": "Logic-Std-small FewShot-CoT",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 5,
+    "val_size": 10,
+    "max_iterations": 1,
+    "initial_score": 1.0,
+    "final_score": 0.9,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "score_history": [
+      1.0,
+      0.9
+    ],
+    "iterations": 1,
+    "elapsed_seconds": 14.3,
+    "candidate_pool_size": 2,
+    "pareto_front_size": 2,
+    "knowledge_items": 1
+  },
+  {
+    "experiment": "Logic-Std-small Retrieval-v3",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 5,
+    "val_size": 10,
+    "max_iterations": 1,
+    "initial_score": 1.0,
+    "final_score": 0.9,
+    "best_score": 1.0,
+    "improvement_pct": 0.0,
+    "score_history": [
+      1.0,
+      0.9
+    ],
+    "iterations": 1,
+    "elapsed_seconds": 15.3,
+    "candidate_pool_size": 2,
+    "pareto_front_size": 2,
+    "knowledge_items": 1
+  }
+]

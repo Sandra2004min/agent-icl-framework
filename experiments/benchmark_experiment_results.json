@@ -1,0 +1,114 @@
+[
+  {
+    "experiment": "HotpotQA (Reflective)",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.5,
+    "final_score": 0.4914,
+    "best_score": 0.6181,
+    "improvement_pct": 23.62,
+    "iterations": 3,
+    "elapsed_seconds": 418.8,
+    "best_instruction": "You are a precise and knowledgeable assistant. Your task is to answer questions concisely and accurately.\n\n**Core Rules:**\n1. Provide the answer as briefly as possible—typically a name, date, number, or a few words.\n2. Do NOT include explanations, reasoning, or extra text.\n\n**Accuracy Guidelines:**\n- For bridge-type questions (which require connecting multiple facts), perform the necessary multi-step reasoning internally before answering.\n- Ensure your answer matches the exact format and specificity required. If the expected answer is a full name, provide the full name (e.g., \"William Shakespeare\" not \"Shakespeare\").\n- If the question asks for a statistical area, provide the statistical area name, not a city or location.\n- For numerical answers, provide the exact number or phrase as expected (e.g., \"500-room\" not \"500\" or \"1,000\").\n- When comparing entities (e.g., \"who died last?\"), verify the relevant dates and provide the correct entity's full name.\n- If you are uncertain, do not guess. Only answer when you are confident.\n\n**Output Format:**\n- Return only the answer, nothing else.",
+    "score_history": [
+      0.5,
+      0.6181,
+      0.4714,
+      0.4914
+    ]
+  },
+  {
+    "experiment": "HotpotQA (FewShot-CoT)",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.5,
+    "final_score": 0.4933,
+    "best_score": 0.5,
+    "improvement_pct": 0.0,
+    "iterations": 3,
+    "elapsed_seconds": 323.5,
+    "best_instruction": "You are a knowledgeable assistant. Answer the question concisely. Your answer should be as short as possible - typically a name, date, number, or a few words. Do NOT provide explanations.",
+    "score_history": [
+      0.5,
+      0.4533,
+      0.4533,
+      0.4933
+    ]
+  },
+  {
+    "experiment": "HotpotQA (Retrieval-v3)",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 50,
+    "val_size": 25,
+    "initial_score": 0.5,
+    "final_score": 0.5,
+    "best_score": 0.54,
+    "improvement_pct": 8.0,
+    "iterations": 3,
+    "elapsed_seconds": 341.7,
+    "best_instruction": "You are a knowledgeable assistant. Answer the question concisely. Your answer should be as short as possible - typically a name, date, number, or a few words. Do NOT provide explanations.",
+    "score_history": [
+      0.5,
+      0.5,
+      0.54,
+      0.5
+    ]
+  },
+  {
+    "experiment": "HumanEval (Reflective)",
+    "strategy": "ReflectiveLearningStrategy",
+    "train_size": 40,
+    "val_size": 20,
+    "initial_score": 0.55,
+    "final_score": 0.8,
+    "best_score": 0.8,
+    "improvement_pct": 45.45,
+    "iterations": 3,
+    "elapsed_seconds": 1234.4,
+    "best_instruction": "You are an expert Python programmer. Complete the function implementation based on the docstring and the following guidelines:\n\nCRITICAL REQUIREMENTS:\n1. Read the problem specification CAREFULLY - implement exactly what's asked, no more, no less\n2. Test your logic with ALL provided examples before finalizing\n3. For sequence problems: Verify base cases and recurrence relations match ALL given examples\n4. For string parsing: Use simple, robust methods (split(), isdigit(), etc.) rather than complex regex\n5. For sorting problems: Use Python's built-in sort with appropriate key functions\n6. For validation problems: Consider the simplest algorithm that satisfies all constraints\n\nIMPLEMENTATION RULES:\n- Return ONLY the function body code (properly indented)\n- Do NOT repeat the function signature\n- Do NOT add tests or explanations\n- Use the SIMPLEST correct solution - avoid over-engineering\n- When examples show float results, use float division (`/`); when integer, use `//`\n- For problems with unique elements, leverage this property for simpler solutions\n\nSPECIAL ATTENTION AREAS:\n1. **Number digit problems** (HumanEval/104, 145):\n   - Convert to string and check digits directly when simpler\n   - Handle negative numbers correctly for digit sums\n   - For sorting by digit sum, use `sorted(nums, key=...)` with stable sort\n\n2. **Sequence generation** (HumanEval/130):\n   - Verify your implementation produces EXACTLY the example outputs\n   - Start with given base cases explicitly\n   - Follow recurrence relations literally as stated\n\n3. **String parsing** (HumanEval/67, 17):\n   - Use `split()` and check each part\n   - Don't assume fixed positions - parse dynamically\n   - Handle empty strings and edge cases first\n\n4. **Collatz sequences** (HumanEval/123):\n   - Include the starting number when appropriate\n   - Handle n=1 as a special case\n   - Collect odd numbers during iteration, not after\n\n5. **Bracket/validation problems** (HumanEval/132):\n   - Test your logic on ALL provided examples\n   - Consider simpler counting approaches before complex stack logic\n\n6. **Array rotation problems** (HumanEval/109):\n   - For unique elements, find minimum and check rotation\n   - Empty arrays return True unless specified otherwise\n\nKEY PRINCIPLES:\n1. **KISS (Keep It Simple, Stupid)**: If a one-liner works, use it\n2. **Literal Interpretation**: Implement exactly what the examples show\n3. **Built-ins First**: Use Python's built-in functions (sum, sorted, enumerate, etc.)\n4. **Example-Driven**: Ensure your solution matches ALL provided examples exactly\n5. **Edge Cases**: Handle empty inputs, single elements, zeros, negatives as shown in examples\n\nYour code must pass all hidden test cases, not just the provided examples.",
+    "score_history": [
+      0.55,
+      0.05,
+      0.75,
+      0.8
+    ]
+  },
+  {
+    "experiment": "HumanEval (FewShot-CoT)",
+    "strategy": "FewShotLearningStrategy",
+    "train_size": 40,
+    "val_size": 20,
+    "initial_score": 0.5,
+    "final_score": 1.0,
+    "best_score": 1.0,
+    "improvement_pct": 100.0,
+    "iterations": 1,
+    "elapsed_seconds": 299.9,
+    "best_instruction": "You are an expert Python programmer. Complete the function implementation based on the docstring. Return ONLY the function body code (properly indented), without repeating the function signature, adding tests, or any explanation.\n\nHere are examples of correct responses with step-by-step reasoning:\n\n--- Example 1 ---\nQuestion: {'task_id': 'HumanEval/61', 'prompt': '\\n\\ndef correct_bracketing(brackets: str):\\n    \"\"\" brackets is a string of \"(\" and \")\".\\n    return True if every opening bracket has a corresponding closing bracket.\\n\\n    >>> correct_bracketing(\"(\")\\n    False\\n    >>> correct_bracketing(\"()\")\\n    True\\n    >>> correct_bracketing(\"(()())\")\\n    True\\n    >>> correct_bracketing(\")(()\")\\n    False\\n    \"\"\"\\n', 'canonical_solution': '    depth = 0\\n    for b in brackets:\\n        if b == \"(\":\\n            depth += 1\\n        else:\\n            depth -= 1\\n        if depth < 0:\\n            return False\\n    return depth == 0\\n', 'test': '\\n\\nMETADATA = {}\\n\\n\\ndef check(candidate):\\n    assert candidate(\"()\")\\n    assert candidate(\"(()())\")\\n    assert candidate(\"()()(()())()\")\\n    assert candidate(\"()()((()()())())(()()(()))\")\\n    assert not candidate(\"((()())))\")\\n    assert not candidate(\")(()\")\\n    assert not candidate(\"(\")\\n    assert not candidate(\"((((\")\\n    assert not candidate(\")\")\\n    assert not candidate(\"(()\")\\n    assert not candidate(\"()()(()())())(()\")\\n    assert not candidate(\"()()(()())()))()\")\\n\\n', 'entry_point': 'correct_bracketing'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': \"    count = 0\\n    for b in brackets:\\n        if b == '(':\\n            count += 1\\n        elif b == ')':\\n            count -= 1\\n        if count < 0:\\n            return False\\n    return count == 0\", 'prompt': '\\n\\ndef correct_bracketing(brackets: str):\\n    \"\"\" brackets is a string of \"(\" and \")\".\\n    return True if every opening bracket has a corresponding closing bracket.\\n\\n    >>> correct_bracketing(\"(\")\\n    False\\n    >>> correct_bracketing(\"()\")\\n    True\\n    >>> correct_bracketing(\"(()())\")\\n    True\\n    >>> correct_bracketing(\")(()\")\\n    False\\n    \"\"\"\\n'}\n\n--- Example 2 ---\nQuestion: {'task_id': 'HumanEval/105', 'prompt': '\\ndef by_length(arr):\\n    \"\"\"\\n    Given an array of integers, sort the integers that are between 1 and 9 inclusive,\\n    reverse the resulting array, and then replace each digit by its corresponding name from\\n    \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\".\\n\\n    For example:\\n      arr = [2, 1, 1, 4, 5, 8, 2, 3]   \\n            -> sort arr -> [1, 1, 2, 2, 3, 4, 5, 8] \\n            -> reverse arr -> [8, 5, 4, 3, 2, 2, 1, 1]\\n      return [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]\\n    \\n      If the array is empty, return an empty array:\\n      arr = []\\n      return []\\n    \\n      If the array has any strange number ignore it:\\n      arr = [1, -1 , 55] \\n            -> sort arr -> [-1, 1, 55]\\n            -> reverse arr -> [55, 1, -1]\\n      return = [\\'One\\']\\n    \"\"\"\\n', 'canonical_solution': '    dic = {\\n        1: \"One\",\\n        2: \"Two\",\\n        3: \"Three\",\\n        4: \"Four\",\\n        5: \"Five\",\\n        6: \"Six\",\\n        7: \"Seven\",\\n        8: \"Eight\",\\n        9: \"Nine\",\\n    }\\n    sorted_arr = sorted(arr, reverse=True)\\n    new_arr = []\\n    for var in sorted_arr:\\n        try:\\n            new_arr.append(dic[var])\\n        except:\\n            pass\\n    return new_arr\\n', 'test': 'def check(candidate):\\n\\n    # Check some simple cases\\n    assert True, \"This prints if this assert fails 1 (good for debugging!)\"\\n    assert candidate([2, 1, 1, 4, 5, 8, 2, 3]) == [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"], \"Error\"\\n    assert candidate([]) == [], \"Error\"\\n    assert candidate([1, -1 , 55]) == [\\'One\\'], \"Error\"\\n\\n    # Check some edge cases that are easy to work out by hand.\\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\\n    assert candidate([1, -1, 3, 2]) == [\"Three\", \"Two\", \"One\"]\\n    assert candidate([9, 4, 8]) == [\"Nine\", \"Eight\", \"Four\"]\\n\\n', 'entry_point': 'by_length'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': 'filtered = [x for x in arr if 1 <= x <= 9]\\nfiltered.sort()\\nfiltered.reverse()\\nnames = [\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"]\\nresult = [names[i-1] for i in filtered]\\nreturn result', 'prompt': '\\ndef by_length(arr):\\n    \"\"\"\\n    Given an array of integers, sort the integers that are between 1 and 9 inclusive,\\n    reverse the resulting array, and then replace each digit by its corresponding name from\\n    \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\".\\n\\n    For example:\\n      arr = [2, 1, 1, 4, 5, 8, 2, 3]   \\n            -> sort arr -> [1, 1, 2, 2, 3, 4, 5, 8] \\n            -> reverse arr -> [8, 5, 4, 3, 2, 2, 1, 1]\\n      return [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]\\n    \\n      If the array is empty, return an empty array:\\n      arr = []\\n      return []\\n    \\n      If the array has any strange number ignore it:\\n      arr = [1, -1 , 55] \\n            -> sort arr -> [-1, 1, 55]\\n            -> reverse arr -> [55, 1, -1]\\n      return = [\\'One\\']\\n    \"\"\"\\n'}\n\n--- Example 3 ---\nQuestion: {'task_id': 'HumanEval/42', 'prompt': '\\n\\ndef incr_list(l: list):\\n    \"\"\"Return list with elements incremented by 1.\\n    >>> incr_list([1, 2, 3])\\n    [2, 3, 4]\\n    >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])\\n    [6, 4, 6, 3, 4, 4, 10, 1, 124]\\n    \"\"\"\\n', 'canonical_solution': '    return [(e + 1) for e in l]\\n', 'test': '\\n\\nMETADATA = {}\\n\\n\\ndef check(candidate):\\n    assert candidate([]) == []\\n    assert candidate([3, 2, 1]) == [4, 3, 2]\\n    assert candidate([5, 2, 5, 2, 3, 3, 9, 0, 123]) == [6, 3, 6, 3, 4, 4, 10, 1, 124]\\n\\n', 'entry_point': 'incr_list'}\nReasoning: No reasoning steps recorded\nAnswer: {'code': '    return [x + 1 for x in l]', 'prompt': '\\n\\ndef incr_list(l: list):\\n    \"\"\"Return list with elements incremented by 1.\\n    >>> incr_list([1, 2, 3])\\n    [2, 3, 4]\\n    >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])\\n    [6, 4, 6, 3, 4, 4, 10, 1, 124]\\n    \"\"\"\\n'}\n\n\nHere are examples of INCORRECT responses to avoid:\n\n--- Mistake 1 ---\nQuestion: {'task_id': 'HumanEval/104', 'prompt': '\\ndef unique_digits(x):\\n    \"\"\"Given a list of positive integers x. return a sorted list of all \\n    elements that hasn\\'t any even digit.\\n\\n    Note: Returned list should be sorted in increasing order.\\n    \\n    For example:\\n    >>> unique_digits([15, 33, 1422, 1])\\n    [1, 15, 33]\\n    >>> unique_digits([152, 323, 1422, 10])\\n    []\\n    \"\"\"\\n', 'canonical_solution': '    odd_digit_elements = []\\n    for i in x:\\n        if all (int(c) % 2 == 1 for c in str(i)):\\n            odd_digit_elements.append(i)\\n    return sorted(odd_digit_elements)\\n', 'test': 'def check(candidate):\\n\\n    # Check some simple cases\\n    assert candidate([15, 33, 1422, 1]) == [1, 15, 33]\\n    assert candidate([152, 323, 1422, 10]) == []\\n    assert candidate([12345, 2033, 111, 151]) == [111, 151]\\n    assert candidate([135, 103, 31]) == [31, 135]\\n\\n    # Check some edge cases that are easy to work out by hand.\\n    assert True\\n\\n', 'entry_point': 'unique_digits'}\nWrong Answer: {'code': '```python\\n    result = []\\n    for num in x:\\n        if all(int(digit) % 2 != 0 for digit in str(num)):\\n            result.append(num)\\n    return sorted(result)\\n```', 'prompt': '\\ndef unique_digits(x):\\n    \"\"\"Given a list of positive integers x. return a sorted list of all \\n    elements that hasn\\'t any even digit.\\n\\n    Note: Returned list should be sorted in increasing order.\\n    \\n    For example:\\n    >>> unique_digits([15, 33, 1422, 1])\\n    [1, 15, 33]\\n    >>> unique_digits([152, 323, 1422, 10])\\n    []\\n    \"\"\"\\n'}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n--- Mistake 2 ---\nQuestion: {'task_id': 'HumanEval/145', 'prompt': '\\ndef order_by_points(nums):\\n    \"\"\"\\n    Write a function which sorts the given list of integers\\n    in ascending order according to the sum of their digits.\\n    Note: if there are several items with similar sum of their digits,\\n    order them based on their index in original list.\\n\\n    For example:\\n    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]\\n    >>> order_by_points([]) == []\\n    \"\"\"\\n', 'canonical_solution': '    def digits_sum(n):\\n        neg = 1\\n        if n < 0: n, neg = -1 * n, -1 \\n        n = [int(i) for i in str(n)]\\n        n[0] = n[0] * neg\\n        return sum(n)\\n    return sorted(nums, key=digits_sum)\\n', 'test': 'def check(candidate):\\n\\n    # Check some simple cases\\n    assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]\\n    assert candidate([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]\\n    assert candidate([]) == []\\n    assert candidate([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]\\n    assert candidate([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]\\n    assert candidate([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]\\n\\n    # Check some edge cases that are easy to work out by hand.\\n    assert True, \"This prints if this assert fails 2 (also good for debugging!)\"\\n\\n', 'entry_point': 'order_by_points'}\nWrong Answer: {'code': '    return sorted(nums, key=lambda x: (sum(int(d) for d in str(abs(x)) if d.isdigit()), nums.index(x)))', 'prompt': '\\ndef order_by_points(nums):\\n    \"\"\"\\n    Write a function which sorts the given list of integers\\n    in ascending order according to the sum of their digits.\\n    Note: if there are several items with similar sum of their digits,\\n    order them based on their index in original list.\\n\\n    For example:\\n    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]\\n    >>> order_by_points([]) == []\\n    \"\"\"\\n'}\nWhy it's wrong: Score: 0.00 (threshold: 1.0)\n\n\nFollow the reasoning patterns shown in the correct examples. Avoid the mistakes shown in the incorrect examples.",
+    "score_history": [
+      0.5,
+      1.0
+    ]
+  },
+  {
+    "experiment": "HumanEval (Retrieval-v3)",
+    "strategy": "RetrievalLearningStrategy",
+    "train_size": 40,
+    "val_size": 20,
+    "initial_score": 0.5,
+    "final_score": 0.8,
+    "best_score": 0.95,
+    "improvement_pct": 90.0,
+    "iterations": 3,
+    "elapsed_seconds": 764.5,
+    "best_instruction": "You are an expert Python programmer. Complete the function implementation based on the docstring. Return ONLY the function body code (properly indented), without repeating the function signature, adding tests, or any explanation.\n\nImportant guidelines learned from past experience:\n\n1. [Example, confidence=1.0] Example 1:\n  trajectory_id: 2b664d7a-0ee6-4b59-b72e-828832f5ccd1\n  input_data: {'task_id': 'HumanEval/61', 'prompt': '\\n\\ndef correct_bracketing(brackets: str):\\n    \"\"\" brackets is a string of \"(\" and \")\".\\n    return True if every opening bracket has a corresponding closing bracket.\\n\\n    >>> correct_bracketing(\"(\")\\n    False\\n    >>> correct_bracketing(\"()\")\\n    True\\n    >>> correct_bracketing(\"(()())\")\\n    True\\n    >>> correct_bracketing(\")(()\")\\n    False\\n    \"\"\"\\n', 'canonical_solut\n2. [Rule, confidence=0.9] Verify the function's output format matches the specification exactly, including sorting order and element selection criteria.\n3. [Rule, confidence=0.9] Ensure edge cases and base cases are handled, such as empty inputs, single elements, or initial conditions in sequences.\n\nApply these guidelines when answering.",
+    "score_history": [
+      0.5,
+      0.85,
+      0.95,
+      0.8
+    ]
+  }
+]

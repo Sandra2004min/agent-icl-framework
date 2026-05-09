@@ -1,0 +1,456 @@
+{
+  "train": [
+    {
+      "question": "Luther: The Calling is based on the BBC crime drama comprising six episodes that were run in which year?",
+      "answer": "2010",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "The movie that was the directorial debut of Jonathan Glazer included the musical piece Lujon. Which other movie that has the letter \"B\" in it also includes this piece?",
+      "answer": "The Big Lebowski",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Armand Castelmary played Horatio in the 1868 version of the opera set to a play by whom?",
+      "answer": "William Shakespeare",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Is Northeast Florida Regional Airport farther from St. Augustine than Glacier Park International Airport is to Kalispell?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Who died more recently, Lincoln Steffens, or Monique Wittig?",
+      "answer": "Monique Wittig",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "In what year was the university where Sergei Aleksandrovich Tokarev was a professor founded?",
+      "answer": "1755",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What statistical area is the suburban city that houses the Charles Hosmer Morse Museum of American Art?",
+      "answer": "Orlando–Kissimmee–Sanford",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Who proposed plan in which education in state institutions of Argentina is free at the initial, primary, secondary and tertiary levels and in the undergraduate university level? ",
+      "answer": "Dr. Alberto Taquini",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Did both Alan Crosland and Chris Columbus work as stage actor?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Are both Helen Dunmore and M. P. Shiel of West Indian descent?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "In what city is the company that Fastjet Tanzania was originally founded as a part of prior to rebranding based?",
+      "answer": "Nairobi, Kenya",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Are both Snowboard Magazine and The Believer sporting magazines?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "How many rooms are in the building built in 1883 at Garden City in Nassau County, New York?",
+      "answer": "500-room",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Russia Soviet pianist, composer and teacher, Tatiana Nikolayeva taught what Polish pianist and music educator?",
+      "answer": "Maria Szraiber",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "In what London botanical garden can you find the fungus described by Elise Maud Wakefield as \"Lepiota\"?",
+      "answer": "Kew Gardens",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Are Mike Bryan and Ray Ruffels both tennis players?",
+      "answer": "yes",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "What Was the name of Juan Manuel Márquez's  WBO champion holding younger brother?",
+      "answer": "Rafael Márquez",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Alex Yemenidjian is the CEO of the company that owns what Las Vegas Strip hotel?",
+      "answer": "Tropicana Las Vegas",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Who died last Vladimir Arnold or Georg Cantor?",
+      "answer": "Vladimir Igorevich Arnold",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Which South African born singer featured the musical revue \"Sigh No More\"?",
+      "answer": "Graham Payn",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What European championship did the man that holds a record with John Boulger win twice?",
+      "answer": "London Riders' Championship",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What was the name of a woman from the book titled \"Their Lives: The Women Targeted by the Clinton Machine \" and was also a former white house intern?",
+      "answer": "Monica Lewinsky",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Are the bands \"Black Grape\" and \"Balance and Composure\" from the same country?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "What is the middle name of the actor who hosted the24th People's Choice Awards with  Reba McEntire ?",
+      "answer": "Albert",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Michaël Llodra of France, called \"the best volleyer on tour\", defeated Juan Martín del Potro a professional of what nationality?",
+      "answer": "Argentinian",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What year did Roy Rogers and his third wife star in a film directed by Frank McDonald?",
+      "answer": "1945",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Are both Dafeng District and Dazhou located in the same province?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Who directed the 2015 South Korean drama film starring Hwang Jung-min?",
+      "answer": "Lee Seok-hoon",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Moonlight starred the actor who played whom on the remake of Hawaii Five-0?",
+      "answer": "Steve McGarrett",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "How many Major League Baseball teams usually attend the meeting where the John H. Johnson President's Award is awarded?",
+      "answer": "30 Major League Baseball teams",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What abbey, founded in 598, was Clarembald a monk at?",
+      "answer": "St Augustine's Abbey",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Which band has more members, Muzzle or Primus?",
+      "answer": "Muzzle",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "When was the earliest film of High School and The Thorn in the Heart shot?",
+      "answer": "1968",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "What was the title of the man who Sir Thomas Hungerford made his fortune working as a steward to?",
+      "answer": "1st Duke of Lancaster",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What instrument of war was only used by the President of the United States who was born in Lamar, Missouri?",
+      "answer": "nuclear weapons",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Where is the closest relative to the whale located?",
+      "answer": "sub-Saharan Africa",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Which team did Joe Buck's father broadcast for?",
+      "answer": "St. Louis Cardinals",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Are Donald Fagen and Lauren Laverne of the same nationality?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": " Which movie did Disney produce first,  The Many Adventures of Winnie the Pooh or Ride a Wild Pony?",
+      "answer": "Ride a Wild Pony",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "What type of sport does Sergio Casal and Manuel Orantes have in common?",
+      "answer": "tennis",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Who was a Christian Evangelist and US prisoner of war survivor that was the basis for a film directed by Angelina Jolie?",
+      "answer": "Louis \"Louie\" Zamperini",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What arcade game is named after the only player in major league history to have a 0.300 batting average for 7 consecutive seasons?",
+      "answer": "a pinball machine",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What type of structure does 277 Park Avenue and 126 Madison Avenue have in common?",
+      "answer": "building",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "are Dee Dee Ramone and Alex Band both singers, songwriters and musicians?",
+      "answer": "yes",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "What disease is the Wolf Prize winner and Vadim  Bereinskii-inspired Nobel laureate suffering from?",
+      "answer": "dementia",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Sal de Mi Piel is a song by the actress who is of what nationality?",
+      "answer": "Spanish",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Who released the song \"With or Without You\" first, Jai McDowall or U2?",
+      "answer": "U2",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "When was the Chief Aerodynamicist for the British supersonic land vehicle, whose goal is to match or exceed 1000 mph achieving a new world land speed record, born?",
+      "answer": "1932",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Have Jelena Janković and Marat Safin both played tennis professionally?",
+      "answer": "yes",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "This American crime film set in South Los Angeles was written and directed by the same director and writer of screenwriter of \"Street Kings\", \"End of Watch\", \"Sabotage\", \"Fury\" and what other film? ",
+      "answer": "Suicide Squad",
+      "level": "hard",
+      "type": "bridge"
+    }
+  ],
+  "val": [
+    {
+      "question": "These three apps that have similar functionality to Google for Education are compatible with what Microsoft file format?",
+      "answer": "Microsoft Office",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What type of writing did both Richard Harding Davis and Harry Stephen Keeler write?",
+      "answer": "fiction",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Which season of Alias does the English actor, who was born 25 June 1961, appear?",
+      "answer": "three",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Are Buried Country and South of the Border both films turned into stage performances?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "According to the 2011 census what is the population of the city where Royal Wahingdoh F.C. are based ?",
+      "answer": "143,007",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "What is Diego Tonetto's Italian passport called?",
+      "answer": "Italian nationality law",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Were Shadows Over Camelot and Battle Sheep released by the same publisher?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Are both Superdrag and Collective Soul rock bands?",
+      "answer": "yes",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "The father of Manning Marius Kimmel retired from the Navy in what year?",
+      "answer": "1942",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Which of the two airlines that operate flights into Enrique Malek International Airport is the larger air carrier in Panama?",
+      "answer": "Copa Airlines",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Which show was Andrew \"Andy\" Spade's brother in n the 1990s?",
+      "answer": "\"Saturday Night Live\"",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Heath Ledger Australian actor was in the movie Brokeback Mountain directed by who?",
+      "answer": "Ang Lee",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Pyne & Marles is co-hosted by Richard Marles and an Australian politician who has been the Liberal member for the House of Representatives seat of Sturt since what year's election?",
+      "answer": "1993",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Which university did one of the key figures in the American documentary film, released in 2015, directed by Malcolm Ingram, pay for, before being drafted 18th overall pick for the New Jersey Nets?",
+      "answer": "Stanford University",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Margaret Wilson and Edna St. Vincent Millay have both been given what?",
+      "answer": "Pulitzer Prize",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+      "answer": "George Albert Smith",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Who was the producer of the 1994 American animated epic musical film which Mel Shaw animated?",
+      "answer": "Don Hahn",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Were Gregory La Cava and Mike Judge both actors? ",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Sarah Price and Rob Schneider are both what profession? ",
+      "answer": "director",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "In which city is the ambassador of the Rabat-Salé-Kénitra administrative region to China based?",
+      "answer": "Beijing",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Are Der Rosenkavalier and I Capuleti e i Montecchi both comic operas?",
+      "answer": "no",
+      "level": "hard",
+      "type": "comparison"
+    },
+    {
+      "question": "Jim Jeffcoat is currently an assistant football coach in a university that was founded how many month before Colorado was admitted to the Union ?",
+      "answer": "five months",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "After joining Saturday Night Live in 2012, Cecily Strong played which character in the sketch \"What Up with That\"?",
+      "answer": "Piper",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "A Car-Tune Portrait was released on June 26, 1937, the cartoon gives an imaginative take on which second in a set of works by composer Franz Liszt?",
+      "answer": "Hungarian Rhapsody No. 2",
+      "level": "hard",
+      "type": "bridge"
+    },
+    {
+      "question": "Who lived longer- Bernard-Marie Koltès or Philip José Farmer?",
+      "answer": "Philip José Farmer",
+      "level": "hard",
+      "type": "comparison"
+    }
+  ]
+}

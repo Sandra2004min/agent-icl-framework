@@ -21,6 +21,8 @@ def test_knowledge_creation():
     assert k.knowledge_type == KnowledgeType.RULE
     assert k.confidence == 0.9
     assert k.usage_count == 0
+    assert k.importance == 0.5
+    assert k.evidence_ids == []
     print("PASS: knowledge_creation")
 
 
@@ -34,6 +36,8 @@ def test_knowledge_to_dict():
     d = k.to_dict()
     assert d["knowledge_type"] == "example"
     assert d["content"] == "example content"
+    assert "created_at" in d
+    assert d["importance"] == 0.5
     print("PASS: knowledge_to_dict")
 
 
@@ -114,9 +118,92 @@ def test_knowledge_base_save_load():
         assert len(loaded_kb.knowledge_items) == 2
         assert loaded_kb.knowledge_items[0].content == "rule content"
         assert loaded_kb.knowledge_items[1].knowledge_type == KnowledgeType.EXAMPLE
+        assert loaded_kb.knowledge_items[0].created_at is not None
         print("PASS: knowledge_base_save_load")
     finally:
         os.unlink(tmp_path)
+
+
+def test_knowledge_base_loads_legacy_json():
+    legacy_data = [{
+        "knowledge_id": "legacy",
+        "knowledge_type": "rule",
+        "content": "legacy rule",
+        "source": "test",
+        "confidence": 0.8,
+        "usage_count": 0,
+        "success_rate": 0.0,
+        "metadata": {},
+    }]
+
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        tmp_path = f.name
+        json.dump(legacy_data, f)
+
+    try:
+        loaded_kb = KnowledgeBase.load_from_file(tmp_path)
+        assert len(loaded_kb.knowledge_items) == 1
+        assert loaded_kb.knowledge_items[0].importance == 0.5
+        assert loaded_kb.knowledge_items[0].evidence_ids == []
+        print("PASS: knowledge_base_loads_legacy_json")
+    finally:
+        os.unlink(tmp_path)
+
+
+def test_knowledge_base_retrieve_prefers_relevance():
+    kb = KnowledgeBase()
+    kb.add(Knowledge(
+        "k_unrelated",
+        KnowledgeType.RULE,
+        "For historical biography questions, provide complete names and dates.",
+        "test",
+        confidence=0.95,
+        importance=0.5,
+    ))
+    kb.add(Knowledge(
+        "k_relevant",
+        KnowledgeType.RULE,
+        "For Python list sorting tasks, preserve odd indices and sort only even positions.",
+        "test",
+        confidence=0.75,
+        importance=0.8,
+    ))
+
+    results = kb.retrieve(
+        "Implement a Python function that sorts values at even indices while preserving odd indices.",
+        k=1,
+        min_confidence=0.7,
+    )
+
+    assert len(results) == 1
+    assert results[0].knowledge_id == "k_relevant"
+    assert results[0].last_used_at is not None
+    assert "last_retrieval_score" in results[0].metadata
+    print("PASS: knowledge_base_retrieve_prefers_relevance")
+
+
+def test_knowledge_base_retrieve_filters_low_confidence():
+    kb = KnowledgeBase()
+    kb.add(Knowledge(
+        "k_low",
+        KnowledgeType.RULE,
+        "For Python list sorting tasks, preserve odd indices and sort only even positions.",
+        "test",
+        confidence=0.4,
+    ))
+    kb.add(Knowledge(
+        "k_ok",
+        KnowledgeType.RULE,
+        "For arithmetic questions, double-check calculations.",
+        "test",
+        confidence=0.8,
+    ))
+
+    results = kb.retrieve("Python list sorting even indices", k=5, min_confidence=0.7)
+    ids = [item.knowledge_id for item in results]
+    assert "k_low" not in ids
+    assert "k_ok" in ids
+    print("PASS: knowledge_base_retrieve_filters_low_confidence")
 
 
 def test_knowledge_extractor():
@@ -141,5 +228,8 @@ if __name__ == "__main__":
     test_knowledge_base_top_k()
     test_knowledge_base_filter()
     test_knowledge_base_save_load()
+    test_knowledge_base_loads_legacy_json()
+    test_knowledge_base_retrieve_prefers_relevance()
+    test_knowledge_base_retrieve_filters_low_confidence()
     test_knowledge_extractor()
     print("\nAll Knowledge tests passed!")

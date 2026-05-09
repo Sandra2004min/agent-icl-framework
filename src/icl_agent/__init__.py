@@ -9,6 +9,9 @@ __author__ = "Your Name"
 from .core.trajectory import Trajectory, TrajectoryCapture
 from .core.context import ContextAnalyzer, ContextData
 from .core.knowledge import KnowledgeExtractor, Knowledge
+from .core.candidate import PromptCandidate, PromptCandidatePool
+from .core.hypothesis import ReflectionHypothesis
+from .core.context_builder import ContextBudget, ContextBuilder, ContextPackage
 from .core.optimizer import AgentOptimizer, OptimizationResult
 from .strategies.reflective import ReflectiveLearningStrategy
 from .strategies.fewshot import FewShotLearningStrategy
@@ -27,6 +30,12 @@ __all__ = [
     "ContextData",
     "KnowledgeExtractor",
     "Knowledge",
+    "PromptCandidate",
+    "PromptCandidatePool",
+    "ReflectionHypothesis",
+    "ContextBudget",
+    "ContextBuilder",
+    "ContextPackage",
     "AgentOptimizer",
     "OptimizationResult",
     # Strategies
